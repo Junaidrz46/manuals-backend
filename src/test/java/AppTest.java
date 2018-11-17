@@ -3,7 +3,6 @@
  */
 
 import org.junit.Test;
-import se.agilecourse.App;
 
 import static org.junit.Assert.*;
 
@@ -21,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = App.class)
+@SpringBootTest(classes = SpringBootApp.class)
 @AutoConfigureMockMvc
 public class AppTest {
 
@@ -30,9 +29,10 @@ public class AppTest {
 
     @Test
     public void helloGradle() throws Exception {
-        mvc.perform(get("/"))
+        mvc.perform(get("/rest/users/hello"))
+
                 .andExpect(status().isOk())
-                .andExpect(content().string("Hello Gradle!"));
+                .andExpect(content().string("Hello world!"));
     }
 
 }
