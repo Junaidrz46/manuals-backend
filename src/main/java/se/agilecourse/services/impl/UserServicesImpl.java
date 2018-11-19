@@ -8,6 +8,7 @@ import se.agilecourse.model.LoginModel;
 import se.agilecourse.model.User;
 import se.agilecourse.repository.UserRepository;
 import se.agilecourse.services.UserServices;
+import se.agilecourse.util.StringConstants;
 
 
 @Service
@@ -15,6 +16,9 @@ public class UserServicesImpl implements UserServices {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    StringConstants stringConstants;
 
     @Override
     public User findByUserName(String username) {
@@ -56,10 +60,10 @@ public class UserServicesImpl implements UserServices {
 
         if(user != null){
             loginModel.setUser(user);
-            loginModel.setLoginstatus("loginOk");
+            loginModel.setLoginstatus(stringConstants.LOGIN_SUCCESS);
             loginModel.setMessage("User Login");
         }else {
-            loginModel.setLoginstatus("loginfail");
+            loginModel.setLoginstatus(stringConstants.LOGIN_FAIL);
             loginModel.setMessage("Username or password didn't match");
 
         }
