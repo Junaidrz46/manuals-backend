@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import se.agilecourse.model.LoginModel;
 import se.agilecourse.model.User;
 import se.agilecourse.repository.UserRepository;
 import se.agilecourse.services.UserServices;
@@ -40,6 +41,30 @@ public class UserServicesImpl implements UserServices {
     public User saveAdminUser(User user) {
         user.setRole("companyAdmin");
         return userRepository.save(user);
+    }
+
+    @Override
+    public User saveCompanyRepresentative(User user) {
+        user.setRole("companyRepresentative");
+        return userRepository.save(user);
+    }
+
+    @Override
+    public LoginModel loginUser(String username, String password) {
+        User user = userRepository.findByUsernameAndPassword(username,password);
+        LoginModel loginModel = new LoginModel();
+
+        if(user != null){
+            loginModel.setUser(user);
+            loginModel.setLoginstatus("loginOk");
+            loginModel.setMessage("User Login");
+        }else {
+            loginModel.setLoginstatus("loginfail");
+            loginModel.setMessage("Username or password didn't match");
+
+        }
+
+        return loginModel ;
     }
 
 

@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import se.agilecourse.model.LoginModel;
 import se.agilecourse.model.User;
 import se.agilecourse.repository.UserRepository;
 import se.agilecourse.services.UserServices;
@@ -49,7 +50,18 @@ public class Controller {
 
     //@RequestMapping(value = "/saveAdminUser", params = "emailAddress", method = RequestMethod.POST)
     @PostMapping("/saveAdminUser")
-    User newUser(@RequestBody User user) {
+    User saveCompanyAdmin(@RequestBody User user) {
         return userServices.saveAdminUser(user);
     }
+
+    @PostMapping("/saveCompanyRepresentative")
+    User saveCompanyRepresntative(@RequestBody User user) {
+        return userServices.saveCompanyRepresentative(user);
+    }
+
+    @PostMapping("/login")
+    LoginModel loginUser(@RequestBody User user){
+        return userServices.loginUser(user.getUsername(),user.getPassword());
+    }
+
 }

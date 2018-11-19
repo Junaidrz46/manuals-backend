@@ -1,6 +1,7 @@
 package se.agilecourse.services;
 
 import org.springframework.stereotype.Service;
+import se.agilecourse.model.LoginModel;
 import se.agilecourse.model.User;
 import java.util.List;
 
@@ -12,4 +13,6 @@ public interface UserServices {
     public List<User> findByRole(String role);
     public List<User> findAllUsers();
     public User saveAdminUser(User user);
+    public User saveCompanyRepresentative(User user);
+    public LoginModel loginUser(String username,String password);
 }

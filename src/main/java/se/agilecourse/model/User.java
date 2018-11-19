@@ -32,6 +32,7 @@ public class User {
     private String username;
     private String password;
     private String emailaddress;
+    private String companyname;
     private String role;
 
     public String getId() {
@@ -72,6 +73,14 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getCompanyname() {
+        return companyname;
+    }
+
+    public void setCompanyname(String companyname) {
+        this.companyname = companyname;
     }
 
     @Override
