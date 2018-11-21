@@ -63,6 +63,10 @@ public class UserController {
     LoginModel loginUser(@RequestBody User user){
         return userServices.loginUser(user.getUsername(),user.getPassword());
     }
+    @PostMapping("/saveConsumer")
+    User saveConsumer(@RequestBody User user) {
+        return userServices.saveConsumer(user);
+    }
 
 
 

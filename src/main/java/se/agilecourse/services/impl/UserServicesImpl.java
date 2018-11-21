@@ -71,5 +71,10 @@ public class UserServicesImpl implements UserServices {
         return loginModel ;
     }
 
+    @Override
+    public User saveConsumer(User user) {
+        return userRepository.save(user);
+    }
+
 
 }
