@@ -16,7 +16,7 @@ public class CategoryServicesImpl implements CategoryServices {
     CategoryRepository repository;
 
     @Override
-    public Optional<Category> findbyId(String Id) {
+    public Optional<Category> findById(String Id) {
         return repository.findById(Id);
     }
 
@@ -29,4 +29,5 @@ public class CategoryServicesImpl implements CategoryServices {
     public Category saveCategory(Category category) {
         return repository.save(category);
     }
+
 }

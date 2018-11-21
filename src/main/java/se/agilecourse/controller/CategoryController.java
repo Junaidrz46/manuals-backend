@@ -5,10 +5,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import se.agilecourse.model.Category;
-import se.agilecourse.model.User;
 import se.agilecourse.services.CategoryServices;
 
 import java.util.List;
+import java.util.Optional;
 
 //@CrossOrigin(origins = "http://localhost:8888/", maxAge = 3600)
 @RestController()
@@ -33,6 +33,11 @@ public class CategoryController {
     @PostMapping("/saveCategory")
     public Category saveCategory(@RequestBody Category category){
         return categoryServices.saveCategory(category);
+    }
+
+    @RequestMapping(value="/findCategoryById",method = RequestMethod.GET)
+    public Optional<Category> findCategoryById (@RequestParam ("id") String id){
+        return categoryServices.findById(id);
     }
 
 }
