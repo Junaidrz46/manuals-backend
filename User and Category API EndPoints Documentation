@@ -1,0 +1,90 @@
+User Login API Documentation
+
+This api will let a user with valid username and password to login into our platform.
+
+A user that can login using the login user interface can be one of the following users
+
+1. Company Admin
+2. Company Representative
+3. Customer
+
+
+Working with MongoDB 
+
+The backed platform use Mongodb database of data storage and manipulation
+
+The user Collection contains the following fields
+
+Id  - (String data type) This is a unique id for a particular user
+Username - (String data type) This is a user name
+Password - (String data type) This is password of a user
+EmailAddress - (String data type) This is the email address of a user
+Role - (String data type) This is use to identify a user role
+Company Name – (String data type) This use to represent the name of a company
+
+Every request for user login goes through the Controller Class. The Controller class has a base url:
+
+http://localhost:8080/rest/users
+
+
+Request Methods for User Login – Post Method
+
+Since a user login involves the use of a user personal details we decided to use post so that it value passed by users are not exposed to other people.
+
+Below is a list of API endpoints to save different kind of users
+
+Admin User
+Post Method : http://localhost:8080/rest/users/saveAdminUser
+
+Company Representative
+Post Method : http://localhost:8080/rest/users/saveCompanyRepresentative
+
+User Login
+Post Method : http://localhost:8080/rest/users/login
+
+
+Access Users from Database API Endpoints
+
+There are different API endpoints that can be use to retrieve a user or user role from the database. The list is shown below.
+
+Retrieve User By Role EndPoint
+Get : http://localhost:8080/rest/users/findByRole?role=companyAdmin
+
+
+Retrieve User By Email Address
+Get : http://localhost:8080/rest/users/findUserByEmailAddress?emailAddress=3testMail@testdomain.com
+
+
+Retrieve User By Username
+Get : http://localhost:8080/rest/users/findUserByUserName?userName=testAdmin
+
+
+
+
+Category API Documentation
+
+Company products are group by category. Category Collections (table) contain the following fields
+
+Id – (String data type) This is the unique category identification
+
+Name - (String data type) The name of a category
+
+Products - (String data type) List of products in a category
+
+Description - (String data type) Category description
+
+
+
+Category API EndPoint
+
+At the moment the category API supports the following endpoints
+
+
+Retrieve All Categories
+
+Get Method - http://localhost:8080/rest/categories/findAllCategories
+
+
+Create a new Category
+
+Post Method - http://localhost:8080/rest/categories/saveCategories
