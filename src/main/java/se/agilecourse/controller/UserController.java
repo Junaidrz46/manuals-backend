@@ -28,7 +28,7 @@ public class UserController {
 
     @GetMapping("/findAllUsers")
     public List<User> getAll() {
-        System.out.println("Get users from all : "+userServices.findAllUsers().size());
+        logger.debug("Get users from all : "+userServices.findAllUsers().size());
         return userServices.findAllUsers();
     }
 

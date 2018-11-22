@@ -54,6 +54,12 @@ public class UserServicesImpl implements UserServices {
     }
 
     @Override
+    public User saveConsumer(User user) {
+        user.setRole("customer");
+        return userRepository.save(user);
+    }
+
+    @Override
     public LoginModel loginUser(String username, String password) {
         User user = userRepository.findByUsernameAndPassword(username,password);
         LoginModel loginModel = new LoginModel();
@@ -71,10 +77,7 @@ public class UserServicesImpl implements UserServices {
         return loginModel ;
     }
 
-    @Override
-    public User saveConsumer(User user) {
-        return userRepository.save(user);
-    }
+
 
 
 }

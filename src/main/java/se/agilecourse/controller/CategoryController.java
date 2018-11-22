@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import se.agilecourse.model.Category;
 import se.agilecourse.services.CategoryServices;
 
@@ -19,8 +20,6 @@ public class CategoryController {
 
     @Autowired
     CategoryServices categoryServices;
-
-
 
 
     @GetMapping("/findAllCategories")
@@ -39,5 +38,7 @@ public class CategoryController {
     public Optional<Category> findCategoryById (@RequestParam ("id") String id){
         return categoryServices.findById(id);
     }
+
+
 
 }

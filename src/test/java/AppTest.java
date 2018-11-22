@@ -29,7 +29,9 @@ public class AppTest {
 
     @Test
     public void helloGradle() throws Exception {
-        mvc.perform(get("/rest/users/hello"))
+        mvc.perform(get("/rest/users/hello").header(
+                "Access-Control-Allow-Credentials","true",
+                         "Access-Control-Allow-Methods","Content-Length "))
 
                 .andExpect(status().isOk())
                 .andExpect(content().string("Hello world!"));

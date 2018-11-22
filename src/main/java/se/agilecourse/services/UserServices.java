@@ -15,5 +15,5 @@ public interface UserServices {
     public User saveAdminUser(User user);
     public User saveCompanyRepresentative(User user);
     public LoginModel loginUser(String username,String password);
-    User saveConsumer(User user);
+    public User saveConsumer(User user);
 }
