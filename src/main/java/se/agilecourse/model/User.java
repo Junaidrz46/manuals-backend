@@ -13,22 +13,28 @@ public class User {
     public User(){
     }
 
-    public User(String username, String password, String emailaddress){
+    public User(String firstname, String lastname, String username, String password, String emailaddress, String companyname) {
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.username = username;
         this.password = password;
         this.emailaddress = emailaddress;
-
+        this.companyname = companyname;
     }
 
-    public User(String username, String password, String emailaddress,String role){
+    public User(String firstname, String lastname, String username, String password, String emailaddress, String companyname, String role) {
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.username = username;
         this.password = password;
         this.emailaddress = emailaddress;
+        this.companyname = companyname;
         this.role = role;
     }
 
-
     private String id;
+    private String firstname;
+    private String lastname;
     private String username;
     private String password;
     private String emailaddress;
@@ -83,17 +89,33 @@ public class User {
         this.companyname = companyname;
     }
 
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
     @Override
     public String toString() {
 
         if(id != null && !id.equalsIgnoreCase("")){
             return String.format(
-                    "User[id='%s', username='%s', password='%s , emailaddress='%s' , role='%s']",
-                    id,username, password, emailaddress, role);
+                    "User[id='%s', firstname='%s', lastname='%s', username='%s', password='%s , emailaddress='%s' , role='%s']",
+                    id, firstname, lastname, username, password, emailaddress, role);
         }else {
             return String.format(
-                    "User[ username='%s', password='%s , emailaddress='%s' , role='%s']",
-                    username, password, emailaddress, role);
+                    "User[ firstname='%s', lastname='%s', username='%s', password='%s , emailaddress='%s' , role='%s']",
+                    firstname, lastname, username, password, emailaddress, role);
         }
     }
 }
