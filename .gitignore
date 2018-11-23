@@ -74,3 +74,6 @@ gradle-app.setting
 
 ### Gradle Patch ###
 **/build/
+
+####uploadsFolder#####
+/uploads/
