@@ -1,17 +1,29 @@
 package se.agilecourse.model;
 
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document(collection="users")
+@Document(collection="products")
 public class Product {
 
     private String id;
     private String name;
-    private List<Material> materials;
     private String description;
+    private String brand;
 
+
+
+    @DBRef
+    private List<Material> materials;
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
 
     public String getId() {
         return id;

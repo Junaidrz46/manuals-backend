@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import se.agilecourse.model.Category;
+import se.agilecourse.model.Product;
 import se.agilecourse.services.CategoryServices;
 
 import java.util.List;
@@ -38,6 +39,9 @@ public class CategoryController {
     public Optional<Category> findCategoryById (@RequestParam ("id") String id){
         return categoryServices.findById(id);
     }
+
+    @RequestMapping(value="/findProductByCid",method = RequestMethod.GET)
+    public  List<Product> getProductsById(@RequestParam("id") String cid){return categoryServices.getProductsByCid(cid);}
 
 
 

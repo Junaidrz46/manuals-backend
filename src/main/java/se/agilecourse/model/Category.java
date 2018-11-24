@@ -1,5 +1,6 @@
 package se.agilecourse.model;
 
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
@@ -9,8 +10,9 @@ public class Category {
 
     private String id;
     private String name;
-    private List<Product> products;
     private String description;
+    @DBRef
+    private List<Product> products;
 
     public String getId() {
         return id;

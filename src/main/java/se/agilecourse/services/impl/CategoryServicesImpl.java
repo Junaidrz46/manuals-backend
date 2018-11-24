@@ -3,6 +3,7 @@ package se.agilecourse.services.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.agilecourse.model.Category;
+import se.agilecourse.model.Product;
 import se.agilecourse.repository.CategoryRepository;
 import se.agilecourse.services.CategoryServices;
 
@@ -28,6 +29,11 @@ public class CategoryServicesImpl implements CategoryServices {
     @Override
     public Category saveCategory(Category category) {
         return repository.save(category);
+    }
+
+    @Override
+    public List<Product> getProductsByCid(String cid) {
+        return repository.findProductsByCid(cid);
     }
 
 }
