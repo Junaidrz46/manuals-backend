@@ -2,6 +2,7 @@ package se.agilecourse.model;
 
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import se.agilecourse.annotation.CascadeSave;
 
 import java.util.List;
 
@@ -13,9 +14,8 @@ public class Product {
     private String description;
     private String brand;
 
-
-
     @DBRef
+    @CascadeSave
     private List<Material> materials;
     public String getBrand() {
         return brand;
