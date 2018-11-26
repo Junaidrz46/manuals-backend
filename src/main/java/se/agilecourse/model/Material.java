@@ -1,11 +1,14 @@
 package se.agilecourse.model;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection="materials")
 public class Material {
 
     private String id;
     private String name;
-    private String location;
     private String description;
+    private String location;
 
     public String getId() {
         return id;

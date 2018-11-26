@@ -1,6 +1,8 @@
 package se.agilecourse.model;
 
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import se.agilecourse.annotation.CascadeSave;
 
 import java.util.List;
 
@@ -9,8 +11,11 @@ public class Category {
 
     private String id;
     private String name;
-    private List<Product> products;
     private String description;
+
+    @DBRef
+    @CascadeSave
+    private List<Product> products;
 
     public String getId() {
         return id;

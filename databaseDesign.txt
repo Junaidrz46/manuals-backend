@@ -1,0 +1,191 @@
+{
+    "_id" : ObjectId("5bf9ae92b5a1b0030083cb3b"),
+    "name" : "cate1",
+    "description" : "cate1 description",
+    "products" : [ 
+        {
+            "$ref" : "products",
+            "$id" : ObjectId("5bf9bf07b5a1b0030083d2ad")
+        }, 
+        {
+            "$ref" : "products",
+            "$id" : ObjectId("5bf9bf61b5a1b0030083d2cf")
+        }
+    ]
+}
+
+{
+    "_id" : ObjectId("5bf9af47b5a1b0030083cb85"),
+    "name" : "cate2",
+    "description" : "cate2 description",
+    "products" : [ 
+        {
+            "$ref" : "products",
+            "$id" : ObjectId("5bf9b035b5a1b0030083cbe6")
+        }, 
+        {
+            "$ref" : "products",
+            "$id" : ObjectId("5bf9b220b5a1b0030083ccf8")
+        }
+    ]
+}
+---------------------------------------------------------------------------------------------------------------------------
+
+{
+    "_id" : ObjectId("5bf9bf07b5a1b0030083d2ad"),
+    "name" : "product1",
+    "description" : "product1 description",
+    "brand" : "HUAWEI",
+    "materials" : [ 
+        {
+            "$ref" : "materials",
+            "$id" : ObjectId("5bf9bc9db5a1b0030083d1b8")
+        }, 
+        {
+            "$ref" : "materials",
+            "$id" : ObjectId("5bf9bcb6b5a1b0030083d1c7")
+        }, 
+        {
+            "$ref" : "materials",
+            "$id" : ObjectId("5bf9bcd8b5a1b0030083d1da")
+        }
+    ]
+}
+
+{
+    "_id" : ObjectId("5bf9bf61b5a1b0030083d2cf"),
+    "name" : "product2",
+    "description" : "product2 description",
+    "brand" : "SONY",
+    "materials" : [ 
+        {
+            "$ref" : "materials",
+            "$id" : ObjectId("5bf9bcfcb5a1b0030083d1ee")
+        }, 
+        {
+            "$ref" : "materials",
+            "$id" : ObjectId("5bf9bd0cb5a1b0030083d1f4")
+        }, 
+        {
+            "$ref" : "materials",
+            "$id" : ObjectId("5bf9bd1ab5a1b0030083d1fb")
+        }
+    ]
+}
+
+{
+    "_id" : ObjectId("5bf9b220b5a1b0030083ccf8"),
+    "name" : "product4",
+    "description" : "product2 description",
+    "brand" : "SONY",
+    "materials" : [ 
+        {
+            "$ref" : "materials",
+            "$id" : ObjectId("5bf9b6e2b5a1b0030083cf45")
+        }, 
+        {
+            "$ref" : "materials",
+            "$id" : ObjectId("5bf9b708b5a1b0030083cf5e")
+        }, 
+        {
+            "$ref" : "materials",
+            "$id" : ObjectId("5bf9b71cb5a1b0030083cf62")
+        }
+    ]
+}
+
+{
+    "_id" : ObjectId("5bf9b035b5a1b0030083cbe6"),
+    "name" : "product3",
+    "description" : "product3 description",
+    "brand" : "HUAWEI",
+    "materials" : [ 
+        {
+            "$ref" : "materials",
+            "$id" : ObjectId("5bf9b3d0b5a1b0030083cdb3")
+        }, 
+        {
+            "$ref" : "materials",
+            "$id" : ObjectId("5bf9b4e2b5a1b0030083ce2e")
+        }, 
+        {
+            "$ref" : "materials",
+            "$id" : ObjectId("5bf9b665b5a1b0030083cf16")
+        }
+    ]
+}
+--------------------------------------------------------------------------------------------------------
+
+{
+    "_id" : ObjectId("5bf9bc9db5a1b0030083d1b8"),
+    "name" : "material1",
+    "description" : "material1 description",
+    "location" : "location1"
+}
+{
+    "_id" : ObjectId("5bf9b3d0b5a1b0030083cdb3"),
+    "name" : "material7",
+    "description" : "material7 description",
+    "location" : "location7"
+}
+{
+    "_id" : ObjectId("5bf9b4e2b5a1b0030083ce2e"),
+    "name" : "material8",
+    "description" : "material8 description",
+    "location" : "location8"
+}
+
+{
+    "_id" : ObjectId("5bf9b665b5a1b0030083cf16"),
+    "name" : "material9",
+    "description" : "material9 description",
+    "location" : "location9"
+}
+{
+    "_id" : ObjectId("5bf9b6e2b5a1b0030083cf45"),
+    "name" : "material10",
+    "description" : "material10 description",
+    "location" : "location10"
+}
+{
+    "_id" : ObjectId("5bf9b71cb5a1b0030083cf62"),
+    "name" : "material12",
+    "description" : "material12 description",
+    "location" : "location12"
+}
+{
+    "_id" : ObjectId("5bf9b708b5a1b0030083cf5e"),
+    "name" : "material11",
+    "description" : "material11 description",
+    "location" : "location111"
+}
+{
+    "_id" : ObjectId("5bf9bcb6b5a1b0030083d1c7"),
+    "name" : "material2",
+    "description" : "material2 description",
+    "location" : "location2"
+}
+{
+    "_id" : ObjectId("5bf9bcd8b5a1b0030083d1da"),
+    "name" : "material3",
+    "description" : "material3 description",
+    "location" : "location3"
+}
+{
+    "_id" : ObjectId("5bf9bcfcb5a1b0030083d1ee"),
+    "name" : "material4",
+    "description" : "material4 description",
+    "location" : "location4"
+}
+{
+    "_id" : ObjectId("5bf9bd0cb5a1b0030083d1f4"),
+    "name" : "material5",
+    "description" : "material5 description",
+    "location" : "location5"
+}
+{
+    "_id" : ObjectId("5bf9bd1ab5a1b0030083d1fb"),
+    "name" : "material6",
+    "description" : "material6 description",
+    "location" : "location6"
+}
