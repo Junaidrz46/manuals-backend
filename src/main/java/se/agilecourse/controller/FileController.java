@@ -11,7 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import se.agilecourse.model.UploadFileResponse;
+import se.agilecourse.model.Material;
+import se.agilecourse.services.CategoryServices;
 import se.agilecourse.services.FileStorageService;
 
 
@@ -30,8 +31,12 @@ public class FileController {
     @Autowired
     private FileStorageService fileStorageService;
 
+    @Autowired
+    private CategoryServices categoryServices;
+
     @PostMapping("/uploadFile")
-    public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
+    public Material uploadFile(@RequestParam("ProductId") String productId,
+                               @RequestParam("file") MultipartFile file){
         String fileName = fileStorageService.storeFile(file);
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
@@ -39,15 +44,20 @@ public class FileController {
                 .path(fileName)
                 .toUriString();
 
-        return new UploadFileResponse(fileName, fileDownloadUri,
-                file.getContentType(), file.getSize());
+        Material material = new Material();
+        material.setFileName(fileName);
+        material.setFileDownloadUri(fileDownloadUri);
+        material.setFileType(file.getContentType());
+        material.setSize(file.getSize());
+        categoryServices.saveMaterialByProduct(material,productId);
+        return material;
     }
 
     @PostMapping("/uploadMultipleFiles")
-    public List<UploadFileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
+    public List<Material> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files, @RequestParam("ProductId") String productId) {
         return Arrays.asList(files)
                 .stream()
-                .map(file -> uploadFile(file))
+                .map(file -> uploadFile(productId,file))
                 .collect(Collectors.toList());
     }
 
