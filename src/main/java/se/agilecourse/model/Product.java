@@ -17,6 +17,7 @@ public class Product {
     @DBRef
     @CascadeSave
     private List<Material> materials;
+
     public String getBrand() {
         return brand;
     }

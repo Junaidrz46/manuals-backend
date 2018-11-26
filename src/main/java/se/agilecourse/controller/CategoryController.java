@@ -4,9 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import se.agilecourse.model.Category;
-import se.agilecourse.model.Product;
+import se.agilecourse.model.*;
 import se.agilecourse.services.CategoryServices;
 
 import java.util.List;
@@ -35,13 +33,47 @@ public class CategoryController {
         return categoryServices.saveCategory(category);
     }
 
+    @PostMapping("/saveProductByCatergoryId")
+    public Product saveProductByCatergoryId(@RequestBody WrapperProduct wrapperProduct){
+        logger.info("cat ID : "+wrapperProduct.getCategoryId());
+        logger.info("Product "+wrapperProduct.getProduct().getName());
+        return categoryServices.saveProductByCategory(wrapperProduct.getProduct(),wrapperProduct.getCategoryId());
+    }
+
+    @PostMapping("/saveMaterialByProductId")
+    public Material saveMaterial(@RequestBody WrapperMaterial wrapperMaterial){
+        return categoryServices.saveMaterialByProduct(wrapperMaterial.getMaterial(),wrapperMaterial.getProductId());
+    }
+
     @RequestMapping(value="/findCategoryById",method = RequestMethod.GET)
     public Optional<Category> findCategoryById (@RequestParam ("id") String id){
         return categoryServices.findById(id);
     }
 
-    @RequestMapping(value="/findProductByCid",method = RequestMethod.GET)
-    public  List<Product> getProductsById(@RequestParam("id") String cid){return categoryServices.getProductsByCid(cid);}
+    @RequestMapping(value="/findProductByCategoryId",method = RequestMethod.GET)
+    public  List<Product> getProductsByCategoryId(@RequestParam("CategoryId") String cid){
+        return categoryServices.getProductsByCategoryid(cid);
+    }
+
+    @RequestMapping(value="/findMaterialByProductId",method = RequestMethod.GET)
+    public List<Material> getMaterialsByProductId(@RequestParam("ProductId") String productId){
+        return categoryServices.getMaterialByProductId(productId);
+    }
+
+    @RequestMapping(value="/findProductById",method = RequestMethod.GET)
+    public Optional<Product> getProdctById(@RequestParam("ProductId") String productId){
+        return categoryServices.getProductById(productId);
+    }
+
+    @RequestMapping(value="/findAllProducts",method = RequestMethod.GET)
+    public List<Product> getAllProdcts(){
+        return categoryServices.getAllProuducts();
+    }
+
+    @RequestMapping(value="/findAllMaterials",method = RequestMethod.GET)
+    public List<Material> getAllMaterials(){
+        return categoryServices.getAllMaterials();
+    }
 
 
 
