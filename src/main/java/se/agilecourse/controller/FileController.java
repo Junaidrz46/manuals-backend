@@ -38,12 +38,10 @@ public class FileController {
     public Material uploadFile(@RequestParam("ProductId") String productId,
                                @RequestParam("file") MultipartFile file){
         String fileName = fileStorageService.storeFile(file);
-
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/rest/file/downloadFile/")
                 .path(fileName)
                 .toUriString();
-
         Material material = new Material();
         material.setFileName(fileName);
         material.setFileDownloadUri(fileDownloadUri);
