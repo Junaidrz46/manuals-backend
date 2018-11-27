@@ -29,11 +29,29 @@ public class User {
 
 
     private String id;
+    private String firstname;
+    private String lastname;
     private String username;
     private String password;
     private String emailaddress;
     private String companyname;
     private String role;
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastName() {
+        return lastname;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastname = lastName;
+    }
 
     public String getId() {
         return id;
