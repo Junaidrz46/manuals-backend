@@ -10,20 +10,37 @@ import java.util.List;
 public class Product {
 
     private String id;
+    private String productNumber;
     private String name;
     private String description;
-    private String brand;
+    private String company;
+    private String category;
 
     @DBRef
     @CascadeSave
     private List<Material> materials;
 
-    public String getBrand() {
-        return brand;
+    public String getCompany() {
+        return company;
+    }
+    public void setCompany(String company) {
+        this.company = company;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public String getProductNumber() {
+        return productNumber;
+    }
+
+    public void setProductNumber(String productNumber) {
+        this.productNumber = productNumber;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getId() {
@@ -57,4 +74,12 @@ public class Product {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    // public String getBrand() {
+    //     return brand;
+    // }
+
+    // public void setBrand(String brand) {
+    //     this.brand = brand;
+    // }
 }

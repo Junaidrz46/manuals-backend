@@ -6,8 +6,8 @@ import se.agilecourse.annotation.CascadeSave;
 
 import java.util.List;
 
-@Document(collection="categories")
-public class Category {
+@Document(collection="companies")
+public class Company{
 
     private String id;
     private String name;
@@ -33,13 +33,13 @@ public class Category {
         this.name = name;
     }
 
-    // public List<Brand> getBrands() {
-    //     return brands;
-    // }
+    public String getDescription() {
+        return description;
+    }
 
-    // public void setBrands(List<Brand> brands) {
-    //     this.brands = brands;
-    // }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public List<Product> getProducts() {
         return products;
@@ -47,13 +47,5 @@ public class Category {
 
     public void setProducts(List<Product> products) {
         this.products = products;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 }

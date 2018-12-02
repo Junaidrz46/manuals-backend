@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import se.agilecourse.model.*;
 import se.agilecourse.services.CategoryServices;
+import se.agilecourse.services.CompanyServices;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,9 +21,23 @@ public class CategoryController {
     @Autowired
     CategoryServices categoryServices;
 
+    @Autowired
+    CompanyServices companyServices;
+
+    @PostMapping("/saveProductByCompanyIdandCategoryId")
+    public Product saveProductByCompanyIdandCategoryId(@RequestBody WrapperProduct wrapperProduct){
+        logger.info("Company ID : "+wrapperProduct.getCompanyId());
+        logger.info("Category ID : "+wrapperProduct.getCategoryId());
+        logger.info("Product "+wrapperProduct.getProduct().getName());
+        logger.info("Product "+wrapperProduct.getProduct().getProductNumber());
+        return categoryServices.saveProductByCategoryandCompany(wrapperProduct.getProduct(), 
+        wrapperProduct.getCategoryId(),wrapperProduct.getCompanyId());
+    }
+
+
 
     @GetMapping("/findAllCategories")
-    public List<Category> getAll() {
+    public List<Category> getAllCategories() {
         logger.debug("Get users from all : "+categoryServices.findAllCategories());
         return categoryServices.findAllCategories();
     }
@@ -32,19 +47,36 @@ public class CategoryController {
         return categoryServices.saveCategory(category);
     }
 
-
-    @PostMapping("/saveBrandByCategoryId")
-    public Brand saveBrandByCatergoryId(@RequestBody WrapperBrand wrapperBrand){
-        logger.info("Category ID : "+wrapperBrand.getCategoryId());
-        logger.info("Brand : "+wrapperBrand.getBrand().getName());
-        return categoryServices.saveBrandByCategory(wrapperBrand.getBrand(),wrapperBrand.getCategoryId());
+    @GetMapping("/findAllCompanies")
+    public List<Company> getAllCompanies() {
+        logger.debug("Get users from all : "+companyServices.findAllCompanies());
+        return companyServices.findAllCompanies();
     }
 
-    @PostMapping("/saveProductByBrandId")
-    public Product saveProductByCatergoryId(@RequestBody WrapperProduct wrapperProduct){
-        logger.info("Brand ID : "+wrapperProduct.getBrandId());
+    @PostMapping("/saveCompany")
+    public Company saveCompany(@RequestBody Company company){
+        return companyServices.saveCompany(company);
+    }
+
+    @PostMapping("/saveProduct")
+    public Product saveProduct(@RequestBody Product product){
+        return categoryServices.saveProduct(product);
+    }
+    
+    @PostMapping("/saveProductByCompanyId")
+    public Product saveProductByCompanyId(@RequestBody WrapperProduct wrapperProduct){
+        logger.info("Company ID : "+wrapperProduct.getCompanyId());
         logger.info("Product "+wrapperProduct.getProduct().getName());
-        return categoryServices.saveProductByBrand(wrapperProduct.getProduct(),wrapperProduct.getBrandId());
+        logger.info("Product "+wrapperProduct.getProduct().getProductNumber());
+        return companyServices.saveProductByCompany(wrapperProduct.getProduct(),wrapperProduct.getCompanyId());
+    }
+
+    @PostMapping("/saveProductByCategory")
+    public Product saveProductByCategoryId(@RequestBody WrapperProduct wrapperProduct){
+        logger.info("Category ID : "+wrapperProduct.getCategoryId());
+        logger.info("Product "+wrapperProduct.getProduct().getName());
+        logger.info("Product "+wrapperProduct.getProduct().getProductNumber());
+        return categoryServices.saveProductByCategory(wrapperProduct.getProduct(),wrapperProduct.getCategoryId());
     }
 
     @PostMapping("/saveMaterialByProductId")
@@ -54,7 +86,7 @@ public class CategoryController {
 
     @RequestMapping(value="/findCategoryById",method = RequestMethod.GET)
     public Optional<Category> findCategoryById (@RequestParam ("id") String id){
-        return categoryServices.findById(id);
+        return categoryServices.findByCategoryId(id);
     }
 
 
@@ -63,9 +95,24 @@ public class CategoryController {
         return categoryServices.getProductById(productId);
     }
 
+    @RequestMapping(value="/findProductByProductNumber",method = RequestMethod.GET)
+    public Optional<Product> getProductByProductNumber(@RequestParam("ProductNumber") String productNumber){
+        return categoryServices.getProductByProductNumber(productNumber);
+    }
+
     @RequestMapping(value="/findAllProducts",method = RequestMethod.GET)
     public List<Product> getAllProdcts(){
         return categoryServices.getAllProuducts();
+    }
+
+    @RequestMapping(value="/findProductByCompany",method = RequestMethod.GET)
+    public List<Product> getProductByCompany(@RequestParam("CompanyName") String companyName){
+        return companyServices.getProductsByCompany(companyName);
+    }
+
+    @RequestMapping(value="/findMaterialByProductId",method = RequestMethod.GET)
+    public List<Material> getMaterialsByProductId(@RequestParam("ProductId") String productId){
+        return categoryServices.getMaterialByProductId(productId);
     }
 
     @RequestMapping(value="/findAllMaterials",method = RequestMethod.GET)
@@ -75,18 +122,27 @@ public class CategoryController {
 
 
 
-    @RequestMapping(value="/findBrandByCategoryId",method = RequestMethod.GET)
-    public List<Brand> getBrandsByCategory(@RequestParam("cateogryId") String categoryId){
-        return categoryServices.getBrandsByCategory(categoryId);
-    }
+    // @PostMapping("/saveBrandByCategoryId")
+    // public Brand saveBrandByCatergoryId(@RequestBody WrapperBrand wrapperBrand){
+    //     logger.info("Category ID : "+wrapperBrand.getCategoryId());
+    //     logger.info("Brand : "+wrapperBrand.getBrand().getName());
+    //     return categoryServices.saveBrandByCategory(wrapperBrand.getBrand(),wrapperBrand.getCategoryId());
+    // }
 
-    @RequestMapping(value="/findProductByBrand",method = RequestMethod.GET)
-    public List<Product> getProductByBrand(@RequestParam("BrandName") String brandName){
-        return categoryServices.getProductsByBrand(brandName);
-    }
+    // @PostMapping("/saveProductByBrandId")
+    // public Product saveProductByCatergoryId(@RequestBody WrapperProduct wrapperProduct){
+    //     logger.info("Brand ID : "+wrapperProduct.getBrandId());
+    //     logger.info("Product "+wrapperProduct.getProduct().getName());
+    //     return categoryServices.saveProductByBrand(wrapperProduct.getProduct(),wrapperProduct.getBrandId());
+    // }
 
-    @RequestMapping(value="/findMaterialByProductId",method = RequestMethod.GET)
-    public List<Material> getMaterialsByProductId(@RequestParam("ProductId") String productId){
-        return categoryServices.getMaterialByProductId(productId);
-    }
+    // @RequestMapping(value="/findBrandByCategoryId",method = RequestMethod.GET)
+    // public List<Brand> getBrandsByCategory(@RequestParam("cateogryId") String categoryId){
+    //     return categoryServices.getBrandsByCategory(categoryId);
+    // }
+
+    // @RequestMapping(value="/findProductByBrand",method = RequestMethod.GET)
+    // public List<Product> getProductByBrand(@RequestParam("BrandName") String brandName){
+    //     return categoryServices.getProductsByBrand(brandName);
+    // }
 }

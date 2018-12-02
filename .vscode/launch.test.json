@@ -1,0 +1,30 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "manuals-backend",
+                "projectName": "manuals-backend",
+                "workingDirectory": "g:\\Git for Windows\\text\\manuals-backend",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "manuals-backend",
+                "projectName": "manuals-backend",
+                "workingDirectory": "g:\\Git for Windows\\text\\manuals-backend",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}
