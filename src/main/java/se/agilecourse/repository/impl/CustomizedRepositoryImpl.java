@@ -7,11 +7,17 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import se.agilecourse.model.Category;
+import se.agilecourse.model.Company;
 import se.agilecourse.model.Material;
 import se.agilecourse.model.Product;
+import se.agilecourse.repository.CategoryRepository;
+import se.agilecourse.repository.CompanyRepository;
 import se.agilecourse.repository.CustomizedRepository;
+import se.agilecourse.repository.ProductRepository;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class CustomizedRepositoryImpl implements CustomizedRepository {
     @Autowired
@@ -31,4 +37,7 @@ public class CustomizedRepositoryImpl implements CustomizedRepository {
         List<Material> list = product.getMaterials();
         return list;
     }
+
+
+
 }

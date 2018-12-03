@@ -1,6 +1,7 @@
 package se.agilecourse.services;
 
 import se.agilecourse.model.Category;
+import se.agilecourse.model.Company;
 import se.agilecourse.model.Material;
 import se.agilecourse.model.Product;
 
@@ -12,15 +13,25 @@ public interface CategoryServices {
     Optional<Category> findById(String id);
     List<Category> findAllCategories();
     Category saveCategory(Category category);
-    List<Product> getProductsByCategoryid(String cid);
-    Product saveProductByCategory(Product product , String CategoryId);
-    Product saveProduct(Product product);
-    Optional<Product> getProductById(String Id);
-    List<Product> getAllProuducts();
-    Material saveMaterial(Material material);
+
     Material saveMaterialByProduct(Material material , String ProductId);
     Optional<Material> getMaterialById(String id);
     List<Material> getMaterialByProductId(String prouductId);
     List<Material> getAllMaterials();
+
+    List<Product> getAllProuducts();// no need to change
+    Optional<Product> getProductById(String Id);//no need to change
+
+    Product saveProductByCategory(Product product , String CategoryId);//API maybe need to be deleted
+    List<Product> getProductsByCategoryId(String categoryId);// no need to change
+
+
+    //new API
+    Product createProductByCategoryIdAndCompanyId
+            (Product product, String categoryId, Company company);
+
+
+
+
 
 }

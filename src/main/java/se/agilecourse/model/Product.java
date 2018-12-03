@@ -10,6 +10,7 @@ import java.util.List;
 public class Product {
 
     private String id;
+    private String productNo;
     private String name;
     private String description;
     private String brand;
@@ -56,5 +57,12 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    public String getProductNo() {
+        return productNo;
+    }
+
+    public void setProductNo(String productNo) {
+        this.productNo = productNo;
     }
 }
