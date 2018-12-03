@@ -9,6 +9,4 @@ import java.util.Optional;
 
 public interface CategoryRepository extends MongoRepository<Category, String> , CustomizedRepository{
     Optional<Category> findById(String id);
-
-
 }

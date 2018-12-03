@@ -6,23 +6,23 @@ import se.agilecourse.annotation.CascadeSave;
 
 import java.util.List;
 
-@Document(collection="categories")
-public class Category {
+@Document(collection="brands")
+public class Brand{
 
-    private String id;
-    private String name;
-    private String description;
+    String id;
+    String name;
+    String description;
 
     @DBRef
     @CascadeSave
-    private List<Brand> brands;
+    private List<Product> products;
 
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
-        this.id = id;
+        id = id;
     }
 
     public String getName() {
@@ -33,19 +33,19 @@ public class Category {
         this.name = name;
     }
 
-    public List<Brand> getBrands() {
-        return brands;
-    }
-
-    public void setBrands(List<Brand> brands) {
-        this.brands = brands;
-    }
-
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }

@@ -3,13 +3,13 @@ package se.agilecourse.services.impl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import se.agilecourse.model.Brand;
 import se.agilecourse.model.Category;
 import se.agilecourse.model.Material;
 import se.agilecourse.model.Product;
-import se.agilecourse.repository.CategoryRepository;
-import se.agilecourse.repository.MaterialRepository;
-import se.agilecourse.repository.ProductRepository;
+import se.agilecourse.repository.*;
 import se.agilecourse.services.CategoryServices;
 
 import java.util.ArrayList;
@@ -22,6 +22,9 @@ public class CategoryServicesImpl implements CategoryServices {
     private final Logger logger = LoggerFactory.getLogger(CategoryServicesImpl.class);
 
     @Autowired
+    BrandRepository brandRepository;
+
+    @Autowired
     CategoryRepository categoryRepository;
 
     @Autowired
@@ -29,6 +32,8 @@ public class CategoryServicesImpl implements CategoryServices {
 
     @Autowired
     MaterialRepository materialRepository;
+
+
 
     @Override
     public Optional<Category> findById(String Id) {
@@ -46,21 +51,37 @@ public class CategoryServicesImpl implements CategoryServices {
     }
 
     @Override
-    public List<Product> getProductsByCategoryid(String cid) {
-        return categoryRepository.findProductsByCategoryid(cid);
+    public List<Product> getProductsByBrandId(String brandId) {
+        return productRepository.findProductsByBrand(brandId);
     }
 
     @Override
-    public Product saveProductByCategory(Product product , String categoryId) {
-        Product saveProduct = productRepository.save(product);
+    public Brand saveBrandByCategory(Brand brand, String categoryId) {
+        Brand saveBrand = brandRepository.save(brand);
         Optional<Category> category = categoryRepository.findById(categoryId);
-        List<Product> productslist = category.get().getProducts();
+        List<Brand> brandList = category.get().getBrands();
+        if(brandList == null){
+            brandList = new ArrayList<Brand>();
+        }
+        brandList.add(brand);
+        category.get().setBrands(brandList);
+        categoryRepository.save(category.get());
+
+        return saveBrand;
+    }
+
+
+    @Override
+    public Product saveProductByBrand(Product product , String brandId) {
+        Product saveProduct = productRepository.save(product);
+        Optional<Brand> brand = brandRepository.findById(brandId);
+        List<Product> productslist = brand.get().getProducts();
         if(productslist == null){
             productslist = new ArrayList<Product>();
         }
         productslist.add(saveProduct);
-        category.get().setProducts(productslist);
-        categoryRepository.save(category.get());
+        brand.get().setProducts(productslist);
+        brandRepository.save(brand.get());
         return saveProduct;
     }
 
@@ -114,6 +135,16 @@ public class CategoryServicesImpl implements CategoryServices {
     public List<Material> getAllMaterials() {
         return materialRepository.findAll();
     }
+
+    @Override
+    public List<Product> getProductsByBrand(String bandName) {
+        return productRepository.findByBrand(bandName);
+    }
+
+    public List<Brand> getBrandsByCategory(String categoryID){
+        return categoryRepository.fidnBrandByCategoryId(categoryID);
+    }
+
 
 
 }
