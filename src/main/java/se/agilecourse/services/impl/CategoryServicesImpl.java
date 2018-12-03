@@ -115,10 +115,10 @@ public class CategoryServicesImpl implements CategoryServices, CompanyServices {
         return productRepository.findProducsByCompanyId(companyId);
     }
 
-    // @Override
-    // public List<Product> getProductsByCategory(String categoryName) {
-    //     return categoryRepository.fidnProductsByCategoryId(categoryName);
-    // }
+    @Override
+    public List<Product> getProductsByCategoryId(String categoryId) {
+        return categoryRepository.findProductsByCategoryId(categoryId);
+    }
 
     @Override
     public Product saveProductByCategory(Product product, String CategoryId) {

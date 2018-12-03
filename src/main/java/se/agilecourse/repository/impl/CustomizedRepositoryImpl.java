@@ -17,7 +17,10 @@ import se.agilecourse.model.Product;
 import se.agilecourse.repository.CustomizedRepository;
 // import se.agilecourse.model.Brand;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import com.jayway.jsonpath.Option;
 
 public class CustomizedRepositoryImpl implements CustomizedRepository {
 
@@ -25,7 +28,7 @@ public class CustomizedRepositoryImpl implements CustomizedRepository {
     MongoTemplate mongoTemplate;
 
     @Override
-    public List<Product> fidnProductsByCategoryId(String categoryId) {
+    public List<Product> findProductsByCategoryId(String categoryId) {
         Query query = new Query(Criteria.where("id").is(new ObjectId(categoryId)));
         Category category = mongoTemplate.findOne(query, Category.class, "categories");
         List<Product> list = category.getProducts();
@@ -45,6 +48,22 @@ public class CustomizedRepositoryImpl implements CustomizedRepository {
                  List<Material> list = product.getMaterials();
          return list;  }
 
+    @Override
+    public List<Product> saveProductByCompanyIdandCategoryId(String companyId, String categoryId){
+        Query queryForompany = new Query(Criteria.where("id").is(new ObjectId(companyId)));
+        Query queryForCategory = new Query(Criteria.where("id").is(new ObjectId(categoryId)));
+        Company company = mongoTemplate.findOne(queryForompany, Company.class, "companies");
+        Category category = mongoTemplate.findOne(queryForCategory, Category.class, "categories");
+        List<Product> product = new ArrayList<Product>();
+        List<Product> listByCompany = company.getProducts();
+        List<Product> listByCategory = category.getProducts();
+        for(Product item : listByCategory) {
+            if(listByCompany.contains(item)){
+            product.add(item);
+            }
+        }
+        return product;
+    }
 
 
 	public List<Product> findProductsByCompany(String companyName) {

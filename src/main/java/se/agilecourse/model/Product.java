@@ -13,19 +13,19 @@ public class Product {
     private String productNumber;
     private String name;
     private String description;
-    private String company;
-    private String category;
+    // private String company;
+    // private String category;
 
     @DBRef
     @CascadeSave
     private List<Material> materials;
 
-    public String getCompany() {
-        return company;
-    }
-    public void setCompany(String company) {
-        this.company = company;
-    }
+    // public String getCompany() {
+    //     return company;
+    // }
+    // public void setCompany(String company) {
+    //     this.company = company;
+    // }
 
     public String getProductNumber() {
         return productNumber;
@@ -35,13 +35,13 @@ public class Product {
         this.productNumber = productNumber;
     }
 
-    public String getCategory() {
-        return category;
-    }
+    // public String getCategory() {
+    //     return category;
+    // }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
+    // public void setCategory(String category) {
+    //     this.category = category;
+    // }
 
     public String getId() {
         return id;

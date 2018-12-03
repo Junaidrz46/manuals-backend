@@ -81,6 +81,10 @@ public class CategoryController {
         return categoryServices.findByCategoryId(id);
     }
 
+    @RequestMapping(value="/findCompanyById",method = RequestMethod.GET)
+    public Optional<Company> findCompanyById (@RequestParam ("id") String id){
+        return companyServices.findByCompanyId(id);
+    }
 
     @RequestMapping(value="/findProductById",method = RequestMethod.GET)
     public Optional<Product> getProdctById(@RequestParam("ProductId") String productId){

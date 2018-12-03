@@ -22,6 +22,7 @@ public interface CategoryServices {
     Optional<Product> getProductByProductNumber(String productNumber);
     // List<Product> getProductsByCategory(String categoryName);
     List<Product> getAllProuducts();
+    List<Product> getProductsByCategoryId(String categoryId);
 
     Product saveProductByCategoryandCompany(Product product , String CategoryId, String CompanyId);
 
