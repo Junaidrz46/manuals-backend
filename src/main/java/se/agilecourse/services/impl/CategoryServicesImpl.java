@@ -144,11 +144,20 @@ public class CategoryServicesImpl implements CategoryServices {
 
     }
 
+    @Override
+    public List<Product> getProductsByProductNo(String productNo) {
+        return productRepository.findByProductNoIsLike(productNo);
+    }
 
+    @Override
+    public List<Product> getProductsByBrand(String brand) {
+        return productRepository.findByBrand(brand);
+    }
 
-
-
-
+    @Override
+    public List<Product> getProductsByName(String productName) {
+        return productRepository.findByNameIsLike(productName);
+    }
 
 
 }

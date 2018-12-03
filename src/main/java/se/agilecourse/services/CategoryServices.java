@@ -30,7 +30,9 @@ public interface CategoryServices {
     Product createProductByCategoryIdAndCompanyId
             (Product product, String categoryId, Company company);
 
-
+    List<Product> getProductsByProductNo(String productNo);
+    List<Product> getProductsByBrand(String brand);
+    List<Product> getProductsByName(String productName);
 
 
 
