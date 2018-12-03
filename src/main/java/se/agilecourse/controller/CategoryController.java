@@ -29,7 +29,7 @@ public class CategoryController {
         logger.info("Company ID : "+wrapperProduct.getCompanyId());
         logger.info("Category ID : "+wrapperProduct.getCategoryId());
         logger.info("Product "+wrapperProduct.getProduct().getName());
-        logger.info("Product "+wrapperProduct.getProduct().getProductNumber());
+        logger.info("Product NUMBER"+wrapperProduct.getProduct().getProductNumber());
         return categoryServices.saveProductByCategoryandCompany(wrapperProduct.getProduct(), 
         wrapperProduct.getCategoryId(),wrapperProduct.getCompanyId());
     }
@@ -67,16 +67,8 @@ public class CategoryController {
     public Product saveProductByCompanyId(@RequestBody WrapperProduct wrapperProduct){
         logger.info("Company ID : "+wrapperProduct.getCompanyId());
         logger.info("Product "+wrapperProduct.getProduct().getName());
-        logger.info("Product "+wrapperProduct.getProduct().getProductNumber());
+        logger.info("Product NUMBER"+wrapperProduct.getProduct().getProductNumber());
         return companyServices.saveProductByCompany(wrapperProduct.getProduct(),wrapperProduct.getCompanyId());
-    }
-
-    @PostMapping("/saveProductByCategory")
-    public Product saveProductByCategoryId(@RequestBody WrapperProduct wrapperProduct){
-        logger.info("Category ID : "+wrapperProduct.getCategoryId());
-        logger.info("Product "+wrapperProduct.getProduct().getName());
-        logger.info("Product "+wrapperProduct.getProduct().getProductNumber());
-        return categoryServices.saveProductByCategory(wrapperProduct.getProduct(),wrapperProduct.getCategoryId());
     }
 
     @PostMapping("/saveMaterialByProductId")
@@ -105,11 +97,6 @@ public class CategoryController {
         return categoryServices.getAllProuducts();
     }
 
-    @RequestMapping(value="/findProductByCompany",method = RequestMethod.GET)
-    public List<Product> getProductByCompany(@RequestParam("CompanyName") String companyName){
-        return companyServices.getProductsByCompany(companyName);
-    }
-
     @RequestMapping(value="/findMaterialByProductId",method = RequestMethod.GET)
     public List<Material> getMaterialsByProductId(@RequestParam("ProductId") String productId){
         return categoryServices.getMaterialByProductId(productId);
@@ -120,7 +107,18 @@ public class CategoryController {
         return categoryServices.getAllMaterials();
     }
 
+    // @PostMapping("/saveProductByCategory")
+    // public Product saveProductByCategoryId(@RequestBody WrapperProduct wrapperProduct){
+    //     logger.info("Category ID : "+wrapperProduct.getCategoryId());
+    //     logger.info("Product "+wrapperProduct.getProduct().getName());
+    //     logger.info("Product "+wrapperProduct.getProduct().getProductNumber());
+    //     return categoryServices.saveProductByCategory(wrapperProduct.getProduct(),wrapperProduct.getCategoryId());
+    // }
 
+    // @RequestMapping(value="/findProductByCompany",method = RequestMethod.GET)
+    // public List<Product> getProductByCompany(@RequestParam("CompanyName") String companyName){
+    //     return companyServices.getProductsByCompany(companyName);
+    // }
 
     // @PostMapping("/saveBrandByCategoryId")
     // public Brand saveBrandByCatergoryId(@RequestBody WrapperBrand wrapperBrand){

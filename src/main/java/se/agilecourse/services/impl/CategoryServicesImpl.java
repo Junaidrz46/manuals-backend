@@ -96,8 +96,8 @@ public class CategoryServicesImpl implements CategoryServices, CompanyServices {
     }
 
     @Override
-    public Optional<Product> getProductByProductNumber(String productNumber) {
-        return productRepository.findByProductNumber(productNumber);
+    public Optional<Product> getProductByProductNumber(String ProductNumber) {
+        return productRepository.findByProductNumber(ProductNumber);
     }
 
     @Override
@@ -105,20 +105,20 @@ public class CategoryServicesImpl implements CategoryServices, CompanyServices {
         return productRepository.findAll();
     }
 
-    @Override
-    public List<Product> getProductsByCompany(String companyID) {
-        return companyRepository.findProducsByCompanyId(companyID);
-    	}
+    // @Override
+    // public List<Product> getProductsByCompany(String companyID) {
+    //     return companyRepository.findProducsByCompanyId(companyID);
+    // 	}
 
     @Override
     public List<Product> getProductsByCompanyId(String companyId) {
         return productRepository.findProducsByCompanyId(companyId);
     }
 
-    @Override
-    public List<Product> getProductsByCategory(String categoryName) {
-        return categoryRepository.fidnProductsByCategoryId(categoryName);
-    }
+    // @Override
+    // public List<Product> getProductsByCategory(String categoryName) {
+    //     return categoryRepository.fidnProductsByCategoryId(categoryName);
+    // }
 
     @Override
     public Product saveProductByCategory(Product product, String CategoryId) {

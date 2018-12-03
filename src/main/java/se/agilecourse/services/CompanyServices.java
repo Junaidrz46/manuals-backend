@@ -21,7 +21,7 @@ public interface CompanyServices {
 
 
     Product saveProductByCompany(Product product , String CompanyId);
-    List<Product> getProductsByCompany(String companyName);
+    // List<Product> getProductsByCompany(String companyName);
 
 
 

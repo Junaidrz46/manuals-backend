@@ -20,7 +20,7 @@ public interface CategoryServices {
     Product saveProduct(Product product);
     Optional<Product> getProductById(String Id);
     Optional<Product> getProductByProductNumber(String productNumber);
-    List<Product> getProductsByCategory(String categoryName);
+    // List<Product> getProductsByCategory(String categoryName);
     List<Product> getAllProuducts();
 
     Product saveProductByCategoryandCompany(Product product , String CategoryId, String CompanyId);

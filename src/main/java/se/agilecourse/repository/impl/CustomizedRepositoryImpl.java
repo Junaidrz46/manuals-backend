@@ -38,18 +38,6 @@ public class CustomizedRepositoryImpl implements CustomizedRepository {
         List<Product> list = company.getProducts();
         return list;    }
 
-	@Override
-	public List<Product> findProductsByCompany(String companyName) {
-        
-          Aggregation agg = Aggregation.newAggregation(Product.class,
-          Aggregation.match(Criteria.where("company").is(companyName)),
-          Aggregation.group().push("name").as("id").push("attendees.contact.email").as(
-          "emails"));
-          
-          AggregationResults<Product> results =
-          mongoTemplate.aggregate(agg,"products",Product.class); List<Product>
-          mappedResult = results.getMappedResults(); return mappedResult; }
-
     @Override
     public List<Material> findMaterialsByProductId(String productId) {
                  Query query = new Query(Criteria.where("id").is(new ObjectId(productId)));
@@ -57,6 +45,20 @@ public class CustomizedRepositoryImpl implements CustomizedRepository {
                  List<Material> list = product.getMaterials();
          return list;  }
 
+
+
+	public List<Product> findProductsByCompany(String companyName) {
+        
+        //   Aggregation agg = Aggregation.newAggregation(Product.class,
+        //   Aggregation.match(Criteria.where("company").is(companyName)),
+        //   Aggregation.group().push("name").as("id").push("attendees.contact.email").as(
+        //   "emails"));
+          
+        //   AggregationResults<Product> results =
+        //   mongoTemplate.aggregate(agg,"products",Product.class); List<Product>
+        //   mappedResult = results.getMappedResults(); 
+          return null;
+        }
 
     public List<Product> findProductsByBrand(String brandName) {
                 /*
