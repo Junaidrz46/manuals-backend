@@ -24,7 +24,7 @@ public class CustomizedRepositoryImpl implements CustomizedRepository {
     MongoTemplate mongoTemplate;
 
     @Override
-    public List<Product> findProductsByCategoryid(String categoryid) {
+    public List<Product> findProductsByCategoryId(String categoryid) {
         Query query = new Query(Criteria.where("id").is(new ObjectId(categoryid)));
         Category category = mongoTemplate.findOne(query,Category.class,"categories");
         List<Product> list=category.getProducts();

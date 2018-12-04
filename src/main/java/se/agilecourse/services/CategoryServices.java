@@ -20,7 +20,6 @@ public interface CategoryServices {
 
     Product saveProductByCategory(Product product , String CategoryId);
 
-    Product saveProduct(Product product);
     List<Product> getProductsByCategoryId(String categoryId);// no need to change
     Optional<Product> getProductById(String Id);
 
@@ -34,8 +33,6 @@ public interface CategoryServices {
     List<Product> getProductsByProductNo(String productNo);
     List<Product> getProductsByBrand(String brand);
     List<Product> getProductsByName(String productName);
-    List<Product> getProductsByCompanyId(String CompanyId);
 
-    //new API
-    public Product createProductByCategoryIdAndCompanyId(Product product, String categoryId, Company company);
+
 }

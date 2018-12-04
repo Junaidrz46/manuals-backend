@@ -6,7 +6,7 @@ import se.agilecourse.model.Product;
 import java.util.List;
 
 public interface CustomizedRepository {
-    List<Product> findProductsByCategoryid(String categoryid);
+    List<Product> findProductsByCategoryId(String categoryid);
     List<Material> findMaterialsByProductId(String productId);
 
 }

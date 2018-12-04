@@ -58,6 +58,13 @@ public class CategoryServicesImpl implements CategoryServices {
     public List<Product> getProductsByCategoryId(String cid) {
         return categoryRepository.findProductsByCategoryId(cid);
     }
+    @Override
+
+    public Company saveCompany(Company company) {
+
+        return companyRepository.save(company);
+
+    }
 
     @Override
     public Product saveProductByCategory(Product product , String categoryId) {
@@ -73,10 +80,7 @@ public class CategoryServicesImpl implements CategoryServices {
         return saveProduct;
     }
 
-    @Override
-    public Product saveProduct(Product product) {
-        return null;
-    }
+
 
     @Override
     public Optional<Product> getProductById(String Id) {
