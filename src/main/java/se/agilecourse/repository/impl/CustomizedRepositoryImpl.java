@@ -2,15 +2,13 @@ package se.agilecourse.repository.impl;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.aggregation.Aggregation.*;
-import se.agilecourse.model.Brand;
+import se.agilecourse.model.Company;
 import se.agilecourse.model.Category;
 import se.agilecourse.model.Material;
 import se.agilecourse.model.Product;
@@ -18,28 +16,28 @@ import se.agilecourse.repository.CustomizedRepository;
 
 import java.util.List;
 
-
 public class CustomizedRepositoryImpl implements CustomizedRepository {
 
     @Autowired
     MongoTemplate mongoTemplate;
 
-    @Override
-    public List<Brand> fidnBrandByCategoryId(String categoryId) {
-         Query query = new Query(Criteria.where("id").is(new ObjectId(categoryId)));
-        Category category = mongoTemplate.findOne(query, Category.class,"categories");
-        List<Brand> list=category.getBrands();
+   /* @Override
+    public List<Product> findProductsByCategoryid(String categoryid) {
+        Query query = new Query(Criteria.where("id").is(new ObjectId(categoryid)));
+        Category category = mongoTemplate.findOne(query,Category.class,"categories");
+        List<Product> list=category.getProducts();
         return list;
+    }*/
 
+    @Override
+    public List<Company> fidnBrandByCategoryId(String categoryId) {
+        return null;
     }
 
-    @Override
+    /*@Override
     public List<Product> findProductsByBrandId(String brandId) {
-        Query query = new Query(Criteria.where("id").is(new ObjectId(brandId)));
-        Brand brand = mongoTemplate.findOne(query, Brand.class,"brands");
-        List<Product> list=brand.getProducts();
-        return list;
-    }
+        return null;
+    }*/
 
     public List<Material> findMaterialsByProductId(String productId){
         Query query = new Query(Criteria.where("id").is(new ObjectId(productId)));
@@ -49,12 +47,13 @@ public class CustomizedRepositoryImpl implements CustomizedRepository {
     }
 
 
-    public List<Product> findProductsByBrand(String brandName){
-       /* Aggregation agg = Aggregation.newAggregation(Product.class,
-                Aggregation.match(Criteria.where("brand").is(brandName)));
+    public List<Product> findProductsByCompany(String companyId){
+
+        /*Aggregation agg = Aggregation.newAggregation(Product.class,
+                Aggregation.match(Criteria.where("company").is(brandName)));
 
         Aggregation agg = Aggregation.newAggregation(Product.class,
-                Aggregation.match(Criteria.where("brand").is(brandName)),
+                Aggregation.match(Criteria.where("company").is(brandName)),
                 Aggregation.group().push("name").as("id").push("attendees.contact.email").as("emails"));
 
         AggregationResults<Product> results = mongoTemplate.aggregate(agg,"products",Product.class);
@@ -75,6 +74,7 @@ public class CustomizedRepositoryImpl implements CustomizedRepository {
         List<String> mappedResult = results.getMappedResults();
         return  mappedResult;
     }*/
+
 
 
 

@@ -10,6 +10,6 @@ import java.util.Optional;
 
 public interface ProductRepository extends MongoRepository<Product, String>,CustomizedRepository  {
     Optional<Product> findById(String id);
-    List<Product> findByBrand(String BrandName);
+    //List<Product> findByBrand(String BrandName);
 
 }

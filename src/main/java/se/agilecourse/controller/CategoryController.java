@@ -32,9 +32,26 @@ public class CategoryController {
         return categoryServices.saveCategory(category);
     }
 
+    @PostMapping("/saveCompany")
+    public Company saveCompany(@RequestBody Company company){
+        return categoryServices.saveCompany(company);
+    }
 
-    @PostMapping("/saveBrandByCategoryId")
-    public Brand saveBrandByCatergoryId(@RequestBody WrapperBrand wrapperBrand){
+    @PostMapping("/saveProductByCatergoryId")
+    public Product saveProductByCatergoryId(@RequestBody WrapperProduct wrapperProduct){
+        logger.info("cat ID : "+wrapperProduct.getCategoryId());
+        logger.info("Product "+wrapperProduct.getProduct().getName());
+        return categoryServices.saveProductByCategory(wrapperProduct.getProduct(),wrapperProduct.getCategoryId());
+    }
+
+    @PostMapping("/saveProductByCategroyAndCompany")
+    public Product saveProductByCategoryAndCompany(@RequestBody WrapperProduct wrapperProduct){
+        return categoryServices.saveProductByCompany(wrapperProduct.getCategoryId(),
+                wrapperProduct.getCompanyId(),wrapperProduct.getProduct());
+    }
+
+    /*@PostMapping("/saveBrandByCategoryId")
+    public Company saveBrandByCatergoryId(@RequestBody WrapperBrand wrapperBrand){
         logger.info("Category ID : "+wrapperBrand.getCategoryId());
         logger.info("Brand : "+wrapperBrand.getBrand().getName());
         return categoryServices.saveBrandByCategory(wrapperBrand.getBrand(),wrapperBrand.getCategoryId());
@@ -45,7 +62,7 @@ public class CategoryController {
         logger.info("Brand ID : "+wrapperProduct.getBrandId());
         logger.info("Product "+wrapperProduct.getProduct().getName());
         return categoryServices.saveProductByBrand(wrapperProduct.getProduct(),wrapperProduct.getBrandId());
-    }
+    }*/
 
     @PostMapping("/saveMaterialByProductId")
     public Material saveMaterial(@RequestBody WrapperMaterial wrapperMaterial){
@@ -57,6 +74,15 @@ public class CategoryController {
         return categoryServices.findById(id);
     }
 
+    /*@RequestMapping(value="/findProductByCategoryId",method = RequestMethod.GET)
+    public  List<Product> getProductsByCategoryId(@RequestParam("CategoryId") String cid){
+        return categoryServices.getProductsByCategoryid(cid);
+    }*/
+
+    @RequestMapping(value="/findMaterialByProductId",method = RequestMethod.GET)
+    public List<Material> getMaterialsByProductId(@RequestParam("ProductId") String productId){
+        return categoryServices.getMaterialByProductId(productId);
+    }
 
     @RequestMapping(value="/findProductById",method = RequestMethod.GET)
     public Optional<Product> getProdctById(@RequestParam("ProductId") String productId){
@@ -75,18 +101,15 @@ public class CategoryController {
 
 
 
-    @RequestMapping(value="/findBrandByCategoryId",method = RequestMethod.GET)
-    public List<Brand> getBrandsByCategory(@RequestParam("cateogryId") String categoryId){
+    /*@RequestMapping(value="/findBrandByCategoryId",method = RequestMethod.GET)
+    public List<Company> getBrandsByCategory(@RequestParam("cateogryId") String categoryId){
         return categoryServices.getBrandsByCategory(categoryId);
+    }*/
+
+    @RequestMapping(value="/findProductByCompany",method = RequestMethod.GET)
+    public List<Product> getProductByBrand(@RequestParam("CompanyId") String companyId){
+        return categoryServices.getProductsByCompanyId(companyId);
     }
 
-    @RequestMapping(value="/findProductByBrand",method = RequestMethod.GET)
-    public List<Product> getProductByBrand(@RequestParam("BrandName") String brandName){
-        return categoryServices.getProductsByBrand(brandName);
-    }
 
-    @RequestMapping(value="/findMaterialByProductId",method = RequestMethod.GET)
-    public List<Material> getMaterialsByProductId(@RequestParam("ProductId") String productId){
-        return categoryServices.getMaterialByProductId(productId);
-    }
 }
