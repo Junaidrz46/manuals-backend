@@ -31,7 +31,7 @@ public interface CategoryServices {
     List<Material> getMaterialByProductId(String prouductId);
     List<Material> getAllMaterials();
     List<Product> getProductsByProductNo(String productNo);
-    List<Product> getProductsByBrand(String brand);
+    List<Product> getProductsByCompanyId(String companyId);
     List<Product> getProductsByName(String productName);
 
 

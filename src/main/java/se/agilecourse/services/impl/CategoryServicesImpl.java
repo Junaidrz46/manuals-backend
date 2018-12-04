@@ -165,8 +165,8 @@ public class CategoryServicesImpl implements CategoryServices {
     }
 
     @Override
-    public List<Product> getProductsByBrand(String brand) {
-        return productRepository.findByBrand(brand);
+    public List<Product> getProductsByCompanyId(String companyId) {
+        return productRepository.findByCompanyId(companyId);
     }
 
     @Override

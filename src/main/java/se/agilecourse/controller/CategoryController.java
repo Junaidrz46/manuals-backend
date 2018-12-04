@@ -83,17 +83,14 @@ public class CategoryController {
         return categoryServices.getAllProuducts();
     }
 
-    @PostMapping(value="/createProductByCategoryIdAndCompanyId")
-    public Product createProductByCategoryIdAndCompanyId(@RequestBody WrapperProduct wrapperProduct){
-        return categoryServices.createProductByCategoryIdAndCompanyId(wrapperProduct.getProduct(),wrapperProduct.getCategoryId(),wrapperProduct.getCompany());
-    }
+
     @RequestMapping(value="/findProductsByProductNo",method = RequestMethod.GET)
     public List<Product> getProductsByProductId(@RequestParam("productNo") String productNo){
         return categoryServices.getProductsByProductNo(productNo);
     }
     @RequestMapping(value="/findProductsByBrand",method = RequestMethod.GET)
     public List<Product> getProductsByBrand(@RequestParam("brand") String brand){
-        return categoryServices.getProductsByBrand(brand);
+        return categoryServices.getProductsByCompanyId(brand);
     }
     @RequestMapping(value="/findProductsByProductName",method = RequestMethod.GET)
     public List<Product> getProductsByProductName(@RequestParam("productName") String productName){

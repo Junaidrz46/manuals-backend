@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface ProductRepository extends MongoRepository<Product, String>,CustomizedRepository  {
     Optional<Product> findById(String id);
     List<Product> findByProductNoIsLike(String productNo);
-    List<Product> findByBrand(String brand);
+    List<Product> findByCompanyId(String companyId);
     List<Product> findByNameIsLike(String productName);
 
 }
