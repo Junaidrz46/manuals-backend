@@ -15,7 +15,7 @@ public interface CategoryServices {
     List<Category> findAllCategories();
     Category saveCategory(Category category);
     Company saveCompany(Company company);
-    Product saveProductByCompany(String categoryId,String companyId,Product product) throws CompanyIdMismatchException;
+    Product saveProductByCategoryAndCompany(String categoryId,String companyId,Product product) throws CompanyIdMismatchException;
     List<Product> getProductsByCategoryid(String cid);
     Product saveProductByCategory(Product product , String CategoryId);
 

@@ -192,7 +192,7 @@ public class CategoryServicesImpl implements CategoryServices {
         return companyRepository.save(company);
     }
 
-    public Product saveProductByCompany(String categoryId,String companyId,Product product)
+    public Product saveProductByCategoryAndCompany(String categoryId,String companyId,Product product)
             throws CompanyIdMismatchException {
 
         Product saveProduct=null;
