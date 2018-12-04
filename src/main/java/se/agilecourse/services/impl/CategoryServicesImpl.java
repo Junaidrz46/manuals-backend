@@ -161,7 +161,7 @@ public class CategoryServicesImpl implements CategoryServices {
     }
     @Override
     public List<Product> getProductsByProductNo(String productNo) {
-        return productRepository.findByProductNoIsLike(productNo);
+        return productRepository.findByProductNumberIsLike(productNo);
     }
 
     @Override
