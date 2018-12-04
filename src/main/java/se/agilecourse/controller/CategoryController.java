@@ -50,19 +50,7 @@ public class CategoryController {
                 wrapperProduct.getCompanyId(),wrapperProduct.getProduct());
     }
 
-    /*@PostMapping("/saveBrandByCategoryId")
-    public Company saveBrandByCatergoryId(@RequestBody WrapperBrand wrapperBrand){
-        logger.info("Category ID : "+wrapperBrand.getCategoryId());
-        logger.info("Brand : "+wrapperBrand.getBrand().getName());
-        return categoryServices.saveBrandByCategory(wrapperBrand.getBrand(),wrapperBrand.getCategoryId());
-    }
 
-    @PostMapping("/saveProductByBrandId")
-    public Product saveProductByCatergoryId(@RequestBody WrapperProduct wrapperProduct){
-        logger.info("Brand ID : "+wrapperProduct.getBrandId());
-        logger.info("Product "+wrapperProduct.getProduct().getName());
-        return categoryServices.saveProductByBrand(wrapperProduct.getProduct(),wrapperProduct.getBrandId());
-    }*/
 
     @PostMapping("/saveMaterialByProductId")
     public Material saveMaterial(@RequestBody WrapperMaterial wrapperMaterial){
@@ -74,10 +62,6 @@ public class CategoryController {
         return categoryServices.findById(id);
     }
 
-    /*@RequestMapping(value="/findProductByCategoryId",method = RequestMethod.GET)
-    public  List<Product> getProductsByCategoryId(@RequestParam("CategoryId") String cid){
-        return categoryServices.getProductsByCategoryid(cid);
-    }*/
 
     @RequestMapping(value="/findMaterialByProductId",method = RequestMethod.GET)
     public List<Material> getMaterialsByProductId(@RequestParam("ProductId") String productId){
@@ -100,11 +84,6 @@ public class CategoryController {
     }
 
 
-
-    /*@RequestMapping(value="/findBrandByCategoryId",method = RequestMethod.GET)
-    public List<Company> getBrandsByCategory(@RequestParam("cateogryId") String categoryId){
-        return categoryServices.getBrandsByCategory(categoryId);
-    }*/
 
     @RequestMapping(value="/findProductByCompany",method = RequestMethod.GET)
     public List<Product> getProductByBrand(@RequestParam("CompanyId") String companyId){
