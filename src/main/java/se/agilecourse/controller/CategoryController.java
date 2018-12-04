@@ -88,8 +88,8 @@ public class CategoryController {
     public List<Product> getProductsByProductId(@RequestParam("productNo") String productNo){
         return categoryServices.getProductsByProductNo(productNo);
     }
-    @RequestMapping(value="/findProductsByBrand",method = RequestMethod.GET)
-    public List<Product> getProductsByBrand(@RequestParam("brand") String brand){
+    @RequestMapping(value="/findProductsByCompanyId",method = RequestMethod.GET)
+    public List<Product> getProductsByCompanyId(@RequestParam("companyId") String brand){
         return categoryServices.getProductsByCompanyId(brand);
     }
     @RequestMapping(value="/findProductsByProductName",method = RequestMethod.GET)
@@ -97,12 +97,6 @@ public class CategoryController {
         return categoryServices.getProductsByName(productName);
     }
 
-
-
-    @RequestMapping(value="/findProductByCompany",method = RequestMethod.GET)
-    public List<Product> getProductByBrand(@RequestParam("CompanyId") String companyId){
-        return categoryServices.getProductsByCompanyId(companyId);
-    }
 
 
 }
