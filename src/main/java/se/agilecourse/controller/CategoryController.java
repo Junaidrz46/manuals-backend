@@ -33,28 +33,10 @@ public class CategoryController {
         return categoryServices.saveCategory(category);
     }
 
-    @RequestMapping(value="/findCategoryById",method = RequestMethod.GET)
-    public Optional<Category> findCategoryById (@RequestParam ("id") String id){
-        return categoryServices.findById(id);
+    @PostMapping("/saveCompany")
+    public Company saveCompany(@RequestBody Company company){
+        return categoryServices.saveCompany(company);
     }
-
-    @PostMapping("/saveMaterialByProductId")
-    public Material saveMaterial(@RequestBody WrapperMaterial wrapperMaterial){
-        return categoryServices.saveMaterialByProduct(wrapperMaterial.getMaterial(),wrapperMaterial.getProductId());
-    }
-
-    @RequestMapping(value="/findMaterialByProductId",method = RequestMethod.GET)
-    public List<Material> getMaterialsByProductId(@RequestParam("ProductId") String productId){
-        return categoryServices.getMaterialByProductId(productId);
-    }
-
-    @RequestMapping(value="/findAllMaterials",method = RequestMethod.GET)
-    public List<Material> getAllMaterials(){
-        return categoryServices.getAllMaterials();
-    }
-
-
-
 
     @PostMapping("/saveProductByCatergoryId")
     public Product saveProductByCatergoryId(@RequestBody WrapperProduct wrapperProduct){
@@ -62,6 +44,31 @@ public class CategoryController {
         logger.info("Product "+wrapperProduct.getProduct().getName());
         return categoryServices.saveProductByCategory(wrapperProduct.getProduct(),wrapperProduct.getCategoryId());
     }
+
+    @PostMapping("/saveProductByCategroyAndCompany")
+    public Product saveProductByCategoryAndCompany(@RequestBody WrapperProduct wrapperProduct){
+        return categoryServices.saveProductByCompany(wrapperProduct.getCategoryId(),
+                wrapperProduct.getCompanyId(),wrapperProduct.getProduct());
+    }
+
+
+
+    @PostMapping("/saveMaterialByProductId")
+    public Material saveMaterial(@RequestBody WrapperMaterial wrapperMaterial){
+        return categoryServices.saveMaterialByProduct(wrapperMaterial.getMaterial(),wrapperMaterial.getProductId());
+    }
+
+    @RequestMapping(value="/findCategoryById",method = RequestMethod.GET)
+    public Optional<Category> findCategoryById (@RequestParam ("id") String id){
+        return categoryServices.findById(id);
+    }
+
+
+    @RequestMapping(value="/findMaterialByProductId",method = RequestMethod.GET)
+    public List<Material> getMaterialsByProductId(@RequestParam("ProductId") String productId){
+        return categoryServices.getMaterialByProductId(productId);
+    }
+
     @RequestMapping(value="/findProductByCategoryId",method = RequestMethod.GET)
     public  List<Product> getProductsByCategoryId(@RequestParam("CategoryId") String cid){
         return categoryServices.getProductsByCategoryId(cid);
@@ -70,6 +77,7 @@ public class CategoryController {
     public Optional<Product> getProdctById(@RequestParam("ProductId") String productId){
         return categoryServices.getProductById(productId);
     }
+
     @RequestMapping(value="/findAllProducts",method = RequestMethod.GET)
     public List<Product> getAllProdcts(){
         return categoryServices.getAllProuducts();
@@ -92,6 +100,12 @@ public class CategoryController {
         return categoryServices.getProductsByName(productName);
     }
 
+
+
+    @RequestMapping(value="/findProductByCompany",method = RequestMethod.GET)
+    public List<Product> getProductByBrand(@RequestParam("CompanyId") String companyId){
+        return categoryServices.getProductsByCompanyId(companyId);
+    }
 
 
 }

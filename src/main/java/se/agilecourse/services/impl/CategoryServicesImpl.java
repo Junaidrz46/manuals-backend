@@ -4,10 +4,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import se.agilecourse.exceptions.CategoryNotFoundException;
+import se.agilecourse.exceptions.CompanyIdMismatchException;
+import se.agilecourse.model.Company;
 import se.agilecourse.model.Category;
 import se.agilecourse.model.Company;
 import se.agilecourse.model.Material;
 import se.agilecourse.model.Product;
+import se.agilecourse.repository.*;
 import se.agilecourse.repository.CategoryRepository;
 import se.agilecourse.repository.CompanyRepository;
 import se.agilecourse.repository.MaterialRepository;
@@ -24,6 +28,9 @@ public class CategoryServicesImpl implements CategoryServices {
     private final Logger logger = LoggerFactory.getLogger(CategoryServicesImpl.class);
 
     @Autowired
+    CompanyRepository companyRepository;
+
+    @Autowired
     CategoryRepository categoryRepository;
 
     @Autowired
@@ -31,9 +38,6 @@ public class CategoryServicesImpl implements CategoryServices {
 
     @Autowired
     MaterialRepository materialRepository;
-
-    @Autowired
-    CompanyRepository companyRepository;
 
     @Override
     public Optional<Category> findById(String Id) {
@@ -48,6 +52,45 @@ public class CategoryServicesImpl implements CategoryServices {
     @Override
     public Category saveCategory(Category category) {
         return categoryRepository.save(category);
+    }
+
+    @Override
+    public List<Product> getProductsByCategoryId(String cid) {
+        return categoryRepository.findProductsByCategoryId(cid);
+    }
+
+    @Override
+    public Product saveProductByCategory(Product product , String categoryId) {
+        Product saveProduct = productRepository.save(product);
+        Optional<Category> category = categoryRepository.findById(categoryId);
+        List<Product> productslist = category.get().getProducts();
+        if(productslist == null){
+            productslist = new ArrayList<Product>();
+        }
+        productslist.add(saveProduct);
+        category.get().setProducts(productslist);
+        categoryRepository.save(category.get());
+        return saveProduct;
+    }
+
+    @Override
+    public Product saveProduct(Product product) {
+        return null;
+    }
+
+    @Override
+    public Optional<Product> getProductById(String Id) {
+        return productRepository.findById(Id);
+    }
+
+    @Override
+    public List<Product> getAllProuducts() {
+        return productRepository.findAll();
+    }
+
+    @Override
+    public Material saveMaterial(Material material) {
+        return materialRepository.save(material);
     }
 
     @Override
@@ -75,75 +118,43 @@ public class CategoryServicesImpl implements CategoryServices {
     public List<Material> getMaterialByProductId(String prouductId) {
         return materialRepository.findMaterialsByProductId(prouductId);
     }
+
     @Override
     public List<Material> getAllMaterials() {
         return materialRepository.findAll();
     }
+    public Product saveProductByCompany(String categoryId,String companyId,Product product)
+            throws CompanyIdMismatchException {
 
-
-
-    @Override
-    public List<Product> getProductsByCategoryId(String categoryId) {
-        return productRepository.findProductsByCategoryid(categoryId);
-    }
-
-    @Override
-    public Optional<Product> getProductById(String Id) {
-        return productRepository.findById(Id);
-    }
-
-    @Override
-    public List<Product> getAllProuducts() {
-        return productRepository.findAll();
-    }
-
-    @Override
-    public Product saveProductByCategory(Product product , String categoryId) {//API maybe need to be deleted
-        Product saveProduct = productRepository.save(product);
-        Optional<Category> category = categoryRepository.findById(categoryId);
-        List<Product> productslist = category.get().getProducts();
-        if(productslist == null){
-            productslist = new ArrayList<Product>();
+        Product saveProduct=null;
+        if(product.getCompanyId() != null && !product.getCompanyId().equalsIgnoreCase("")){
+            if(!product.getCompanyId().equalsIgnoreCase(companyId)){
+                throw new CompanyIdMismatchException("CompanyId Mismatched");
+            }else{
+                logger.debug("company ID matched "+companyId+" : "+product.getCompanyId());
+                saveProduct = productRepository.save(product);
+            }
+        }else{
+            product.setCompanyId(companyId);
+            saveProduct = productRepository.save(product);
         }
-        productslist.add(saveProduct);
-        category.get().setProducts(productslist);
-        categoryRepository.save(category.get());
-        return saveProduct;
-    }
 
-    @Override
-    public Product createProductByCategoryIdAndCompanyId(Product product, String categoryId, Company company) {
-        product.setBrand(company.getName());
-        Product saveProduct = productRepository.save(product);
         Optional<Category> categoryFound = categoryRepository.findById(categoryId);
-        Optional<Company> companyFound = companyRepository.findById(company.getId());
+
+        if(!categoryFound.isPresent()){
+            throw new CategoryNotFoundException("Category with Id "+categoryId+" not found");
+        }
 
         List<Product> productslistOfCategory = categoryFound.get().getProducts();
         if(productslistOfCategory == null){
             productslistOfCategory = new ArrayList<Product>();
         }
-
-        List<Product> productslistOfCompany = companyFound.get().getProducts();
-        if(productslistOfCompany == null){
-            productslistOfCompany = new ArrayList<Product>();
-        }
-
         productslistOfCategory.add(saveProduct);
-
-        productslistOfCompany.add(saveProduct);
-
         categoryFound.get().setProducts(productslistOfCategory);
-
-        companyFound.get().setProducts(productslistOfCompany);
-
         categoryRepository.save(categoryFound.get());
-
-        companyRepository.save(companyFound.get());
-
         return saveProduct;
 
     }
-
     @Override
     public List<Product> getProductsByProductNo(String productNo) {
         return productRepository.findByProductNoIsLike(productNo);

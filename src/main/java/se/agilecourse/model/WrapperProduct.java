@@ -8,6 +8,7 @@ import java.util.List;
 public class WrapperProduct {
 
    String categoryId;
+   String companyId;
    Product product;
    Company company;
 
@@ -25,6 +26,14 @@ public class WrapperProduct {
 
     public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public String getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(String companyId) {
+        this.companyId = companyId;
     }
 
     public Product getProduct() {

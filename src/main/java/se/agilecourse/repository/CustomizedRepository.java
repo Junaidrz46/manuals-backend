@@ -1,6 +1,5 @@
 package se.agilecourse.repository;
 
-import se.agilecourse.model.Company;
 import se.agilecourse.model.Material;
 import se.agilecourse.model.Product;
 

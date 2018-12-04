@@ -10,21 +10,22 @@ import java.util.List;
 public class Product {
 
     private String id;
-    private String productNo;
+    private String productNumber;
     private String name;
     private String description;
-    private String brand;
+    private String companyId;
+
 
     @DBRef
     @CascadeSave
     private List<Material> materials;
 
-    public String getBrand() {
-        return brand;
+    public String getCompanyId() {
+        return companyId;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public void setCompanyId(String companyId) {
+        this.companyId = companyId;
     }
 
     public String getId() {
@@ -33,6 +34,14 @@ public class Product {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getProductNumber() {
+        return productNumber;
+    }
+
+    public void setProductNumber(String productNumber) {
+        this.productNumber = productNumber;
     }
 
     public String getName() {
@@ -57,12 +66,5 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-    public String getProductNo() {
-        return productNo;
-    }
-
-    public void setProductNo(String productNo) {
-        this.productNo = productNo;
     }
 }

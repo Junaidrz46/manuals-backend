@@ -1,5 +1,7 @@
 package se.agilecourse.services;
 
+import se.agilecourse.exceptions.CompanyIdMismatchException;
+import se.agilecourse.model.Company;
 import se.agilecourse.model.Category;
 import se.agilecourse.model.Company;
 import se.agilecourse.model.Material;
@@ -13,27 +15,27 @@ public interface CategoryServices {
     Optional<Category> findById(String id);
     List<Category> findAllCategories();
     Category saveCategory(Category category);
+    Company saveCompany(Company company);
+    Product saveProductByCompany(String categoryId,String companyId,Product product) throws CompanyIdMismatchException;
 
+    Product saveProductByCategory(Product product , String CategoryId);
+
+    Product saveProduct(Product product);
+    List<Product> getProductsByCategoryId(String categoryId);// no need to change
+    Optional<Product> getProductById(String Id);
+
+    List<Product> getAllProuducts();
+
+    Material saveMaterial(Material material);
     Material saveMaterialByProduct(Material material , String ProductId);
     Optional<Material> getMaterialById(String id);
     List<Material> getMaterialByProductId(String prouductId);
     List<Material> getAllMaterials();
-
-    List<Product> getAllProuducts();// no need to change
-    Optional<Product> getProductById(String Id);//no need to change
-
-    Product saveProductByCategory(Product product , String CategoryId);//API maybe need to be deleted
-    List<Product> getProductsByCategoryId(String categoryId);// no need to change
-
-
-    //new API
-    Product createProductByCategoryIdAndCompanyId
-            (Product product, String categoryId, Company company);
-
     List<Product> getProductsByProductNo(String productNo);
     List<Product> getProductsByBrand(String brand);
     List<Product> getProductsByName(String productName);
+    List<Product> getProductsByCompanyId(String CompanyId);
 
-
-
+    //new API
+    public Product createProductByCategoryIdAndCompanyId(Product product, String categoryId, Company company);
 }

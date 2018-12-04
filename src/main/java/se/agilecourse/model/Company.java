@@ -7,87 +7,35 @@ import se.agilecourse.annotation.CascadeSave;
 import java.util.List;
 
 @Document(collection="companies")
+public class Company {
 
-public class Company{
-
-
-
-    private String id;
-
-    private String name;
-
-    private String description;
-
-
-
-    @DBRef
-
-    @CascadeSave
-
-    private List<Product> products;
-
+    String id;
+    String name;
+    String description;
 
 
     public String getId() {
-
         return id;
-
     }
-
-
 
     public void setId(String id) {
-
-        this.id = id;
-
+        id = id;
     }
-
-
 
     public String getName() {
-
         return name;
-
     }
-
-
 
     public void setName(String name) {
-
         this.name = name;
-
     }
-
-
 
     public String getDescription() {
-
         return description;
-
     }
-
-
 
     public void setDescription(String description) {
-
         this.description = description;
-
-    }
-
-
-
-    public List<Product> getProducts() {
-
-        return products;
-
-    }
-
-
-
-    public void setProducts(List<Product> products) {
-
-        this.products = products;
-
     }
 
 }
