@@ -14,6 +14,7 @@ public class Product {
     private String name;
     private String description;
     private String companyId;
+    private String categoryId;
 
 
     @DBRef
@@ -66,5 +67,13 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
     }
 }

@@ -6,5 +6,5 @@ import se.agilecourse.model.Company;
 import java.util.List;
 
 public interface CompanyRepository extends MongoRepository<Company, String>, CustomizedRepository {
-    List<Company> findByName(String BrandName);
+    List<Company> findByName(String companyName);
 }

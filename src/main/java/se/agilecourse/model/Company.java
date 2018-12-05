@@ -14,6 +14,7 @@ public class Company {
     String description;
 
 
+
     public String getId() {
         return id;
     }
