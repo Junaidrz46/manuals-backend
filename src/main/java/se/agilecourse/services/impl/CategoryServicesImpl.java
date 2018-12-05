@@ -6,11 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.agilecourse.exceptions.CategoryNotFoundException;
 import se.agilecourse.exceptions.CompanyIdMismatchException;
+import se.agilecourse.model.*;
 import se.agilecourse.model.Company;
-import se.agilecourse.model.Category;
-import se.agilecourse.model.Company;
-import se.agilecourse.model.Material;
-import se.agilecourse.model.Product;
 import se.agilecourse.repository.*;
 import se.agilecourse.repository.CategoryRepository;
 import se.agilecourse.repository.CompanyRepository;
@@ -55,9 +52,21 @@ public class CategoryServicesImpl implements CategoryServices {
     }
 
     @Override
-    public List<Product> getProductsByCategoryId(String cid) {
-        return categoryRepository.findProductsByCategoryId(cid);
+    public List<ProductMini> getProductsByCategoryId(String cid) {
+        List<Product> list=categoryRepository.findProductsByCategoryId(cid);
+        List<ProductMini> listMini=new ArrayList<>();
+        for(Product product:list){
+            String id=product.getId();
+            String name=product.getName();
+            ProductMini productMini=new ProductMini();
+            productMini.setId(id);
+            productMini.setName(name);
+            listMini.add(productMini);
+        }
+        return listMini;
     }
+
+
     @Override
 
     public Company saveCompany(Company company) {
@@ -173,6 +182,8 @@ public class CategoryServicesImpl implements CategoryServices {
     public List<Product> getProductsByName(String productName) {
         return productRepository.findByNameIsLike(productName);
     }
+
+
 
 
 }

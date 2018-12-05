@@ -70,7 +70,7 @@ public class CategoryController {
     }
 
     @RequestMapping(value="/findProductByCategoryId",method = RequestMethod.GET)
-    public  List<Product> getProductsByCategoryId(@RequestParam("CategoryId") String cid){
+    public  List<ProductMini> getProductsByCategoryId(@RequestParam("CategoryId") String cid){
         return categoryServices.getProductsByCategoryId(cid);
     }
     @RequestMapping(value="/findProductById",method = RequestMethod.GET)
