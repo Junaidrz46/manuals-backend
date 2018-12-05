@@ -1,0 +1,14 @@
+db.companies.insertMany([
+     {
+         "name":"Apple"
+     },
+    {
+        "name":"HUAWEI"
+    },
+    {
+        "name":"LG"
+    },
+    {
+        "name":"Samsung"
+    }
+ ]);
