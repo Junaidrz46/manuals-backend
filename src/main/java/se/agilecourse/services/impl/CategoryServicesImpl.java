@@ -74,15 +74,21 @@ public class CategoryServicesImpl implements CategoryServices {
 
     @Override
     public Product saveProductByCategory(Product product , String categoryId) {
-        Product saveProduct = productRepository.save(product);
-        Optional<Category> category = categoryRepository.findById(categoryId);
-        List<Product> productslist = category.get().getProducts();
-        if(productslist == null){
-            productslist = new ArrayList<Product>();
+        Product saveProduct=null;
+        try {
+            product.setCategoryId(categoryId);
+            saveProduct = productRepository.save(product);
+            Optional<Category> category = categoryRepository.findById(categoryId);
+            List<Product> productslist = category.get().getProducts();
+            if (productslist == null) {
+                productslist = new ArrayList<Product>();
+            }
+            productslist.add(saveProduct);
+            category.get().setProducts(productslist);
+            categoryRepository.save(category.get());
+        }catch(Exception e){
+            logger.error(e.getMessage());
         }
-        productslist.add(saveProduct);
-        category.get().setProducts(productslist);
-        categoryRepository.save(category.get());
         return saveProduct;
     }
 
@@ -196,6 +202,7 @@ public class CategoryServicesImpl implements CategoryServices {
             throws CompanyIdMismatchException {
 
         Product saveProduct=null;
+        product.setCategoryId(categoryId);
         if(product.getCompanyId() != null && !product.getCompanyId().equalsIgnoreCase("")){
             if(!product.getCompanyId().equalsIgnoreCase(companyId)){
                 throw new CompanyIdMismatchException("CompanyId Mismatched");
@@ -223,5 +230,13 @@ public class CategoryServicesImpl implements CategoryServices {
         categoryRepository.save(categoryFound.get());
         return saveProduct;
 
+    }
+
+    public Optional<Company> getCompanyById(String companyId){
+        return companyRepository.findById(companyId);
+    }
+
+    public Optional<Category> getCategoryById(String categoryId){
+        return categoryRepository.findById(categoryId);
     }
 }

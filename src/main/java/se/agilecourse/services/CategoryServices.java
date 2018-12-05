@@ -30,6 +30,8 @@ public interface CategoryServices {
     List<Material> getMaterialByProductId(String prouductId);
     List<Material> getAllMaterials();
     List<Product> getProductsByCompanyId(String CompanyId);
+    Optional<Company> getCompanyById(String CompanyId);
+    Optional<Category> getCategoryById(String categoryId);
 
     // Company saveBrandByCategory(Company brand, String categoryId);
     // public List<Company> getBrandsByCategory(String categoryID);
