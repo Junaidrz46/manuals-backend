@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import se.agilecourse.exceptions.CompanyIdNotFoundException;
 import se.agilecourse.model.LoginModel;
 import se.agilecourse.model.User;
 import se.agilecourse.repository.UserRepository;
@@ -43,12 +44,18 @@ public class UserServicesImpl implements UserServices {
 
     @Override
     public User saveAdminUser(User user) {
+        if(user.getCompanyId() == null || user.getCompanyId().equalsIgnoreCase("")){
+            throw new CompanyIdNotFoundException("Company Id not found while creating Admin");
+        }
         user.setRole("companyAdmin");
         return userRepository.save(user);
     }
 
     @Override
     public User saveCompanyRepresentative(User user) {
+        if(user.getCompanyId() == null || user.getCompanyId().equalsIgnoreCase("")){
+            throw new CompanyIdNotFoundException("Company Id not found while creating Representative");
+        }
         user.setRole("companyRepresentative");
         return userRepository.save(user);
     }

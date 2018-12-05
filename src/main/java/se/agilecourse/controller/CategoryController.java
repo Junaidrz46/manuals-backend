@@ -47,7 +47,7 @@ public class CategoryController {
 
     @PostMapping("/saveProductByCategroyAndCompany")
     public Product saveProductByCategoryAndCompany(@RequestBody WrapperProduct wrapperProduct){
-        return categoryServices.saveProductByCompany(wrapperProduct.getCategoryId(),
+        return categoryServices.saveProductByCategoryAndCompany(wrapperProduct.getCategoryId(),
                 wrapperProduct.getCompanyId(),wrapperProduct.getProduct());
     }
 

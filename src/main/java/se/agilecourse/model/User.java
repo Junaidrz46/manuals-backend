@@ -94,11 +94,11 @@ public class User {
         this.role = role;
     }
 
-    public String getCompanyname() {
+    public String getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyname(String companyId) {
+    public void setCompanyId(String companyId) {
         this.companyId = companyId;
     }
 
