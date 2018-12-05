@@ -38,16 +38,11 @@ public class CategoryController {
         return categoryServices.saveCompany(company);
     }
 
-    @PostMapping("/saveProductByCatergoryId")
-    public Product saveProductByCatergoryId(@RequestBody WrapperProduct wrapperProduct){
-        logger.info("cat ID : "+wrapperProduct.getCategoryId());
-        logger.info("Product "+wrapperProduct.getProduct().getName());
-        return categoryServices.saveProductByCategory(wrapperProduct.getProduct(),wrapperProduct.getCategoryId());
-    }
+
 
     @PostMapping("/saveProductByCategroyAndCompany")
     public Product saveProductByCategoryAndCompany(@RequestBody WrapperProduct wrapperProduct){
-        return categoryServices.saveProductByCompany(wrapperProduct.getCategoryId(),
+        return categoryServices.saveProductByCategoryAndCompany(wrapperProduct.getCategoryId(),
                 wrapperProduct.getCompanyId(),wrapperProduct.getProduct());
     }
 

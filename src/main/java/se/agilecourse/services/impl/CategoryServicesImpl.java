@@ -122,7 +122,7 @@ public class CategoryServicesImpl implements CategoryServices {
     public List<Material> getAllMaterials() {
         return materialRepository.findAll();
     }
-    public Product saveProductByCompany(String categoryId,String companyId,Product product)
+    public Product saveProductByCategoryAndCompany(String categoryId,String companyId,Product product)
             throws CompanyIdMismatchException {
 
         Product saveProduct=null;

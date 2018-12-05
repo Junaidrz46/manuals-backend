@@ -1,10 +1,7 @@
 package se.agilecourse.services;
 
 import se.agilecourse.exceptions.CompanyIdMismatchException;
-import se.agilecourse.model.Company;
-import se.agilecourse.model.Category;
-import se.agilecourse.model.Material;
-import se.agilecourse.model.Product;
+import se.agilecourse.model.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,8 +13,7 @@ public interface CategoryServices {
     Category saveCategory(Category category);
     Company saveCompany(Company company);
     Product saveProductByCategoryAndCompany(String categoryId,String companyId,Product product) throws CompanyIdMismatchException;
-    List<Product> getProductsByCategoryid(String cid);
-    Product saveProductByCategory(Product product , String CategoryId);
+
 
     List<ProductMini> getProductsByCategoryId(String categoryId);// no need to change
     Optional<Product> getProductById(String Id);
