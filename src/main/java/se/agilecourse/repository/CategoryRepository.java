@@ -10,9 +10,4 @@ import java.util.Optional;
 
 public interface CategoryRepository extends MongoRepository<Category, String> , CustomizedRepository{
     Optional<Category> findById(String id);
-    @Query(value = "{}",fields = "{'name' : 1}")
-    List<Category> findAll();
-
-
-
 }
