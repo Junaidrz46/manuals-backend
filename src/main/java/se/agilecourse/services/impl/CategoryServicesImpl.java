@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.agilecourse.exceptions.CategoryNotFoundException;
 import se.agilecourse.exceptions.CompanyIdMismatchException;
-import se.agilecourse.model.Company;
-import se.agilecourse.model.Category;
-import se.agilecourse.model.Material;
-import se.agilecourse.model.Product;
+import se.agilecourse.model.*;
 import se.agilecourse.repository.*;
 import se.agilecourse.repository.CategoryRepository;
 import se.agilecourse.repository.CompanyRepository;
@@ -69,35 +66,13 @@ public class CategoryServicesImpl implements CategoryServices {
     }
 
 
-    @Override
-    public Product saveProductByCategory(Product product , String categoryId) {
-        Product saveProduct=null;
-        try {
-            product.setCategoryId(categoryId);
-            saveProduct = productRepository.save(product);
-            Optional<Category> category = categoryRepository.findById(categoryId);
-            List<Product> productslist = category.get().getProducts();
-            if (productslist == null) {
-                productslist = new ArrayList<Product>();
-            }
-            productslist.add(saveProduct);
-            category.get().setProducts(productslist);
-            categoryRepository.save(category.get());
-        }catch(Exception e){
-            logger.error(e.getMessage());
-        }
-        return saveProduct;
-    }
-    @Override
 
+    @Override
     public Company saveCompany(Company company) {
 
         return companyRepository.save(company);
 
     }
-
-
-
 
     @Override
     public Optional<Product> getProductById(String Id) {

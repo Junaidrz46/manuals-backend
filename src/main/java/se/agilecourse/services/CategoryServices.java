@@ -1,10 +1,7 @@
 package se.agilecourse.services;
 
 import se.agilecourse.exceptions.CompanyIdMismatchException;
-import se.agilecourse.model.Company;
-import se.agilecourse.model.Category;
-import se.agilecourse.model.Material;
-import se.agilecourse.model.Product;
+import se.agilecourse.model.*;
 
 import java.util.List;
 import java.util.Optional;
