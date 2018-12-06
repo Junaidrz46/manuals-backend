@@ -10,7 +10,6 @@ import se.agilecourse.services.CategoryServices;
 import java.util.List;
 import java.util.Optional;
 
-//@CrossOrigin(origins = "http://localhost:8888/", maxAge = 3600)
 @RestController()
 @RequestMapping("/rest/categories")
 public class CategoryController {
@@ -24,7 +23,6 @@ public class CategoryController {
     @GetMapping("/findAllCategories")
     public List<Category> getAll() {
         logger.debug("Get users from all : "+categoryServices.findAllCategories());
-
         return categoryServices.findAllCategories();
     }
 
@@ -74,6 +72,10 @@ public class CategoryController {
         return categoryServices.getAllProuducts();
     }
 
+    @RequestMapping(value="/findAllMaterials",method = RequestMethod.GET)
+    public List<Material> getAllMaterials(){
+        return categoryServices.getAllMaterials();
+    }
 
     @RequestMapping(value="/findProductsByProductNo",method = RequestMethod.GET)
     public List<Product> getProductsByProductId(@RequestParam("productNo") String productNo){

@@ -11,18 +11,23 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import se.agilecourse.SpringBootApp;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import se.agilecourse.model.User;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringBootApp.class)
 @AutoConfigureMockMvc
-public class AppTest {
+public class HelloTest {
 
     @Autowired
     private MockMvc mvc;
@@ -33,5 +38,7 @@ public class AppTest {
                 "Origin","*")).andExpect(status().isOk())
                 .andExpect(content().string("Hello world!"));
     }
+
+
 
 }
