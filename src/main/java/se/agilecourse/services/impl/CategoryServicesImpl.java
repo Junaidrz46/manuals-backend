@@ -34,10 +34,6 @@ public class CategoryServicesImpl implements CategoryServices {
     @Autowired
     MaterialRepository materialRepository;
 
-
-
-
-
     @Override
     public Optional<Category> findById(String Id) {
         return categoryRepository.findById(Id);
@@ -52,24 +48,6 @@ public class CategoryServicesImpl implements CategoryServices {
     public Category saveCategory(Category category) {
         return categoryRepository.save(category);
     }
-
-
-
-    /*@Override
-    public List<Product> getProductsByBrandId(String brandId) {
-        return productRepository.findProductsByBrand(brandId);
-    }
-
-    @Override
-    public List<Product> getProductsByCategoryid(String cid) {
-        return categoryRepository.findProductsByCategoryid(cid);
-        }
-        brandList.add(brand);
-        category.get().setBrands(brandList);
-        categoryRepository.save(category.get());
-
-        return saveBrand;
-    }*/
 
 
     @Override
@@ -153,40 +131,6 @@ public class CategoryServicesImpl implements CategoryServices {
     }
 
 
-    @Override
-    public Product createProductByCategoryIdAndCompanyId(Product product, String categoryId, Company company) {
-       /* product.setBrand(company.getName());
-        Product saveProduct = productRepository.save(product);
-        Optional<Category> categoryFound = categoryRepository.findById(categoryId);
-        Optional<Company> companyFound = companyRepository.findById(company.getId());
-
-        List<Product> productslistOfCategory = categoryFound.get().getProducts();
-        if(productslistOfCategory == null){
-            productslistOfCategory = new ArrayList<Product>();
-        }
-
-        List<Product> productslistOfCompany = companyFound.get().getProducts();
-        if(productslistOfCompany == null){
-            productslistOfCompany = new ArrayList<Product>();
-        }
-
-        productslistOfCategory.add(saveProduct);
-
-        productslistOfCompany.add(saveProduct);
-
-        categoryFound.get().setProducts(productslistOfCategory);
-
-        companyFound.get().setProducts(productslistOfCompany);
-
-        categoryRepository.save(categoryFound.get());
-
-        companyRepository.save(companyFound.get());
-
-        return saveProduct;
-
-        */
-        return null;
-    }
 
     @Override
     public List<Product> getProductsByCategoryid(String cid) {
@@ -239,4 +183,8 @@ public class CategoryServicesImpl implements CategoryServices {
     public Optional<Category> getCategoryById(String categoryId){
         return categoryRepository.findById(categoryId);
     }
+
+
+
 }
+

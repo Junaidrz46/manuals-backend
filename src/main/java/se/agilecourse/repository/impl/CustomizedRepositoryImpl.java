@@ -21,45 +21,18 @@ public class CustomizedRepositoryImpl implements CustomizedRepository {
     @Autowired
     MongoTemplate mongoTemplate;
 
-   /* @Override
-    public List<Product> findProductsByCategoryid(String categoryid) {
-        Query query = new Query(Criteria.where("id").is(new ObjectId(categoryid)));
-        Category category = mongoTemplate.findOne(query,Category.class,"categories");
-        List<Product> list=category.getProducts();
-        return list;
-    }*/
 
     @Override
     public List<Company> fidnBrandByCategoryId(String categoryId) {
         return null;
     }
 
-    /*@Override
-    public List<Product> findProductsByBrandId(String brandId) {
-        return null;
-    }*/
 
     public List<Material> findMaterialsByProductId(String productId){
         Query query = new Query(Criteria.where("id").is(new ObjectId(productId)));
         Product product = mongoTemplate.findOne(query,Product.class,"products");
         List<Material> list = product.getMaterials();
         return list;
-    }
-
-
-    public List<Product> findProductsByCompany(String companyId){
-
-        /*Aggregation agg = Aggregation.newAggregation(Product.class,
-                Aggregation.match(Criteria.where("company").is(brandName)));
-
-        Aggregation agg = Aggregation.newAggregation(Product.class,
-                Aggregation.match(Criteria.where("company").is(brandName)),
-                Aggregation.group().push("name").as("id").push("attendees.contact.email").as("emails"));
-
-        AggregationResults<Product> results = mongoTemplate.aggregate(agg,"products",Product.class);
-        List<Product> mappedResult = results.getMappedResults();
-        return mappedResult;*/
-       return  null;
     }
 
 
@@ -75,6 +48,14 @@ public class CustomizedRepositoryImpl implements CustomizedRepository {
         return  mappedResult;
     }*/
 
+
+      /* @Override
+    public List<Product> findProductsByCategoryid(String categoryid) {
+        Query query = new Query(Criteria.where("id").is(new ObjectId(categoryid)));
+        Category category = mongoTemplate.findOne(query,Category.class,"categories");
+        List<Product> list=category.getProducts();
+        return list;
+    }*/
 
 
 
