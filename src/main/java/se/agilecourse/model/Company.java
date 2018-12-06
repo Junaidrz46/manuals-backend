@@ -6,16 +6,14 @@ import se.agilecourse.annotation.CascadeSave;
 
 import java.util.List;
 
-@Document(collection="brands")
-public class Brand{
+@Document(collection="companies")
+public class Company {
 
     String id;
     String name;
     String description;
 
-    @DBRef
-    @CascadeSave
-    private List<Product> products;
+
 
     public String getId() {
         return id;
@@ -41,11 +39,4 @@ public class Brand{
         this.description = description;
     }
 
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
 }

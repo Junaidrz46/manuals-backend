@@ -10,7 +10,6 @@ import se.agilecourse.services.CategoryServices;
 import java.util.List;
 import java.util.Optional;
 
-//@CrossOrigin(origins = "http://localhost:8888/", maxAge = 3600)
 @RestController()
 @RequestMapping("/rest/categories")
 public class CategoryController {
@@ -32,32 +31,37 @@ public class CategoryController {
         return categoryServices.saveCategory(category);
     }
 
-
-    @PostMapping("/saveBrandByCategoryId")
-    public Brand saveBrandByCatergoryId(@RequestBody WrapperBrand wrapperBrand){
-        logger.info("Category ID : "+wrapperBrand.getCategoryId());
-        logger.info("Brand : "+wrapperBrand.getBrand().getName());
-        return categoryServices.saveBrandByCategory(wrapperBrand.getBrand(),wrapperBrand.getCategoryId());
+    @PostMapping("/saveCompany")
+    public Company saveCompany(@RequestBody Company company){
+        return categoryServices.saveCompany(company);
     }
 
-    @PostMapping("/saveProductByBrandId")
-    public Product saveProductByCatergoryId(@RequestBody WrapperProduct wrapperProduct){
-        logger.info("Brand ID : "+wrapperProduct.getBrandId());
-        logger.info("Product "+wrapperProduct.getProduct().getName());
-        return categoryServices.saveProductByBrand(wrapperProduct.getProduct(),wrapperProduct.getBrandId());
+
+
+    @PostMapping("/saveProductByCategroyAndCompany")
+    public Product saveProductByCategoryAndCompany(@RequestBody WrapperProduct wrapperProduct){
+        return categoryServices.saveProductByCategoryAndCompany(wrapperProduct.getCategoryId(),
+                wrapperProduct.getCompanyId(),wrapperProduct.getProduct());
     }
+
+
 
     @PostMapping("/saveMaterialByProductId")
     public Material saveMaterial(@RequestBody WrapperMaterial wrapperMaterial){
         return categoryServices.saveMaterialByProduct(wrapperMaterial.getMaterial(),wrapperMaterial.getProductId());
     }
 
-    @RequestMapping(value="/findCategoryById",method = RequestMethod.GET)
-    public Optional<Category> findCategoryById (@RequestParam ("id") String id){
-        return categoryServices.findById(id);
+
+
+    @RequestMapping(value="/findMaterialByProductId",method = RequestMethod.GET)
+    public List<Material> getMaterialsByProductId(@RequestParam("ProductId") String productId){
+        return categoryServices.getMaterialByProductId(productId);
     }
 
-
+    @RequestMapping(value="/findProductByCategoryId",method = RequestMethod.GET)
+    public  List<ProductMini> getProductsByCategoryId(@RequestParam("CategoryId") String cid){
+        return categoryServices.getProductsByCategoryId(cid);
+    }
     @RequestMapping(value="/findProductById",method = RequestMethod.GET)
     public Optional<Product> getProdctById(@RequestParam("ProductId") String productId){
         return categoryServices.getProductById(productId);
@@ -73,20 +77,32 @@ public class CategoryController {
         return categoryServices.getAllMaterials();
     }
 
-
-
-    @RequestMapping(value="/findBrandByCategoryId",method = RequestMethod.GET)
-    public List<Brand> getBrandsByCategory(@RequestParam("cateogryId") String categoryId){
-        return categoryServices.getBrandsByCategory(categoryId);
+    @RequestMapping(value="/findProductsByProductNo",method = RequestMethod.GET)
+    public List<Product> getProductsByProductId(@RequestParam("productNo") String productNo){
+        return categoryServices.getProductsByProductNo(productNo);
+    }
+    @RequestMapping(value="/findProductsByCompanyId",method = RequestMethod.GET)
+    public List<Product> getProductsByCompanyId(@RequestParam("companyId") String brand){
+        return categoryServices.getProductsByCompanyId(brand);
+    }
+    @RequestMapping(value="/findProductsByProductName",method = RequestMethod.GET)
+    public List<Product> getProductsByProductName(@RequestParam("productName") String productName){
+        return categoryServices.getProductsByName(productName);
     }
 
-    @RequestMapping(value="/findProductByBrand",method = RequestMethod.GET)
-    public List<Product> getProductByBrand(@RequestParam("BrandName") String brandName){
-        return categoryServices.getProductsByBrand(brandName);
+
+    @RequestMapping(value="/findCompanyById",method = RequestMethod.GET)
+    public Company getCompanyById(@RequestParam("CompanyId") String companyId){
+        return categoryServices.getCompanyById(companyId).get();
     }
 
-    @RequestMapping(value="/findMaterialByProductId",method = RequestMethod.GET)
-    public List<Material> getMaterialsByProductId(@RequestParam("ProductId") String productId){
-        return categoryServices.getMaterialByProductId(productId);
+    @RequestMapping(value="/findCategoryById",method = RequestMethod.GET)
+    public Category getCategoryById(@RequestParam("CategoryId") String categoryId){
+        return categoryServices.getCategoryById(categoryId).get();
     }
+
+
+
+
+
 }

@@ -1,9 +1,7 @@
 package se.agilecourse.services;
 
-import se.agilecourse.model.Brand;
-import se.agilecourse.model.Category;
-import se.agilecourse.model.Material;
-import se.agilecourse.model.Product;
+import se.agilecourse.exceptions.CompanyIdMismatchException;
+import se.agilecourse.model.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,15 +11,13 @@ public interface CategoryServices {
     Optional<Category> findById(String id);
     List<Category> findAllCategories();
     Category saveCategory(Category category);
-    List<Product> getProductsByBrandId(String brandId);
+    Company saveCompany(Company company);
+    Product saveProductByCategoryAndCompany(String categoryId,String companyId,Product product) throws CompanyIdMismatchException;
 
-    Brand saveBrandByCategory(Brand brand,String categoryId);
-    public List<Brand> getBrandsByCategory(String categoryID);
 
-    Product saveProductByBrand(Product product , String BrandId);
-    Product saveProduct(Product product);
+    List<ProductMini> getProductsByCategoryId(String categoryId);// no need to change
     Optional<Product> getProductById(String Id);
-    List<Product> getProductsByBrand(String bandName);
+
     List<Product> getAllProuducts();
 
     Material saveMaterial(Material material);
@@ -29,7 +25,10 @@ public interface CategoryServices {
     Optional<Material> getMaterialById(String id);
     List<Material> getMaterialByProductId(String prouductId);
     List<Material> getAllMaterials();
-
-
+    List<Product> getProductsByProductNo(String productNo);
+    List<Product> getProductsByCompanyId(String companyId);
+    List<Product> getProductsByName(String productName);
+    Optional<Company> getCompanyById(String CompanyId);
+    Optional<Category> getCategoryById(String categoryId);
 
 }

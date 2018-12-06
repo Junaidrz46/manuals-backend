@@ -3,13 +3,15 @@ package se.agilecourse.services.impl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import se.agilecourse.model.Brand;
-import se.agilecourse.model.Category;
-import se.agilecourse.model.Material;
-import se.agilecourse.model.Product;
+import se.agilecourse.exceptions.CategoryNotFoundException;
+import se.agilecourse.exceptions.CompanyIdMismatchException;
+import se.agilecourse.model.*;
 import se.agilecourse.repository.*;
+import se.agilecourse.repository.CategoryRepository;
+import se.agilecourse.repository.CompanyRepository;
+import se.agilecourse.repository.MaterialRepository;
+import se.agilecourse.repository.ProductRepository;
 import se.agilecourse.services.CategoryServices;
 
 import java.util.ArrayList;
@@ -22,7 +24,7 @@ public class CategoryServicesImpl implements CategoryServices {
     private final Logger logger = LoggerFactory.getLogger(CategoryServicesImpl.class);
 
     @Autowired
-    BrandRepository brandRepository;
+    CompanyRepository companyRepository;
 
     @Autowired
     CategoryRepository categoryRepository;
@@ -32,8 +34,6 @@ public class CategoryServicesImpl implements CategoryServices {
 
     @Autowired
     MaterialRepository materialRepository;
-
-
 
     @Override
     public Optional<Category> findById(String Id) {
@@ -51,43 +51,27 @@ public class CategoryServicesImpl implements CategoryServices {
     }
 
     @Override
-    public List<Product> getProductsByBrandId(String brandId) {
-        return productRepository.findProductsByBrand(brandId);
-    }
-
-    @Override
-    public Brand saveBrandByCategory(Brand brand, String categoryId) {
-        Brand saveBrand = brandRepository.save(brand);
-        Optional<Category> category = categoryRepository.findById(categoryId);
-        List<Brand> brandList = category.get().getBrands();
-        if(brandList == null){
-            brandList = new ArrayList<Brand>();
+    public List<ProductMini> getProductsByCategoryId(String cid) {
+        List<Product> list=categoryRepository.findProductsByCategoryId(cid);
+        List<ProductMini> listMini=new ArrayList<>();
+        for(Product product:list){
+            String id=product.getId();
+            String name=product.getName();
+            ProductMini productMini=new ProductMini();
+            productMini.setId(id);
+            productMini.setName(name);
+            listMini.add(productMini);
         }
-        brandList.add(brand);
-        category.get().setBrands(brandList);
-        categoryRepository.save(category.get());
-
-        return saveBrand;
+        return listMini;
     }
 
 
-    @Override
-    public Product saveProductByBrand(Product product , String brandId) {
-        Product saveProduct = productRepository.save(product);
-        Optional<Brand> brand = brandRepository.findById(brandId);
-        List<Product> productslist = brand.get().getProducts();
-        if(productslist == null){
-            productslist = new ArrayList<Product>();
-        }
-        productslist.add(saveProduct);
-        brand.get().setProducts(productslist);
-        brandRepository.save(brand.get());
-        return saveProduct;
-    }
 
     @Override
-    public Product saveProduct(Product product) {
-        return null;
+    public Company saveCompany(Company company) {
+
+        return companyRepository.save(company);
+
     }
 
     @Override
@@ -135,15 +119,62 @@ public class CategoryServicesImpl implements CategoryServices {
     public List<Material> getAllMaterials() {
         return materialRepository.findAll();
     }
+    public Product saveProductByCategoryAndCompany(String categoryId,String companyId,Product product)
+            throws CompanyIdMismatchException {
+
+        Product saveProduct=null;
+        product.setCategoryId(categoryId);
+        if(product.getCompanyId() != null && !product.getCompanyId().equalsIgnoreCase("")){
+            if(!product.getCompanyId().equalsIgnoreCase(companyId)){
+                throw new CompanyIdMismatchException("CompanyId Mismatched");
+            }else{
+                logger.debug("company ID matched "+companyId+" : "+product.getCompanyId());
+                saveProduct = productRepository.save(product);
+            }
+        }else{
+            product.setCompanyId(companyId);
+            saveProduct = productRepository.save(product);
+        }
+
+        Optional<Category> categoryFound = categoryRepository.findById(categoryId);
+
+        if(!categoryFound.isPresent()){
+            throw new CategoryNotFoundException("Category with Id "+categoryId+" not found");
+        }
+
+        List<Product> productslistOfCategory = categoryFound.get().getProducts();
+        if(productslistOfCategory == null){
+            productslistOfCategory = new ArrayList<Product>();
+        }
+        productslistOfCategory.add(saveProduct);
+        categoryFound.get().setProducts(productslistOfCategory);
+        categoryRepository.save(categoryFound.get());
+        return saveProduct;
+
+    }
+
+    public Optional<Company> getCompanyById(String companyId){
+        return companyRepository.findById(companyId);
+    }
+
+    public Optional<Category> getCategoryById(String categoryId){
+        return categoryRepository.findById(categoryId);
+    }
+    @Override
+    public List<Product> getProductsByProductNo(String productNo) {
+        return productRepository.findByProductNumber(productNo);
+    }
 
     @Override
-    public List<Product> getProductsByBrand(String bandName) {
-        return productRepository.findByBrand(bandName);
+    public List<Product> getProductsByCompanyId(String companyId) {
+        return productRepository.findByCompanyId(companyId);
     }
 
-    public List<Brand> getBrandsByCategory(String categoryID){
-        return categoryRepository.fidnBrandByCategoryId(categoryID);
+    @Override
+    public List<Product> getProductsByName(String productName) {
+        return productRepository.findByName(productName);
     }
+
 
 
 

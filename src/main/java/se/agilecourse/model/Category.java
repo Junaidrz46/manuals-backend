@@ -15,12 +15,10 @@ public class Category {
 
     @DBRef
     @CascadeSave
-    private List<Brand> brands;
-
+    private List<Product> products;
     public String getId() {
         return id;
     }
-
     public void setId(String id) {
         this.id = id;
     }
@@ -33,12 +31,12 @@ public class Category {
         this.name = name;
     }
 
-    public List<Brand> getBrands() {
-        return brands;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setBrands(List<Brand> brands) {
-        this.brands = brands;
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 
     public String getDescription() {

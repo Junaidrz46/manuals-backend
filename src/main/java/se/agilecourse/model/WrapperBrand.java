@@ -1,9 +1,10 @@
 package se.agilecourse.model;
 
+/*
 public class WrapperBrand {
 
     String categoryId;
-    Brand brand;
+    Company company;
 
     public String getCategoryId() {
         return categoryId;
@@ -13,11 +14,12 @@ public class WrapperBrand {
         this.categoryId = categoryId;
     }
 
-    public Brand getBrand() {
-        return brand;
+    public Company getBrand() {
+        return company;
     }
 
-    public void setBrand(Brand brand) {
-        this.brand = brand;
+    public void setBrand(Company company) {
+        this.company = company;
     }
 }
+*/

@@ -20,11 +20,12 @@ public class User {
 
     }
 
-    public User(String username, String password, String emailaddress,String role){
+    public User(String username, String password, String emailaddress,String role,String companyId){
         this.username = username;
         this.password = password;
         this.emailaddress = emailaddress;
         this.role = role;
+        this.companyId = companyId;
     }
 
 
@@ -34,7 +35,7 @@ public class User {
     private String username;
     private String password;
     private String emailaddress;
-    private String companyname;
+    private String companyId;
     private String role;
 
     public String getFirstname() {
@@ -93,12 +94,12 @@ public class User {
         this.role = role;
     }
 
-    public String getCompanyname() {
-        return companyname;
+    public String getCompanyId() {
+        return companyId;
     }
 
-    public void setCompanyname(String companyname) {
-        this.companyname = companyname;
+    public void setCompanyId(String companyId) {
+        this.companyId = companyId;
     }
 
     @Override
@@ -106,8 +107,8 @@ public class User {
 
         if(id != null && !id.equalsIgnoreCase("")){
             return String.format(
-                    "User[id='%s', username='%s', password='%s , emailaddress='%s' , role='%s']",
-                    id,username, password, emailaddress, role);
+                    "User[id='%s', username='%s', password='%s , emailaddress='%s' , role='%s' , companyId='%s']",
+                    id,username, password, emailaddress, role,companyId);
         }else {
             return String.format(
                     "User[ username='%s', password='%s , emailaddress='%s' , role='%s']",

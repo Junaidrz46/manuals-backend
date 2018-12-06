@@ -23,6 +23,7 @@ bootJar {
 
 repositories {
     mavenCentral()
+    flatDir dirs: "${projectDir}/libs"
 }
 
 sourceCompatibility = 1.8
@@ -31,7 +32,18 @@ targetCompatibility = 1.8
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-data-mongodb")
     compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile("org.springframework.boot:spring-boot-devtools")
     compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("com.google.code.gson:gson")
     testCompile("org.springframework.boot:spring-boot-starter-test")
+    
 }
 
+jar {
+    manifest {
+        attributes 'Implementation-Version': "0.1.0",
+                'Main-Class': "se.agilecourse.SpringBootApp"
+    }
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}

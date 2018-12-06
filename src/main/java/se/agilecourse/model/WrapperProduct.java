@@ -7,15 +7,33 @@ import java.util.List;
 
 public class WrapperProduct {
 
-   String brandId;
+   String categoryId;
+   String companyId;
    Product product;
+   Company company;
 
-    public String getBrandId() {
-        return brandId;
+    public Company getCompany() {
+        return company;
     }
 
-    public void setBrandId(String brandId) {
-        this.brandId = brandId;
+    public void SetCompany(Company company) {
+        this.company = company;
+    }
+
+    public String getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public String getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(String companyId) {
+        this.companyId = companyId;
     }
 
     public Product getProduct() {
