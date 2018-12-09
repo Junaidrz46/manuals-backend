@@ -1,6 +1,7 @@
 package se.agilecourse.services;
 
 import se.agilecourse.exceptions.CompanyIdMismatchException;
+import se.agilecourse.exceptions.MaterialNotFoundException;
 import se.agilecourse.model.*;
 
 import java.util.List;
@@ -30,5 +31,6 @@ public interface CategoryServices {
     List<Product> getProductsByName(String productName);
     Optional<Company> getCompanyById(String CompanyId);
     Optional<Category> getCategoryById(String categoryId);
+    Material deleteMaterialById(String Id);
 
 }

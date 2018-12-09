@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.agilecourse.exceptions.CategoryNotFoundException;
 import se.agilecourse.exceptions.CompanyIdMismatchException;
+import se.agilecourse.exceptions.MaterialNotFoundException;
 import se.agilecourse.model.*;
 import se.agilecourse.repository.*;
 import se.agilecourse.repository.CategoryRepository;
@@ -160,6 +161,9 @@ public class CategoryServicesImpl implements CategoryServices {
     public Optional<Category> getCategoryById(String categoryId){
         return categoryRepository.findById(categoryId);
     }
+
+
+
     @Override
     public List<Product> getProductsByProductNo(String productNo) {
         return productRepository.findByProductNumber(productNo);
@@ -175,7 +179,15 @@ public class CategoryServicesImpl implements CategoryServices {
         return productRepository.findByName(productName);
     }
 
-
+    @Override
+    public Material deleteMaterialById(String Id) throws MaterialNotFoundException{
+        Optional<Material> material = materialRepository.findById(Id);
+        if(!material.isPresent()){
+            throw new MaterialNotFoundException("Material with given Id not found");
+        }
+        materialRepository.delete(material.get());
+        return material.get();
+    }
 
 
 }
