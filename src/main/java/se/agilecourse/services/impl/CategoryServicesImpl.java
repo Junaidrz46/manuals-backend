@@ -69,9 +69,7 @@ public class CategoryServicesImpl implements CategoryServices {
 
     @Override
     public Company saveCompany(Company company) {
-
         return companyRepository.save(company);
-
     }
 
     @Override
@@ -119,6 +117,7 @@ public class CategoryServicesImpl implements CategoryServices {
     public List<Material> getAllMaterials() {
         return materialRepository.findAll();
     }
+
     public Product saveProductByCategoryAndCompany(String categoryId,String companyId,Product product)
             throws CompanyIdMismatchException {
 

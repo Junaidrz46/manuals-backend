@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import se.agilecourse.model.Material;
+import se.agilecourse.model.Product;
 import se.agilecourse.services.CategoryServices;
 import se.agilecourse.services.FileStorageService;
 
@@ -21,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -48,7 +50,15 @@ public class FileController {
         material.setFileDownloadUri(fileDownloadUri);
         material.setFileType(file.getContentType());
         material.setSize(file.getSize());
-        categoryServices.saveMaterialByProduct(material,productId);
+
+        Material savedMaterial = categoryServices.saveMaterialByProduct(material,productId);
+
+        // get product instance for this material
+        // using get product by id
+        Optional<Product> product = categoryServices.getProductById(productId);
+        product.ifPresent(product1 -> {
+            product1.setProfileImage(savedMaterial.getId());
+        });
         return material;
     }
 
