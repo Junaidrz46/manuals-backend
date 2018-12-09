@@ -6,11 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.agilecourse.exceptions.CategoryNotFoundException;
 import se.agilecourse.exceptions.CompanyIdMismatchException;
-import se.agilecourse.model.Company;
-import se.agilecourse.model.Category;
-import se.agilecourse.model.Material;
-import se.agilecourse.model.Product;
+import se.agilecourse.model.*;
 import se.agilecourse.repository.*;
+import se.agilecourse.repository.CategoryRepository;
+import se.agilecourse.repository.CompanyRepository;
+import se.agilecourse.repository.MaterialRepository;
+import se.agilecourse.repository.ProductRepository;
 import se.agilecourse.services.CategoryServices;
 
 import java.util.ArrayList;
@@ -49,30 +50,28 @@ public class CategoryServicesImpl implements CategoryServices {
         return categoryRepository.save(category);
     }
 
-
     @Override
-    public Product saveProductByCategory(Product product , String categoryId) {
-        Product saveProduct=null;
-        try {
-            product.setCategoryId(categoryId);
-            saveProduct = productRepository.save(product);
-            Optional<Category> category = categoryRepository.findById(categoryId);
-            List<Product> productslist = category.get().getProducts();
-            if (productslist == null) {
-                productslist = new ArrayList<Product>();
-            }
-            productslist.add(saveProduct);
-            category.get().setProducts(productslist);
-            categoryRepository.save(category.get());
-        }catch(Exception e){
-            logger.error(e.getMessage());
+    public List<ProductMini> getProductsByCategoryId(String cid) {
+        List<Product> list=categoryRepository.findProductsByCategoryId(cid);
+        List<ProductMini> listMini=new ArrayList<>();
+        for(Product product:list){
+            String id=product.getId();
+            String name=product.getName();
+            ProductMini productMini=new ProductMini();
+            productMini.setId(id);
+            productMini.setName(name);
+            listMini.add(productMini);
         }
-        return saveProduct;
+        return listMini;
     }
 
+
+
     @Override
-    public Product saveProduct(Product product) {
-        return null;
+    public Company saveCompany(Company company) {
+
+        return companyRepository.save(company);
+
     }
 
     @Override
@@ -120,28 +119,6 @@ public class CategoryServicesImpl implements CategoryServices {
     public List<Material> getAllMaterials() {
         return materialRepository.findAll();
     }
-
-    @Override
-    public List<Product> getProductsByCompanyId(String companyId) {
-        return null; //productRepository.find
-    }
-
-    public List<Company> getBrandsByCategory(String categoryID){
-        return categoryRepository.fidnBrandByCategoryId(categoryID);
-    }
-
-
-
-    @Override
-    public List<Product> getProductsByCategoryid(String cid) {
-        return null;
-    }
-
-    @Override
-    public Company saveCompany(Company company) {
-        return companyRepository.save(company);
-    }
-
     public Product saveProductByCategoryAndCompany(String categoryId,String companyId,Product product)
             throws CompanyIdMismatchException {
 
@@ -183,8 +160,22 @@ public class CategoryServicesImpl implements CategoryServices {
     public Optional<Category> getCategoryById(String categoryId){
         return categoryRepository.findById(categoryId);
     }
+    @Override
+    public List<Product> getProductsByProductNo(String productNo) {
+        return productRepository.findByProductNumber(productNo);
+    }
+
+    @Override
+    public List<Product> getProductsByCompanyId(String companyId) {
+        return productRepository.findByCompanyId(companyId);
+    }
+
+    @Override
+    public List<Product> getProductsByName(String productName) {
+        return productRepository.findByName(productName);
+    }
+
 
 
 
 }
-

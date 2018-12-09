@@ -10,6 +10,15 @@ public class WrapperProduct {
    String categoryId;
    String companyId;
    Product product;
+   Company company;
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void SetCompany(Company company) {
+        this.company = company;
+    }
 
     public String getCategoryId() {
         return categoryId;
