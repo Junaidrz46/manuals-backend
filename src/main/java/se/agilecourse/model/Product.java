@@ -22,7 +22,6 @@ public class Product {
     @CascadeSave
     private List<Material> materials;
 
-
     public String getCompanyId() {
         return companyId;
     }

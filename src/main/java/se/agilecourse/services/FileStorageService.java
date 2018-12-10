@@ -17,6 +17,7 @@ import se.agilecourse.exceptions.MyFileNotFoundException;
 
 
 import javax.annotation.PostConstruct;
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
@@ -77,4 +78,23 @@ public class FileStorageService {
             throw new MyFileNotFoundException("File not found " + fileName, ex);
         }
     }
+
+    public boolean deleteUploadedFile(String filepath){
+        String filname = filepath.substring(filepath.lastIndexOf("/") + 1);
+        logger.info("Deleting file : "+this.fileStorageLocation+filname);
+        try{
+            File file = new File(this.fileStorageLocation+filname);
+            if(file.delete()){
+                logger.info(file.getName() + " is deleted!");
+                return true;
+            }else{
+                logger.info("Delete operation is failed.");
+                return false;
+            }
+        }catch(Exception e){
+            logger.error(e.getMessage());
+        }
+        return true;
+    }
+
 }

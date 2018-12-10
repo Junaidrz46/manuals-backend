@@ -105,4 +105,11 @@ public class FileController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
                 .body(resource);
     }
+
+    @DeleteMapping("/deleteMaterialById")
+    public Material detelMaterial(@RequestParam("MaterialId") String materialId){
+        Material material = categoryServices.deleteMaterialById(materialId);
+        fileStorageService.deleteUploadedFile(material.getFileDownloadUri());
+        return material;
+    }
 }
