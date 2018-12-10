@@ -185,4 +185,11 @@ public class CategoryServicesImpl implements CategoryServices {
         return material;
     }
 
+    public Material updateMaterialDescrption(String materialId , String descritpion){
+        Optional<Material> material = materialRepository.findById(materialId);
+        material.get().setDescription(descritpion);
+        materialRepository.save(material.get());
+        return  material.get();
+    }
+
 }

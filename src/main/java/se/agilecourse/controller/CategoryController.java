@@ -101,8 +101,11 @@ public class CategoryController {
         return categoryServices.getCategoryById(categoryId).get();
     }
 
-
-
+    @RequestMapping(value="/updateMaterialDescription",method = RequestMethod.GET)
+    public Material updateMaterialDescription(@RequestParam("materialId") String materialId,
+                                              @RequestParam("description") String description){
+        return categoryServices.updateMaterialDescrption(materialId,description);
+    }
 
 
 }
