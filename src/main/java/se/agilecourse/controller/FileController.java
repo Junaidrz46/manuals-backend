@@ -84,7 +84,7 @@ public class FileController {
                 .body(resource);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/deleteMaterialById")
     public Material detelMaterial(@RequestParam("MaterialId") String materialId){
         Material material = categoryServices.deleteMaterialById(materialId);
         fileStorageService.deleteUploadedFile(material.getFileDownloadUri());

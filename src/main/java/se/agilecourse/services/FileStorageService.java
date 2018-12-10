@@ -95,8 +95,4 @@ public class FileStorageService {
         return true;
     }
 
-    public static void main(String args[]){
-        String str="http://localhost:8888/rest/file/downloadFile/iphon.jpg";
-        System.out.println(str.substring(str.lastIndexOf("/") + 1));
-    }
 }
