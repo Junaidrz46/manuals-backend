@@ -175,7 +175,13 @@ public class CategoryServicesImpl implements CategoryServices {
         return productRepository.findByName(productName);
     }
 
+    @Override
+    public List<Product> getProductsByThree(String condition) {//combined productNumber,
+        //companyId
+        //name
 
+        return productRepository.findAll(condition);
+    }
 
 
 }

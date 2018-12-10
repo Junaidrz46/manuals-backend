@@ -89,6 +89,10 @@ public class CategoryController {
     public List<Product> getProductsByProductName(@RequestParam("productName") String productName){
         return categoryServices.getProductsByName(productName);
     }
+    @RequestMapping(value="/findProductsByCombinedCondition",method = RequestMethod.GET)
+    public List<Product> getProductsByThree(@RequestParam("condition") String condition){
+        return categoryServices.getProductsByThree(condition);
+    }
 
 
     @RequestMapping(value="/findCompanyById",method = RequestMethod.GET)
