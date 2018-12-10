@@ -28,7 +28,9 @@ import java.nio.file.StandardCopyOption;
 public class FileStorageService {
 
     private static final Logger logger = LoggerFactory.getLogger(FileStorageService.class);
+
     private final Path fileStorageLocation;
+
 
     @Autowired
     public FileStorageService(FileStorageProperties fileStorageProperties) {

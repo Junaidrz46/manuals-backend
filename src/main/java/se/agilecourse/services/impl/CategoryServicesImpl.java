@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import se.agilecourse.exceptions.CategoryNotFoundException;
 import se.agilecourse.exceptions.CompanyIdMismatchException;
 import se.agilecourse.model.*;
@@ -14,6 +15,7 @@ import se.agilecourse.repository.MaterialRepository;
 import se.agilecourse.repository.ProductRepository;
 import se.agilecourse.services.CategoryServices;
 
+import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -69,9 +71,7 @@ public class CategoryServicesImpl implements CategoryServices {
 
     @Override
     public Company saveCompany(Company company) {
-
         return companyRepository.save(company);
-
     }
 
     @Override
@@ -119,6 +119,7 @@ public class CategoryServicesImpl implements CategoryServices {
     public List<Material> getAllMaterials() {
         return materialRepository.findAll();
     }
+
     public Product saveProductByCategoryAndCompany(String categoryId,String companyId,Product product)
             throws CompanyIdMismatchException {
 
@@ -175,6 +176,21 @@ public class CategoryServicesImpl implements CategoryServices {
         return productRepository.findByName(productName);
     }
 
+
+    public Material saveMaterialAsProfileImage(String productId, Material material){
+        materialRepository.save(material);
+        Optional<Product> savedProduct = productRepository.findById(productId);
+        savedProduct.get().setProfileImage(material.getId());
+        productRepository.save(savedProduct.get());
+        return material;
+    }
+
+    public Material updateMaterialDescrption(String materialId , String descritpion){
+        Optional<Material> material = materialRepository.findById(materialId);
+        material.get().setDescription(descritpion);
+        materialRepository.save(material.get());
+        return  material.get();
+    }
     @Override
     public List<Product> getProductsByThree(String condition) {//combined productNumber,
         //companyId
