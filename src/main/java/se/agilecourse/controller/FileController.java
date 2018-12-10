@@ -51,15 +51,27 @@ public class FileController {
         material.setFileType(file.getContentType());
         material.setSize(file.getSize());
 
+        return categoryServices.saveMaterialByProduct(material,productId);
+    }
+
+    @PostMapping("/uploadProfileImage")
+    public Material uploadProfileImage(@RequestParam("ProductId") String productId,
+                               @RequestParam("file") MultipartFile file){
+        String fileName = fileStorageService.storeFile(file);
+        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/rest/file/downloadFile/")
+                .path(fileName)
+                .toUriString();
+        Material material = new Material();
+        material.setFileName(fileName);
+        material.setFileDownloadUri(fileDownloadUri);
+        material.setFileType(file.getContentType());
+        material.setSize(file.getSize());
+
         Material savedMaterial = categoryServices.saveMaterialByProduct(material,productId);
 
-        // get product instance for this material
-        // using get product by id
-        Optional<Product> product = categoryServices.getProductById(productId);
-        product.ifPresent(product1 -> {
-            product1.setProfileImage(savedMaterial.getId());
-        });
-        return material;
+        return  categoryServices.saveMaterialAsProfileImage(productId,material);
+
     }
 
     @PostMapping("/uploadMultipleFiles")
