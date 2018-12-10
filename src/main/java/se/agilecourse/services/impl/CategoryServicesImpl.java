@@ -191,5 +191,13 @@ public class CategoryServicesImpl implements CategoryServices {
         materialRepository.save(material.get());
         return  material.get();
     }
+    @Override
+    public List<Product> getProductsByThree(String condition) {//combined productNumber,
+        //companyId
+        //name
+
+        return productRepository.findAll(condition);
+    }
+
 
 }

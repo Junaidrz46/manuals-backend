@@ -28,6 +28,8 @@ public interface CategoryServices {
     List<Product> getProductsByProductNo(String productNo);
     List<Product> getProductsByCompanyId(String companyId);
     List<Product> getProductsByName(String productName);
+    List<Product> getProductsByThree(String condition);
+
     Optional<Company> getCompanyById(String CompanyId);
     Optional<Category> getCategoryById(String categoryId);
     Material saveMaterialAsProfileImage(String productId, Material material);

@@ -17,6 +17,7 @@ public class Product {
     private String categoryId;
     private String profileImage;
 
+
     @DBRef
     @CascadeSave
     private List<Material> materials;
