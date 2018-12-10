@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.agilecourse.exceptions.CategoryNotFoundException;
 import se.agilecourse.exceptions.CompanyIdMismatchException;
+import se.agilecourse.exceptions.MaterialNotFoundException;
 import se.agilecourse.model.*;
 import se.agilecourse.repository.*;
 import se.agilecourse.repository.CategoryRepository;
@@ -176,7 +177,7 @@ public class CategoryServicesImpl implements CategoryServices {
     }
 
     @Override
-    public Material deleteMaterialById(String Id) throws MaterialNotFoundException{
+    public Material deleteMaterialById(String Id) throws MaterialNotFoundException {
         Optional<Material> material = materialRepository.findById(Id);
         if(!material.isPresent()){
             throw new MaterialNotFoundException("Material with given Id not found");
@@ -192,15 +193,7 @@ public class CategoryServicesImpl implements CategoryServices {
         productRepository.save(savedProduct.get());
         return material;
     }
-    public Material saveMaterialAsProfileImage(String productId, Material material){
-        materialRepository.save(material);
-        Optional<Product> savedProduct = productRepository.findById(productId);
-        savedProduct.get().setProfileImage(material.getId());
-        productRepository.save(savedProduct.get());
-        return material;
-    }
-
-    public Material updateMaterialDescrption(String materialId , String descritpion){
+   public Material updateMaterialDescrption(String materialId , String descritpion){
         Optional<Material> material = materialRepository.findById(materialId);
         material.get().setDescription(descritpion);
         materialRepository.save(material.get());
@@ -214,11 +207,6 @@ public class CategoryServicesImpl implements CategoryServices {
         return productRepository.findAll(condition);
     }
 
-    public Material updateMaterialDescrption(String materialId , String descritpion){
-        Optional<Material> material = materialRepository.findById(materialId);
-        material.get().setDescription(descritpion);
-        materialRepository.save(material.get());
-        return  material.get();
-    }
+
 
 }

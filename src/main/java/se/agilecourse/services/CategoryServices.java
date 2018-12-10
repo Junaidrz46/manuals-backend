@@ -33,8 +33,6 @@ public interface CategoryServices {
 
     Optional<Company> getCompanyById(String CompanyId);
     Optional<Category> getCategoryById(String categoryId);
-    Material saveMaterialAsProfileImage(String productId, Material material);
-    Material updateMaterialDescrption(String materialId , String Descritpion);
     Material deleteMaterialById(String Id);
     Material saveMaterialAsProfileImage(String productId, Material material);
     Material updateMaterialDescrption(String materialId , String Descritpion);
