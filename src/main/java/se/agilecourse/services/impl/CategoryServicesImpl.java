@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import se.agilecourse.exceptions.CategoryNotFoundException;
 import se.agilecourse.exceptions.CompanyIdMismatchException;
 import se.agilecourse.exceptions.MaterialNotFoundException;
@@ -15,6 +16,7 @@ import se.agilecourse.repository.MaterialRepository;
 import se.agilecourse.repository.ProductRepository;
 import se.agilecourse.services.CategoryServices;
 
+import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -161,9 +163,6 @@ public class CategoryServicesImpl implements CategoryServices {
     public Optional<Category> getCategoryById(String categoryId){
         return categoryRepository.findById(categoryId);
     }
-
-
-
     @Override
     public List<Product> getProductsByProductNo(String productNo) {
         return productRepository.findByProductNumber(productNo);
@@ -189,5 +188,19 @@ public class CategoryServicesImpl implements CategoryServices {
         return material.get();
     }
 
+    public Material saveMaterialAsProfileImage(String productId, Material material){
+        materialRepository.save(material);
+        Optional<Product> savedProduct = productRepository.findById(productId);
+        savedProduct.get().setProfileImage(material.getId());
+        productRepository.save(savedProduct.get());
+        return material;
+    }
+
+    public Material updateMaterialDescrption(String materialId , String descritpion){
+        Optional<Material> material = materialRepository.findById(materialId);
+        material.get().setDescription(descritpion);
+        materialRepository.save(material.get());
+        return  material.get();
+    }
 
 }

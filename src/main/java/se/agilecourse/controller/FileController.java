@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import se.agilecourse.model.Material;
+import se.agilecourse.model.Product;
 import se.agilecourse.services.CategoryServices;
 import se.agilecourse.services.FileStorageService;
 
@@ -21,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -48,8 +50,28 @@ public class FileController {
         material.setFileDownloadUri(fileDownloadUri);
         material.setFileType(file.getContentType());
         material.setSize(file.getSize());
-        categoryServices.saveMaterialByProduct(material,productId);
-        return material;
+
+        return categoryServices.saveMaterialByProduct(material,productId);
+    }
+
+    @PostMapping("/uploadProfileImage")
+    public Material uploadProfileImage(@RequestParam("ProductId") String productId,
+                               @RequestParam("file") MultipartFile file){
+        String fileName = fileStorageService.storeFile(file);
+        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/rest/file/downloadFile/")
+                .path(fileName)
+                .toUriString();
+        Material material = new Material();
+        material.setFileName(fileName);
+        material.setFileDownloadUri(fileDownloadUri);
+        material.setFileType(file.getContentType());
+        material.setSize(file.getSize());
+
+        Material savedMaterial = categoryServices.saveMaterialByProduct(material,productId);
+
+        return  categoryServices.saveMaterialAsProfileImage(productId,material);
+
     }
 
     @PostMapping("/uploadMultipleFiles")
