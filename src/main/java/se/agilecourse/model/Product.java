@@ -15,12 +15,13 @@ public class Product {
     private String description;
     private String companyId;
     private String categoryId;
-
+    private String profileImage;
 
 
     @DBRef
     @CascadeSave
     private List<Material> materials;
+
 
     public String getCompanyId() {
         return companyId;
@@ -76,5 +77,13 @@ public class Product {
 
     public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
     }
 }
