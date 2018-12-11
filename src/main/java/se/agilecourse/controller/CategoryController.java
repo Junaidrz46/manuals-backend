@@ -19,7 +19,6 @@ public class CategoryController {
     @Autowired
     CategoryServices categoryServices;
 
-
     @GetMapping("/findAllCategories")
     public List<Category> getAll() {
         logger.debug("Get users from all : "+categoryServices.findAllCategories());
@@ -36,22 +35,16 @@ public class CategoryController {
         return categoryServices.saveCompany(company);
     }
 
-
-
     @PostMapping("/saveProductByCategroyAndCompany")
     public Product saveProductByCategoryAndCompany(@RequestBody WrapperProduct wrapperProduct){
         return categoryServices.saveProductByCategoryAndCompany(wrapperProduct.getCategoryId(),
                 wrapperProduct.getCompanyId(),wrapperProduct.getProduct());
     }
 
-
-
     @PostMapping("/saveMaterialByProductId")
     public Material saveMaterial(@RequestBody WrapperMaterial wrapperMaterial){
         return categoryServices.saveMaterialByProduct(wrapperMaterial.getMaterial(),wrapperMaterial.getProductId());
     }
-
-
 
     @RequestMapping(value="/findMaterialByProductId",method = RequestMethod.GET)
     public List<Material> getMaterialsByProductId(@RequestParam("ProductId") String productId){
@@ -94,7 +87,6 @@ public class CategoryController {
         return categoryServices.getProductsByThree(condition);
     }
 
-
     @RequestMapping(value="/findCompanyById",method = RequestMethod.GET)
     public Company getCompanyById(@RequestParam("CompanyId") String companyId){
         return categoryServices.getCompanyById(companyId).get();
@@ -111,5 +103,9 @@ public class CategoryController {
         return categoryServices.updateMaterialDescrption(materialId,description);
     }
 
+    @RequestMapping(value="/findMaterialById",method = RequestMethod.GET)
+    public Material findMaterialById(@RequestParam("materialId") String materialId){
+       return categoryServices.getMaterialById(materialId).get();
+    }
 
 }

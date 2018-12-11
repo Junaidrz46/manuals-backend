@@ -10,6 +10,7 @@ public class Material {
     private String description;
     private String fileName;
     private String fileDownloadUri;
+    private String fileIcon;
     private String fileType;
     private long size;
 
@@ -67,5 +68,13 @@ public class Material {
 
     public void setSize(long size) {
         this.size = size;
+    }
+
+    public String getFileIcon() {
+        return fileIcon;
+    }
+
+    public void setFileIcon(String fileIcon) {
+        this.fileIcon = fileIcon;
     }
 }
