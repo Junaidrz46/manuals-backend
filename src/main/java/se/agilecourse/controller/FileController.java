@@ -57,7 +57,9 @@ public class FileController {
             material.setFileIcon("http://localhost:8888/rest/file/downloadFile/pdfIcon.jpeg");
         }else if(file.getContentType().equalsIgnoreCase("image/png")){
             material.setFileIcon("http://localhost:8888/rest/file/downloadFile/PngIcon.png");
-        }else if(file.getContentType().equalsIgnoreCase("image/png")){
+        }else if(file.getContentType().equalsIgnoreCase("image/jpeg")){
+            material.setFileIcon("http://localhost:8888/rest/file/downloadFile/jpgIcon.png");
+        }else if(file.getContentType().equalsIgnoreCase("image/jpg")){
             material.setFileIcon("http://localhost:8888/rest/file/downloadFile/jpgIcon.png");
         }
         return categoryServices.saveMaterialByProduct(material,productId);
