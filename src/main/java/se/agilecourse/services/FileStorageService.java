@@ -81,20 +81,38 @@ public class FileStorageService {
 
     public boolean deleteUploadedFile(String filepath){
         String filname = filepath.substring(filepath.lastIndexOf("/") + 1);
-        logger.info("Deleting file : "+this.fileStorageLocation+filname);
+        logger.debug("File store location :"+this.fileStorageLocation);
+        logger.debug("Deleting file : "+this.fileStorageLocation+File.separator+filname);
         try{
-            File file = new File(this.fileStorageLocation+filname);
-            if(file.delete()){
-                logger.info(file.getName() + " is deleted!");
-                return true;
-            }else{
-                logger.info("Delete operation is failed.");
-                return false;
+            File file = new File(this.fileStorageLocation+File.separator+filname);
+            logger.debug("file Absolute path  : "+file.getAbsolutePath());
+            String deletefilepath = file.getAbsolutePath();
+            deletefilepath = deletefilepath.replaceAll("/./","/");
+            File filetoDeleted = new File(deletefilepath);
+            logger.debug("fixed path : "+filetoDeleted.getAbsolutePath());
+
+
+            if(!filetoDeleted.canWrite()){
+                logger.info("No write permissions :");
+            }else {
+                if (filetoDeleted.exists()) {
+                    if (filetoDeleted.delete()) {
+                        logger.info(filetoDeleted.getName() + " is deleted!");
+                        return true;
+                    } else {
+                        logger.debug("Delete operation is failed.");
+                        return false;
+                    }
+                } else {
+                    logger.debug(filetoDeleted.getName() + " : file not present");
+                }
             }
         }catch(Exception e){
             logger.error(e.getMessage());
         }
         return true;
     }
+
+
 
 }
