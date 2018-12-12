@@ -664,7 +664,7 @@
       "response": []
     },
     {
-      "name": "http://localhost:8888/rest/file/deleteMaterialById?MaterialId=5c0e3aac6fb6012574f48add",
+      "name": "deleteMaterialById?MaterialId=5c0e3aac6fb6012574f48add",
       "request": {
         "method": "DELETE",
         "header": [],
@@ -695,7 +695,7 @@
       "response": []
     },
     {
-      "name": "http://localhost:8888/rest/categories/updateMaterialDescription?materialId=5c07cee76fb60113db99ab0b&description=Test Description or new description ",
+      "name": "updateMaterialDescription?materialId=5c07cee76fb60113db99ab0b&description=Test Description or new description ",
       "request": {
         "method": "GET",
         "header": [],
@@ -759,7 +759,37 @@
         }
       },
       "response": []
-    }
+    },
+		{
+			"name": "findProductsByCombinedCondition?condition=5c0547aef969acaeeef25988",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8888/rest/categories/findProductsByCombinedCondition?condition=5c0547aef969acaeeef25988",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"categories",
+						"findProductsByCombinedCondition"
+					],
+					"query": [
+						{
+							"key": "condition",
+							"value": "5c0547aef969acaeeef25988"
+						}
+					]
+				}
+			},
+			"response": []
+		}
   ],
   "event": [
     {
