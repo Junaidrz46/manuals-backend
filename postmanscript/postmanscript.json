@@ -1,0 +1,786 @@
+{
+  "info": {
+    "_postman_id": "4d083a9e-3cfa-4c85-8e2c-83befe841a93",
+    "name": "manuals-backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\":\"testRepresentative\",\"password\":\"2testPassword\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/rest/users/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "rest",
+            "users",
+            "login"
+          ]
+        },
+        "description": "Login"
+      },
+      "response": []
+    },
+    {
+      "name": "saveCompanyRepresentative",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"firstname\": \"3tfname\",\n    \"lastName\": \"3tlname\",\n    \"username\": \"3testRepresentative\",\n    \"password\": \"3testPassword\",\n    \"emailaddress\": \"3testMail@testdomain.com\",\n    \"companyId\": \"5c05b6fc6fb6010a5b532d57\"\n    \n}"
+        },
+        "url": {
+          "raw": "http://localhost:8888/rest/users/saveCompanyRepresentative",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8888",
+          "path": [
+            "rest",
+            "users",
+            "saveCompanyRepresentative"
+          ]
+        },
+        "description": "Save companyRepresentative"
+      },
+      "response": []
+    },
+    {
+      "name": "saveAdminUser",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\":\"2testAdmin\",\"password\":\"2testPassword\",\"emailaddress\":\"2testMail@testdomain.com\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/rest/users/saveAdminUser",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "rest",
+            "users",
+            "saveAdminUser"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "findUserByUserName",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8080/rest/users/findUserByUserName?userName=testRepresentative",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "rest",
+            "users",
+            "findUserByUserName"
+          ],
+          "query": [
+            {
+              "key": "userName",
+              "value": "testRepresentative"
+            }
+          ]
+        },
+        "description": "Find User by UserName"
+      },
+      "response": []
+    },
+    {
+      "name": "findUsersByRole",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8888/rest/users/findUsersByRole?role=representative",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8888",
+          "path": [
+            "rest",
+            "users",
+            "findUsersByRole"
+          ],
+          "query": [
+            {
+              "key": "role",
+              "value": "representative"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "findAllUsers",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Origin",
+            "value": "http://localhost:8888/",
+            "type": "text"
+          },
+          {
+            "key": "Access-Control-Request-Headersaccess-control-allow-originAccess-Control-Request-Method",
+            "value": "GET",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8888/rest/users/findAllUsers",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8888",
+          "path": [
+            "rest",
+            "users",
+            "findAllUsers"
+          ]
+        },
+        "description": "Find all users in database"
+      },
+      "response": []
+    },
+    {
+      "name": "findUserByEmailAddress",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8080/rest/users/findUserByEmailAddress?emailAddress=testMail@testdomain.com",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "rest",
+            "users",
+            "findUserByEmailAddress"
+          ],
+          "query": [
+            {
+              "key": "emailAddress",
+              "value": "testMail@testdomain.com"
+            }
+          ]
+        },
+        "description": "Find User By Email address"
+      },
+      "response": []
+    },
+    {
+      "name": "saveConsumer",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\":\"testUser\",\"password\":\"userpassword\",\"companyname\":\"\",\"emailaddress\":\"testUser@testdomain.com\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8888/rest/users/saveConsumer",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8888",
+          "path": [
+            "rest",
+            "users",
+            "saveConsumer"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "saveCategory",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{  \n\t\"name\" : \"cate1\",\n    \"description\" : \"cate1 description\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8888/rest/categories/saveCategory",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8888",
+          "path": [
+            "rest",
+            "categories",
+            "saveCategory"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "uploadFile",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "multipart/form-data",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "ProductId",
+              "value": "5c054d892b18d70de06daf2f",
+              "type": "text"
+            },
+            {
+              "key": "Description",
+              "value": "Test Description to be added into ",
+              "type": "text"
+            },
+            {
+              "key": "file",
+              "type": "file",
+              "src": ""
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8888/rest/file/uploadFile",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8888",
+          "path": [
+            "rest",
+            "file",
+            "uploadFile"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "saveMaterialByProductId",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"productId\":\"5bf9bf07b5a1b0030083d2ad\",\n\t\"material\":{\n    \t\"name\" : \"material2\",\n    \t\"description\" : \"material2 description\",\n    \t\"location\" : \"location2\"\n\t}\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8888/rest/categories/saveMaterialByProductId",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8888",
+          "path": [
+            "rest",
+            "categories",
+            "saveMaterialByProductId"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "categories/findAllProducts",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8888/rest/categories/findAllProducts",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8888",
+          "path": [
+            "rest",
+            "categories",
+            "findAllProducts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "categories/findProductById",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8888/rest/categories/findProductById?ProductId=5c07c9015dea70acb0676830",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8888",
+          "path": [
+            "rest",
+            "categories",
+            "findProductById"
+          ],
+          "query": [
+            {
+              "key": "ProductId",
+              "value": "5c07c9015dea70acb0676830"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "saveProductByCategroyAndCompany",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"categoryId\":\"5c05b6576fb6010a5b532d56\",\n\t\"companyId\":\"5c05b6576fb6010a5b532d57\",\n\t\"product\":{\n    \t\"name\": \"product1\",\n    \t\"description\": \"product1 description\",\n    \t\"productNumber\":\"1234abc\",\n    \t\"companyId\":\"5c05b6576fb6010a5b532d57\"\n    }\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8888/rest/categories//saveProductByCategroyAndCompany",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8888",
+          "path": [
+            "rest",
+            "categories",
+            "",
+            "saveProductByCategroyAndCompany"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "findAllCategories",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8888/rest/categories/findAllCategories",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8888",
+          "path": [
+            "rest",
+            "categories",
+            "findAllCategories"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "findAllMaterials",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8888/rest/categories/findAllMaterials",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8888",
+          "path": [
+            "rest",
+            "categories",
+            "findAllMaterials"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "saveCompany",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"name\": \"company 1\",\n    \"description\": \"First Company or Company 1\"\t\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8888/rest/categories/saveCompany",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8888",
+          "path": [
+            "rest",
+            "categories",
+            "saveCompany"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "findCompanyById",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8888/rest/categories/findCompanyById?CompanyId=5c05b6fc6fb6010a5b532d57",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8888",
+          "path": [
+            "rest",
+            "categories",
+            "findCompanyById"
+          ],
+          "query": [
+            {
+              "key": "CompanyId",
+              "value": "5c05b6fc6fb6010a5b532d57"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "findCategoryById",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8888/rest/categories/findCategoryById?CategoryId=5c05b6576fb6010a5b532d56",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8888",
+          "path": [
+            "rest",
+            "categories",
+            "findCategoryById"
+          ],
+          "query": [
+            {
+              "key": "CategoryId",
+              "value": "5c05b6576fb6010a5b532d56"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8888/rest/file/uploadProfileImage",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "ProductId",
+              "value": "5c07c9015dea70acb0676830",
+              "type": "text"
+            },
+            {
+              "key": "file",
+              "type": "file",
+              "src": ""
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8888/rest/file/uploadProfileImage",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8888",
+          "path": [
+            "rest",
+            "file",
+            "uploadProfileImage"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8888/rest/file/deleteMaterialById?MaterialId=5c0e3aac6fb6012574f48add",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8888/rest/file/deleteMaterialById?MaterialId=5c0e3aac6fb6012574f48add",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8888",
+          "path": [
+            "rest",
+            "file",
+            "deleteMaterialById"
+          ],
+          "query": [
+            {
+              "key": "MaterialId",
+              "value": "5c0e3aac6fb6012574f48add"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8888/rest/categories/updateMaterialDescription?materialId=5c07cee76fb60113db99ab0b&description=Test Description or new description ",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8888/rest/categories/updateMaterialDescription?materialId=5c07cee76fb60113db99ab0b&description=Test Description or new description",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8888",
+          "path": [
+            "rest",
+            "categories",
+            "updateMaterialDescription"
+          ],
+          "query": [
+            {
+              "key": "materialId",
+              "value": "5c07cee76fb60113db99ab0b"
+            },
+            {
+              "key": "description",
+              "value": "Test Description or new description "
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "findMaterialById",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8888/rest/categories/findMaterialById?materialId=5c0e3d756fb60125a2a0569a",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8888",
+          "path": [
+            "rest",
+            "categories",
+            "findMaterialById"
+          ],
+          "query": [
+            {
+              "key": "materialId",
+              "value": "5c0e3d756fb60125a2a0569a"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "1375f271-5e76-433e-85cb-ef86dba46924",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "1d63a8b2-9c19-42ad-855a-9f59fb18e1f7",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}
