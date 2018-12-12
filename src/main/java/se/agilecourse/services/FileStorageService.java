@@ -113,9 +113,6 @@ public class FileStorageService {
         return true;
     }
 
-    /*public static void main(String[] args) {
-        String str = "/Users/junaid/Public/CodeBase/AgileProject/manuals-backend/./uploads/PngIcon.png";
-        System.out.println(str.replaceAll("/./","/"));
-    }*/
+
 
 }
