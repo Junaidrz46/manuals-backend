@@ -30,6 +30,9 @@ public class UserLikedProudctServiceImpl implements UserLikedProudctsService{
     @Override
     public User saveLikedProductByUserId(String productId, String userId) {
         Optional<User> user = userRepository.findById(userId);
+
+
+
         List<String> productslList = userLikedProudctsRepository.findByUserId(userId);
         if(productslList == null){
             productslList = new ArrayList<>();
