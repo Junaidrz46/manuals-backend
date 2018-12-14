@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import se.agilecourse.model.LoginModel;
 import se.agilecourse.model.User;
+import se.agilecourse.repository.UserRepository;
 import se.agilecourse.services.UserServices;
 
 import java.util.List;
@@ -68,6 +69,16 @@ public class UserController {
         return userServices.saveConsumer(user);
     }
 
+
+    @RequestMapping(value = "/findUsersById" ,method = RequestMethod.GET)
+    public User findUserById(@RequestParam("userId") String userId){
+        return userServices.getUserById(userId).get();
+    }
+
+    // @RequestMapping(value="/findMaterialById",method = RequestMethod.GET)
+    // public Material findMaterialById(@RequestParam("materialId") String materialId){
+    //    return categoryServices.getMaterialById(materialId).get();
+    // }
 
 
 }

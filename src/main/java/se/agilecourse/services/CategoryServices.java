@@ -15,7 +15,6 @@ public interface CategoryServices {
     Company saveCompany(Company company);
     Product saveProductByCategoryAndCompany(String categoryId,String companyId,Product product) throws CompanyIdMismatchException;
 
-
     List<ProductMini> getProductsByCategoryId(String categoryId);// no need to change
     Optional<Product> getProductById(String Id);
 

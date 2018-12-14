@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import se.agilecourse.model.LoginModel;
 import se.agilecourse.model.User;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public interface UserServices {
@@ -16,4 +17,7 @@ public interface UserServices {
     public User saveCompanyRepresentative(User user);
     public LoginModel loginUser(String username,String password);
     public User saveConsumer(User user);
+
+    Optional<User> getUserById(String id);
+
 }

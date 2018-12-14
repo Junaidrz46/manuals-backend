@@ -1,6 +1,7 @@
 package se.agilecourse.services.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -85,6 +86,9 @@ public class UserServicesImpl implements UserServices {
     }
 
 
-
+    @Override
+    public Optional<User> getUserById(String userId) {
+        return userRepository.findById(userId);
+    }
 
 }
