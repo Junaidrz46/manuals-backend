@@ -6,12 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import se.agilecourse.model.LoginModel;
 import se.agilecourse.model.User;
+import se.agilecourse.model.UserRatedMaterials;
 import se.agilecourse.model.UserlikedProducts;
+import se.agilecourse.services.UserLikedProudctsService;
+import se.agilecourse.services.UserRatedMaterialsService;
 import se.agilecourse.services.UserServices;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:8888/", maxAge = 3600)
+//@CrossOrigin(origins = "http://localhost:8888/", maxAge = 3600)
 @RestController()
 @RequestMapping("/rest/users")
 public class UserController {
@@ -20,6 +23,13 @@ public class UserController {
 
     @Autowired
     UserServices userServices;
+
+    @Autowired
+    UserRatedMaterialsService userRatedMaterialsService;
+
+    @Autowired
+    UserLikedProudctsService userLikedProudctsService;
+
 
     @RequestMapping("/hello")
     public String helloGradle() {
@@ -69,9 +79,24 @@ public class UserController {
         return userServices.saveConsumer(user);
     }
 
-    @PostMapping("/saveProductsListByUserId")
+    @RequestMapping(value = "/findLikedProductsByUserId", params = "userId", method = RequestMethod.GET)
+    public List<String> findLikedProductsByUserId(@RequestParam("userId") String userId) {
+        return userLikedProudctsService.findProductsByUserId(userId);
+    }
+
+    @RequestMapping(value = "/findRatedMaterialByUserId", params = "userId", method = RequestMethod.GET)
+    public List<String> findRatedMaterialByUserId(@RequestParam("userId") String userId) {
+        return userRatedMaterialsService.findMaterialsByUserId(userId);
+    }
+
+    @PostMapping("/saveLikedProductsByUserId")
     User saveProductsListByUserId(@RequestBody UserlikedProducts userlikedProducts) {
-        return userServices.saveProductsByUserId(userlikedProducts.getProductId(),userlikedProducts.getUserId());
+        return userLikedProudctsService.saveLikedProductByUserId(userlikedProducts.getProductId(),userlikedProducts.getUserId());
+    }
+
+    @PostMapping("/saveRatedMaterialByUserId")
+    User saveRatedMaterialByUserId(@RequestBody UserRatedMaterials userRatedMaterials) {
+        return userRatedMaterialsService.saveRatedMaterialByUserId(userRatedMaterials.getMaterialId(),userRatedMaterials.getUserId());
     }
 
 

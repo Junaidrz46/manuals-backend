@@ -5,6 +5,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection="materials")
 public class Material {
 
+
+
     private String id;
     private String name;
     private String description;
@@ -13,6 +15,7 @@ public class Material {
     private String fileIcon;
     private String fileType;
     private long size;
+
 
     public String getId() {
         return id;

@@ -2,11 +2,20 @@ package se.agilecourse.model;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "userLikedProducts")
+@Document(collection="userlikedproducts")
 public class UserlikedProducts {
+
     String id;
     String userId;
     String productId;
+
+    public UserlikedProducts(){
+    }
+
+    public UserlikedProducts(String userid, String productId) {
+        this.userId = userid;
+        this.productId = productId;
+    }
 
     public String getId() {
         return id;
@@ -20,7 +29,7 @@ public class UserlikedProducts {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserid(String userId) {
         this.userId = userId;
     }
 

@@ -1,8 +1,6 @@
 package se.agilecourse.model;
 
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-import se.agilecourse.annotation.CascadeSave;
 
 import java.util.List;
 
@@ -13,32 +11,6 @@ import javax.persistence.Id;*/
 
 @Document(collection="users")
 public class User {
-    private String id;
-    private String firstname;
-    private String lastname;
-    private String username;
-    private String password;
-    private String emailaddress;
-    private String companyId;
-    private String role;
-    private List<String> likedProductsId;
-
-    public List<String> getLikedProductsId() {
-        return likedProductsId;
-    }
-
-    public void setLikedProductsId(List<String> likedProductsId) {
-        this.likedProductsId = likedProductsId;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
 
     public User(){
     }
@@ -59,7 +31,16 @@ public class User {
     }
 
 
-
+    private String id;
+    private String firstname;
+    private String lastname;
+    private String username;
+    private String password;
+    private String emailaddress;
+    private String companyId;
+    private String role;
+    private List<String> likedProducts;
+    private List<String> ratedMaterials;
 
     public String getFirstname() {
         return firstname;
@@ -68,6 +49,15 @@ public class User {
     public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
+
+    public String getLastName() {
+        return lastname;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastname = lastName;
+    }
+
     public String getId() {
         return id;
     }
@@ -114,6 +104,30 @@ public class User {
 
     public void setCompanyId(String companyId) {
         this.companyId = companyId;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public List<String> getLikedProducts() {
+        return likedProducts;
+    }
+
+    public void setLikedProducts(List<String> likedProducts) {
+        this.likedProducts = likedProducts;
+    }
+
+    public List<String> getRatedMaterials() {
+        return ratedMaterials;
+    }
+
+    public void setRatedMaterials(List<String> ratedMaterials) {
+        this.ratedMaterials = ratedMaterials;
     }
 
     @Override
