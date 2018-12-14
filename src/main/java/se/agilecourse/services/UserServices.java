@@ -9,13 +9,12 @@ import java.util.List;
 @Service
 public interface UserServices {
 
-    public User findByUserName(String username);
-    public User findByEmailAddress(String emailAddress);
-    public List<User> findByRole(String role);
-    public List<User> findAllUsers();
-    public User saveAdminUser(User user);
-    public User saveCompanyRepresentative(User user);
-    public LoginModel loginUser(String username,String password);
-    public User saveConsumer(User user);
-    public User saveProductsByUserId(String productId, String userId);
+     User findByUserName(String username);
+     User findByEmailAddress(String emailAddress);
+     List<User> findByRole(String role);
+     List<User> findAllUsers();
+     User saveAdminUser(User user);
+     User saveCompanyRepresentative(User user);
+     LoginModel loginUser(String username,String password);
+     User saveConsumer(User user);
 }

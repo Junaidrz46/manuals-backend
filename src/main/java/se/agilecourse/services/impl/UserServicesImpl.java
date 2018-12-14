@@ -70,20 +70,6 @@ public class UserServicesImpl implements UserServices {
     }
 
     @Override
-    public User saveProductsByUserId(String productId, String userId) {
-        Optional<User> user = userRepository.findById(userId);
-        List<String> productslList = user.get().getLikedProductsId();
-        if(productslList == null){
-            productslList = new ArrayList<String>();
-        }
-        productslList.add(productId);
-        user.get().getLikedProductsId();
-        userRepository.save(user.get());
-        return user.get();
-
-    }
-
-    @Override
     public LoginModel loginUser(String username, String password) {
         User user = userRepository.findByUsernameAndPassword(username,password);
         LoginModel loginModel = new LoginModel();
