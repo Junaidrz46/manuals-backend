@@ -75,10 +75,13 @@ public class UserController {
         return userServices.getUserById(userId).get();
     }
 
-    // @RequestMapping(value="/findMaterialById",method = RequestMethod.GET)
-    // public Material findMaterialById(@RequestParam("materialId") String materialId){
-    //    return categoryServices.getMaterialById(materialId).get();
-    // }
+    @PostMapping("/saveAuthorizationByUserId")
+    User saveAuthorizationByUserId(@RequestParam("userId") String userId,
+                                   @RequestParam("receiveMessage") String receiveMessage) throws Exception {
+        return userServices.saveAuthorizationByUserId(userId, receiveMessage);
+        
+    }
+
 
 
 }

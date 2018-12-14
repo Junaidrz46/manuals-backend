@@ -13,7 +13,15 @@ public class User {
     public User(){
     }
 
-    public User(String username, String password, String emailaddress){
+    public String getReceiveMessage() {
+        return receiveMessage;
+    }
+
+    public void setReceiveMessage(String receiveMessage) {
+        this.receiveMessage = receiveMessage;
+    }
+
+    public User(String username, String password, String emailaddress) {
         this.username = username;
         this.password = password;
         this.emailaddress = emailaddress;
@@ -37,6 +45,7 @@ public class User {
     private String emailaddress;
     private String companyId;
     private String role;
+    private String receiveMessage = "userUnReceiveMessage"; //0:unReceive, 1:receive
 
     public String getFirstname() {
         return firstname;
