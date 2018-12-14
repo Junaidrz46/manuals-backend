@@ -1,11 +1,14 @@
 package se.agilecourse.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.agilecourse.exceptions.CompanyIdNotFoundException;
 import se.agilecourse.model.LoginModel;
+import se.agilecourse.model.Product;
 import se.agilecourse.model.User;
 import se.agilecourse.repository.UserRepository;
 import se.agilecourse.services.UserServices;
@@ -64,6 +67,20 @@ public class UserServicesImpl implements UserServices {
     public User saveConsumer(User user) {
         user.setRole("customer");
         return userRepository.save(user);
+    }
+
+    @Override
+    public User saveProductsByUserId(String productId, String userId) {
+        Optional<User> user = userRepository.findById(userId);
+        List<String> productslList = user.get().getLikedProductsId();
+        if(productslList == null){
+            productslList = new ArrayList<String>();
+        }
+        productslList.add(productId);
+        user.get().getLikedProductsId();
+        userRepository.save(user.get());
+        return user.get();
+
     }
 
     @Override

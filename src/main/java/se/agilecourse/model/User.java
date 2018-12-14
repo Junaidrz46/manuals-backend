@@ -1,6 +1,10 @@
 package se.agilecourse.model;
 
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import se.agilecourse.annotation.CascadeSave;
+
+import java.util.List;
 
 /*import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +13,32 @@ import javax.persistence.Id;*/
 
 @Document(collection="users")
 public class User {
+    private String id;
+    private String firstname;
+    private String lastname;
+    private String username;
+    private String password;
+    private String emailaddress;
+    private String companyId;
+    private String role;
+    private List<String> likedProductsId;
+
+    public List<String> getLikedProductsId() {
+        return likedProductsId;
+    }
+
+    public void setLikedProductsId(List<String> likedProductsId) {
+        this.likedProductsId = likedProductsId;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
 
     public User(){
     }
@@ -29,14 +59,7 @@ public class User {
     }
 
 
-    private String id;
-    private String firstname;
-    private String lastname;
-    private String username;
-    private String password;
-    private String emailaddress;
-    private String companyId;
-    private String role;
+
 
     public String getFirstname() {
         return firstname;
@@ -45,15 +68,6 @@ public class User {
     public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
-
-    public String getLastName() {
-        return lastname;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastname = lastName;
-    }
-
     public String getId() {
         return id;
     }

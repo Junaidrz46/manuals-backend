@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import se.agilecourse.model.LoginModel;
 import se.agilecourse.model.User;
+import se.agilecourse.model.UserlikedProducts;
 import se.agilecourse.services.UserServices;
 
 import java.util.List;
@@ -68,6 +69,10 @@ public class UserController {
         return userServices.saveConsumer(user);
     }
 
+    @PostMapping("/saveProductsListByUserId")
+    User saveProductsListByUserId(@RequestBody UserlikedProducts userlikedProducts) {
+        return userServices.saveProductsByUserId(userlikedProducts.getProductId(),userlikedProducts.getUserId());
+    }
 
 
 }
