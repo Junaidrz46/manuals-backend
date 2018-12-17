@@ -5,13 +5,14 @@ import se.agilecourse.exceptions.ConsumerNotFound;
 import se.agilecourse.exceptions.LikedProductNotFound;
 import se.agilecourse.model.Product;
 import se.agilecourse.model.User;
+import se.agilecourse.model.UserlikedProducts;
 
 import java.util.List;
 
 @Service
 public interface UserLikedProudctsService {
 
-    List<String> findProductsByUserId(String userId);
+    List<UserlikedProducts> findProductsByUserId(String userId);
     User saveLikedProductByUserId(String productId, String userId) throws ConsumerNotFound, LikedProductNotFound;
 
 }

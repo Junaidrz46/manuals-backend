@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection="userRateMaterials")
 public class UserRatedMaterials {
 
-    String Id;
+    String id;
     String userId;
     String materialId;
     Integer materiaRate;
@@ -30,11 +30,11 @@ public class UserRatedMaterials {
     }
 
     public String getId() {
-        return Id;
+        return id;
     }
 
     public void setId(String id) {
-        Id = id;
+        id = id;
     }
 
     public String getUserId() {

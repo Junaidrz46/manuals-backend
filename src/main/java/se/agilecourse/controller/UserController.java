@@ -81,12 +81,12 @@ public class UserController {
     }
 
     @RequestMapping(value = "/findLikedProductsByUserId", params = "userId", method = RequestMethod.GET)
-    public List<String> findLikedProductsByUserId(@RequestParam("userId") String userId) {
+    public List<UserlikedProducts> findLikedProductsByUserId(@RequestParam("userId") String userId) {
         return userLikedProudctsService.findProductsByUserId(userId);
     }
 
     @RequestMapping(value = "/findRatedMaterialByUserId", params = "userId", method = RequestMethod.GET)
-    public List<String> findRatedMaterialByUserId(@RequestParam("userId") String userId) {
+    public List<UserRatedMaterials> findRatedMaterialByUserId(@RequestParam("userId") String userId) {
         return userRatedMaterialsService.findMaterialsByUserId(userId);
     }
 

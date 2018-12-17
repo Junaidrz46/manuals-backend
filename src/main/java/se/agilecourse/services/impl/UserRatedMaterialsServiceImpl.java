@@ -29,7 +29,7 @@ public class UserRatedMaterialsServiceImpl implements UserRatedMaterialsService 
     MaterialRepository materialRepository;
 
     @Override
-    public List<String> findMaterialsByUserId(String userId) {
+    public List<UserRatedMaterials> findMaterialsByUserId(String userId) {
         return userRatedMaterialsRepository.findByUserId(userId);
     }
 
@@ -59,6 +59,12 @@ public class UserRatedMaterialsServiceImpl implements UserRatedMaterialsService 
         //save the materialId, userId materialRate into the userRatedMaterialsRepository
         userRatedMaterialsRepository.save(new UserRatedMaterials(userId,materialId,materialRate));
         return user.get();
+    }
+    public Integer getAverageRateByMaterialId(String materialId){
+        int averageRate=0;
+
+
+        return averageRate;
     }
 
 

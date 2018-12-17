@@ -28,7 +28,7 @@ public class UserLikedProudctServiceImpl implements UserLikedProudctsService{
     ProductRepository productRepository;
 
     @Override
-    public List<String> findProductsByUserId(String userId) {
+    public List<UserlikedProducts> findProductsByUserId(String userId) {
         return userLikedProudctsRepository.findByUserId(userId);
     }
 
@@ -47,7 +47,7 @@ public class UserLikedProudctServiceImpl implements UserLikedProudctsService{
         if(!product.isPresent())
             throw new LikedProductNotFound("The specific product can not be found!");
 
-        List<String> productslList = userLikedProudctsRepository.findByUserId(userId);
+        List<String> productslList = user.get().getLikedProducts();
         if(productslList == null){
             productslList = new ArrayList<>();
         }
