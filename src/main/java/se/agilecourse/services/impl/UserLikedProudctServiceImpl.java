@@ -3,6 +3,7 @@ package se.agilecourse.services.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.agilecourse.exceptions.ConsumerNotFound;
+import se.agilecourse.exceptions.GeneratRunTimeException;
 import se.agilecourse.exceptions.LikedProductNotFound;
 import se.agilecourse.model.Product;
 import se.agilecourse.model.User;
