@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "49aed4f2-7a76-44d5-81d9-74b727c04d3a",
+		"_postman_id": "fafab3de-d48c-4b19-a715-e24b4e21dfab",
 		"name": "manuals-backend",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -420,6 +420,38 @@
 			"response": []
 		},
 		{
+			"name": "unLikedProductsByUserId",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"userId\":\"5c07ceb34dfa4ad7a121f1ab\",\"productId\":\"5c054d892b18d70de06daf2f\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/users/unLikedProductsByUserId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"users",
+						"unLikedProductsByUserId"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "categories/findProductById",
 			"request": {
 				"method": "GET",
@@ -628,7 +660,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8888/rest/file/uploadProfileImage",
+			"name": "uploadProfileImage",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -664,7 +696,7 @@
 			"response": []
 		},
 		{
-			"name": "deleteMaterialById?MaterialId=5c0e3aac6fb6012574f48add",
+			"name": "deleteMaterialById",
 			"request": {
 				"method": "DELETE",
 				"header": [],
@@ -695,7 +727,7 @@
 			"response": []
 		},
 		{
-			"name": "updateMaterialDescription?materialId=5c07cee76fb60113db99ab0b&description=Test Description or new description ",
+			"name": "updateMaterialDescription",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -761,7 +793,7 @@
 			"response": []
 		},
 		{
-			"name": "findProductsByCombinedCondition?condition=5c0547aef969acaeeef25988",
+			"name": "findProductsByCombinedCondition",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -791,7 +823,7 @@
 			"response": []
 		},
 		{
-			"name": "rest/users/saveLikedProductsByUserId",
+			"name": "/rest/users/saveLikedProductsByUserId",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -822,7 +854,7 @@
 			"response": []
 		},
 		{
-			"name": "findUsersById?userId=5bfd26012b18d73e904c19ae",
+			"name": "findUsersById",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -875,6 +907,38 @@
 						"rest",
 						"users",
 						"saveRatedMaterialByUserId"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/rest/users/unLikedProductsByUserId",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"userId\" : \"5c07ceb34dfa4ad7a121f1ac\", \"productId\" : \"5c054d892b18d70de06daf2f\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/users/unLikedProductsByUserId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"users",
+						"unLikedProductsByUserId"
 					]
 				}
 			},
