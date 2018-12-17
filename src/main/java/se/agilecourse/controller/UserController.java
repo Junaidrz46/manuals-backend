@@ -95,6 +95,12 @@ public class UserController {
         return userLikedProudctsService.saveLikedProductByUserId(userlikedProducts.getProductId(),userlikedProducts.getUserId());
     }
 
+    @PostMapping("/unLikedProductsByUserId")
+    UserlikedProducts deleteUserLikeProduuctByUserId(@RequestBody UserlikedProducts userlikedProduct){
+        return userLikedProudctsService.unlikeProductByUser(userlikedProduct.getProductId(),userlikedProduct.getUserId());
+
+    }
+
     @PostMapping("/saveRatedMaterialByUserId")
     User saveRatedMaterialByUserId(@RequestBody UserRatedMaterials userRatedMaterials) {
         return userRatedMaterialsService.saveRatedMaterialByUserId(userRatedMaterials.getMaterialId(),userRatedMaterials.getUserId(),userRatedMaterials.getMateriaRate());
