@@ -1,5 +1,7 @@
 package se.agilecourse.services.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.agilecourse.exceptions.ConsumerNotFound;
@@ -19,6 +21,8 @@ import java.util.Optional;
 
 @Service
 public class UserLikedProudctServiceImpl implements UserLikedProudctsService{
+
+    Logger logger = LoggerFactory.getLogger(UserLikedProudctServiceImpl.class);
 
     @Autowired
     UserRepository userRepository;
@@ -43,15 +47,16 @@ public class UserLikedProudctServiceImpl implements UserLikedProudctsService{
         }
         String userRole= user.get().getRole();
 
-        if(!userRole.equals("customer"))
-            throw new ConsumerNotFound("There is no such consumer!");
+      /*  if(!userRole.equals("customer"))
+            throw new ConsumerNotFound("There is no such consumer!");*/
 
         Optional<Product> product= productRepository.findById(productId);
         if(!product.isPresent()) {
             throw new LikedProductNotFound("The specific product can not be found!");
         }
-        if(!userRole.equals("consumer")) {
-            throw new ConsumerNotFound("There is no such consumer!");
+        if(!userRole.equalsIgnoreCase("consumer")) {
+            logger.info("User Role Not appropriate to like product  :"+userRole);
+            throw new ConsumerNotFound("User is not a consumer or customer !");
         }
 
         userlikedProducts = userLikedProudctsRepository.findByUserIdAndAndProductId(userId,productId);
@@ -72,4 +77,20 @@ public class UserLikedProudctServiceImpl implements UserLikedProudctsService{
         return user.get();
 
     }
+
+    @Override
+    public UserlikedProducts unlikeProductByUser(String productId, String userId) {
+        Optional<UserlikedProducts> userlikedProducts;
+
+        userlikedProducts = userLikedProudctsRepository.findByUserIdAndAndProductId(userId,productId);
+        if(userlikedProducts.isPresent()){
+            userLikedProudctsRepository.delete(userlikedProducts.get());
+
+            return userlikedProducts.get();
+        }
+        throw new GeneratRunTimeException("User Didn't liked this Product");
+
+    }
+
+
 }
