@@ -804,7 +804,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"userId\":\"5bfd26012b18d73e904c19a\",\n\t\"productId\" :\"5c054d892b18d70de06daf2f\"\n}"
+					"raw": "{\n\t\"userId\":\"5bfd26012b18d73e904c19ae\",\n\t\"productId\" :\"5c054d892b18d70de06daf2f\"\n}"
 				},
 				"url": {
 					"raw": "localhost:8888/rest/users/saveLikedProductsByUserId",
@@ -844,6 +844,37 @@
 							"key": "userId",
 							"value": "5bfd26012b18d73e904c19ae"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/rest/users/saveRatedMaterialByUserId",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t \"userId\":\"5bfd26012b18d73e904c19ae\",\n     \"materialId\": \"5bf9b3d0b5a1b0030083cd3\",\n     \"materiaRate\":3 \n}"
+				},
+				"url": {
+					"raw": "localhost:8888/rest/users/saveRatedMaterialByUserId",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"users",
+						"saveRatedMaterialByUserId"
 					]
 				}
 			},

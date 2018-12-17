@@ -11,5 +11,4 @@ public interface UserLikedProudctsRepository extends MongoRepository<UserlikedPr
 
     List<String> findByUserId(String userId);
     Optional<UserlikedProducts> findByUserIdAndAndProductId(String userId,String productId);
-
 }

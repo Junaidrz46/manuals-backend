@@ -3,7 +3,6 @@ package se.agilecourse.services.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.agilecourse.exceptions.ConsumerNotFound;
-import se.agilecourse.exceptions.GeneratRunTimeException;
 import se.agilecourse.exceptions.LikedProductNotFound;
 import se.agilecourse.model.Product;
 import se.agilecourse.model.User;
@@ -29,7 +28,7 @@ public class UserLikedProudctServiceImpl implements UserLikedProudctsService{
     ProductRepository productRepository;
 
     @Override
-    public List<String> findProductsByUserId(String userId) {
+    public List<UserlikedProducts> findProductsByUserId(String userId) {
         return userLikedProudctsRepository.findByUserId(userId);
     }
 
@@ -39,8 +38,13 @@ public class UserLikedProudctServiceImpl implements UserLikedProudctsService{
         Optional<UserlikedProducts> userlikedProducts;
         if(!user.isPresent()) {
             throw new ConsumerNotFound("There is no such consumer!");
+
         }
         String userRole= user.get().getRole();
+
+        if(!userRole.equals("customer"))
+            throw new ConsumerNotFound("There is no such consumer!");
+
         Optional<Product> product= productRepository.findById(productId);
         if(!product.isPresent()) {
             throw new LikedProductNotFound("The specific product can not be found!");
@@ -55,12 +59,14 @@ public class UserLikedProudctServiceImpl implements UserLikedProudctsService{
             throw new GeneratRunTimeException("User Already Liked this Product");
         }
 
-        List<String> productslList = userLikedProudctsRepository.findByUserId(userId);
+        List<String> productslList = user.get().getLikedProducts();
         if(productslList == null){
             productslList = new ArrayList<>();
         }
         productslList.add(productId);
         user.get().setLikedProducts(productslList);
+        userRepository.save(user.get());
+
         userLikedProudctsRepository.save(new UserlikedProducts(userId,productId));
         return user.get();
 

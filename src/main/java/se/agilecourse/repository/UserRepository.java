@@ -13,7 +13,6 @@ public interface UserRepository extends MongoRepository<User, String>{
     public User findByEmailaddress(String emailaddress);
     public User findByUsernameAndPassword(String username,String password);
     public List<User> findByRole(String role);
-
     Optional<User> findById(String id);
 
 
