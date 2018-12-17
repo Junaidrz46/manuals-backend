@@ -2,6 +2,8 @@ package se.agilecourse.model;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 /*import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -37,6 +39,8 @@ public class User {
     private String emailaddress;
     private String companyId;
     private String role;
+    private List<String> likedProducts;
+    private List<String> ratedMaterials;
 
     public String getFirstname() {
         return firstname;
@@ -100,6 +104,30 @@ public class User {
 
     public void setCompanyId(String companyId) {
         this.companyId = companyId;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public List<String> getLikedProducts() {
+        return likedProducts;
+    }
+
+    public void setLikedProducts(List<String> likedProducts) {
+        this.likedProducts = likedProducts;
+    }
+
+    public List<String> getRatedMaterials() {
+        return ratedMaterials;
+    }
+
+    public void setRatedMaterials(List<String> ratedMaterials) {
+        this.ratedMaterials = ratedMaterials;
     }
 
     @Override

@@ -70,6 +70,12 @@ public class CategoryController {
         return categoryServices.getAllMaterials();
     }
 
+    @RequestMapping(value="/findMaterialById",method=RequestMethod.GET)
+    public Optional<Material> getMaterialById(@RequestParam("materialId") String materialId){
+        return categoryServices.getMaterialById(materialId);
+    }
+
+
     @RequestMapping(value="/findProductsByProductNo",method = RequestMethod.GET)
     public List<Product> getProductsByProductId(@RequestParam("productNo") String productNo){
         return categoryServices.getProductsByProductNo(productNo);
@@ -103,9 +109,5 @@ public class CategoryController {
         return categoryServices.updateMaterialDescrption(materialId,description);
     }
 
-    @RequestMapping(value="/findMaterialById",method = RequestMethod.GET)
-    public Material findMaterialById(@RequestParam("materialId") String materialId){
-       return categoryServices.getMaterialById(materialId).get();
-    }
 
 }

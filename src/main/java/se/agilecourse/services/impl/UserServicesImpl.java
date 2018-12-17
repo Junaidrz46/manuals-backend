@@ -1,11 +1,14 @@
 package se.agilecourse.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.agilecourse.exceptions.CompanyIdNotFoundException;
 import se.agilecourse.model.LoginModel;
+import se.agilecourse.model.Product;
 import se.agilecourse.model.User;
 import se.agilecourse.repository.UserRepository;
 import se.agilecourse.services.UserServices;

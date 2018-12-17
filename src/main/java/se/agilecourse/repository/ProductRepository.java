@@ -24,7 +24,7 @@ public interface ProductRepository extends MongoRepository<Product, String>,Cust
     //List<Product> findAll();
 
     @Query(value = "{$or :[{'productNumber' : {$regex: ?0 }},{'companyId' : ?0  },{'name' : {$regex: ?0 }}]}"
-    ,fields = "{'name' : 1,'productNumber' : 1,'companyId' : 1}")
+    ,fields = "{'name' : 1,'productNumber' : 1,'companyId' : 1,'profileImage':1,'materials' : 1 }")
 
     List<Product> findAll(String condition);
 
