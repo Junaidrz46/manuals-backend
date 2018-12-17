@@ -9,6 +9,9 @@ echo "##Product Restored##"
 mongo localhost:27017/manuals ./users.js
 echo "##Users Restored##"
 
+# mongo localhost:27017/manuals ./material.js
+# echo "##Materials Restored##"
+
 mongo manuals --eval "db.product.find().forEach(function(o) {print(o._id);})"
 
 curl -X POST http://localhost:8888/rest/file/uploadFile \

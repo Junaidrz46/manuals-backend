@@ -11,6 +11,7 @@ import se.agilecourse.model.UserlikedProducts;
 import se.agilecourse.services.UserLikedProudctsService;
 import se.agilecourse.services.UserRatedMaterialsService;
 import se.agilecourse.services.UserServices;
+import se.agilecourse.repository.UserRepository;
 
 import java.util.List;
 
@@ -98,6 +99,16 @@ public class UserController {
     User saveRatedMaterialByUserId(@RequestBody UserRatedMaterials userRatedMaterials) {
         return userRatedMaterialsService.saveRatedMaterialByUserId(userRatedMaterials.getMaterialId(),userRatedMaterials.getUserId());
     }
+
+    @RequestMapping(value = "/findUsersById" ,method = RequestMethod.GET)
+    public User findUserById(@RequestParam("userId") String userId){
+        return userServices.getUserById(userId).get();
+    }
+
+    // @RequestMapping(value="/findMaterialById",method = RequestMethod.GET)
+    // public Material findMaterialById(@RequestParam("materialId") String materialId){
+    //    return categoryServices.getMaterialById(materialId).get();
+    // }
 
 
 }

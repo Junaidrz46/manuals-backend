@@ -5,6 +5,7 @@ import se.agilecourse.model.LoginModel;
 import se.agilecourse.model.Product;
 import se.agilecourse.model.User;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public interface UserServices {
@@ -17,4 +18,5 @@ public interface UserServices {
      User saveCompanyRepresentative(User user);
      LoginModel loginUser(String username,String password);
      User saveConsumer(User user);
+     Optional<User> getUserById(String id);
 }

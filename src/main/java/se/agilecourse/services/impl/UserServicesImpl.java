@@ -88,6 +88,9 @@ public class UserServicesImpl implements UserServices {
     }
 
 
-
+    @Override
+    public Optional<User> getUserById(String userId) {
+        return userRepository.findById(userId);
+    }
 
 }
