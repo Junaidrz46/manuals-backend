@@ -3,6 +3,7 @@ package se.agilecourse.services.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.agilecourse.exceptions.ConsumerNotFound;
+import se.agilecourse.exceptions.GeneratRunTimeException;
 import se.agilecourse.exceptions.LikedProductNotFound;
 import se.agilecourse.model.Product;
 import se.agilecourse.model.User;
@@ -35,6 +36,7 @@ public class UserLikedProudctServiceImpl implements UserLikedProudctsService{
     @Override
     public User saveLikedProductByUserId(String productId, String userId) throws ConsumerNotFound,LikedProductNotFound{
         Optional<User> user = userRepository.findById(userId);
+        Optional<UserlikedProducts> userlikedProducts;
         if(!user.isPresent()) {
             throw new ConsumerNotFound("There is no such consumer!");
         }
@@ -46,6 +48,13 @@ public class UserLikedProudctServiceImpl implements UserLikedProudctsService{
         if(!userRole.equals("consumer")) {
             throw new ConsumerNotFound("There is no such consumer!");
         }
+
+        userlikedProducts = userLikedProudctsRepository.findByUserIdAndAndProductId(userId,productId);
+
+        if(userlikedProducts.isPresent()){
+            throw new GeneratRunTimeException("User Already Liked this Product");
+        }
+
         List<String> productslList = userLikedProudctsRepository.findByUserId(userId);
         if(productslList == null){
             productslList = new ArrayList<>();
