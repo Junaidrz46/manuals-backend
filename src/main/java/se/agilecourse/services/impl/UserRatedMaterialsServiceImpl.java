@@ -31,7 +31,6 @@ public class UserRatedMaterialsServiceImpl implements UserRatedMaterialsService 
     public User saveRatedMaterialByUserId(String materialId, String userId) {
         Optional<User> user = userRepository.findById(userId);
         List<String> materialsList = userRatedMaterialsRepository.findByUserId(userId);
-
         if(materialsList == null){
             materialsList = new ArrayList<>();
         }

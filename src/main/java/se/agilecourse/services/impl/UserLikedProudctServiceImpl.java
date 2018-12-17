@@ -35,14 +35,17 @@ public class UserLikedProudctServiceImpl implements UserLikedProudctsService{
     @Override
     public User saveLikedProductByUserId(String productId, String userId) throws ConsumerNotFound,LikedProductNotFound{
         Optional<User> user = userRepository.findById(userId);
-        if(!user.isPresent())
+        if(!user.isPresent()) {
             throw new ConsumerNotFound("There is no such consumer!");
+        }
         String userRole= user.get().getRole();
         Optional<Product> product= productRepository.findById(productId);
-        if(!product.isPresent())
+        if(!product.isPresent()) {
             throw new LikedProductNotFound("The specific product can not be found!");
-        if(!userRole.equals("consumer"))
+        }
+        if(!userRole.equals("consumer")) {
             throw new ConsumerNotFound("There is no such consumer!");
+        }
         List<String> productslList = userLikedProudctsRepository.findByUserId(userId);
         if(productslList == null){
             productslList = new ArrayList<>();

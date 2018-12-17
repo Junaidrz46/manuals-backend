@@ -9,4 +9,5 @@ import java.util.List;
 public interface UserLikedProudctsRepository extends MongoRepository<UserlikedProducts, String>{
 
     List<String> findByUserId(String userId);
+
 }
