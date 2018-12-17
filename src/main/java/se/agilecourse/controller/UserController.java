@@ -97,7 +97,7 @@ public class UserController {
 
     @PostMapping("/saveRatedMaterialByUserId")
     User saveRatedMaterialByUserId(@RequestBody UserRatedMaterials userRatedMaterials) {
-        return userRatedMaterialsService.saveRatedMaterialByUserId(userRatedMaterials.getMaterialId(),userRatedMaterials.getUserId());
+        return userRatedMaterialsService.saveRatedMaterialByUserId(userRatedMaterials.getMaterialId(),userRatedMaterials.getUserId(),userRatedMaterials.getMateriaRate());
     }
 
     @RequestMapping(value = "/findUsersById" ,method = RequestMethod.GET)

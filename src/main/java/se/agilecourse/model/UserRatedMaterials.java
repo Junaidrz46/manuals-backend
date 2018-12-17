@@ -1,18 +1,32 @@
 package se.agilecourse.model;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection="userRateMaterials")
 public class UserRatedMaterials {
 
     String Id;
     String userId;
     String materialId;
+    Integer materiaRate;
+    public Integer getMateriaRate() {
+        return materiaRate;
+    }
+
+    public void setMateriaRate(Integer materiaRate) {
+        this.materiaRate = materiaRate;
+    }
+
+
 
     public UserRatedMaterials(){
 
     }
 
-    public UserRatedMaterials(String userId, String materialId) {
+    public UserRatedMaterials(String userId, String materialId,Integer materiaRate) {
         this.userId = userId;
         this.materialId = materialId;
+        this.materiaRate=materiaRate;
     }
 
     public String getId() {

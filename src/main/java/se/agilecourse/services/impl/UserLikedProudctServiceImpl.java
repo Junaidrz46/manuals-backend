@@ -37,18 +37,24 @@ public class UserLikedProudctServiceImpl implements UserLikedProudctsService{
         Optional<User> user = userRepository.findById(userId);
         if(!user.isPresent())
             throw new ConsumerNotFound("There is no such consumer!");
+
         String userRole= user.get().getRole();
+
+        if(!userRole.equals("customer"))
+            throw new ConsumerNotFound("There is no such consumer!");
+
         Optional<Product> product= productRepository.findById(productId);
         if(!product.isPresent())
             throw new LikedProductNotFound("The specific product can not be found!");
-        if(!userRole.equals("consumer"))
-            throw new ConsumerNotFound("There is no such consumer!");
+
         List<String> productslList = userLikedProudctsRepository.findByUserId(userId);
         if(productslList == null){
             productslList = new ArrayList<>();
         }
         productslList.add(productId);
         user.get().setLikedProducts(productslList);
+        userRepository.save(user.get());
+
         userLikedProudctsRepository.save(new UserlikedProducts(userId,productId));
         return user.get();
 

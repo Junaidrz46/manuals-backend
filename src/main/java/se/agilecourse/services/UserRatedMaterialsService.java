@@ -9,5 +9,5 @@ import java.util.List;
 @Service
 public interface UserRatedMaterialsService {
     List<String> findMaterialsByUserId(String userId);
-    User saveRatedMaterialByUserId(String productId, String userId);
+    User saveRatedMaterialByUserId(String productId, String userId,Integer materialRate);
 }
