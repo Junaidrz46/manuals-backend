@@ -36,6 +36,8 @@ public class CategoryServicesImpl implements CategoryServices {
     @Autowired
     MaterialRepository materialRepository;
 
+
+
     @Override
     public Optional<Category> findById(String Id) {
         return categoryRepository.findById(Id);
@@ -161,6 +163,7 @@ public class CategoryServicesImpl implements CategoryServices {
     public Optional<Category> getCategoryById(String categoryId){
         return categoryRepository.findById(categoryId);
     }
+
     @Override
     public List<Product> getProductsByProductNo(String productNo) {
         return productRepository.findByProductNumber(productNo);
@@ -206,6 +209,7 @@ public class CategoryServicesImpl implements CategoryServices {
 
         return productRepository.findAll(condition);
     }
+
 
 
 
