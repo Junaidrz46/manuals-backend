@@ -12,8 +12,8 @@ public class StringConstants {
      * Added following rolese to make rolese standered throught system
      */
 
-    public final String ROLE_ADMIN="ADMIN";
-    public final String ROLE_REPRESANTATIVE="REPRESENTATIVE";
-    public final String ROLE_CONSUMER="CONSUMER";
+    public final String ROLE_ADMIN="companyAdmin";
+    public final String ROLE_REPRESANTATIVE="companyRepresentative";
+    public final String ROLE_CONSUMER="customer";
 
 }

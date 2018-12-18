@@ -3,15 +3,12 @@ package se.agilecourse.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.web.bind.annotation.*;
-import se.agilecourse.model.LoginModel;
-import se.agilecourse.model.User;
-import se.agilecourse.model.UserRatedMaterials;
-import se.agilecourse.model.UserlikedProducts;
+import se.agilecourse.model.*;
 import se.agilecourse.services.UserLikedProudctsService;
 import se.agilecourse.services.UserRatedMaterialsService;
 import se.agilecourse.services.UserServices;
-import se.agilecourse.repository.UserRepository;
 
 import java.util.List;
 
@@ -111,10 +108,16 @@ public class UserController {
         return userServices.getUserById(userId).get();
     }
 
-    // @RequestMapping(value="/findMaterialById",method = RequestMethod.GET)
-    // public Material findMaterialById(@RequestParam("materialId") String materialId){
-    //    return categoryServices.getMaterialById(materialId).get();
-    // }
+    @PostMapping("/saveAuthorizationByUserId")
+    User saveAuthorizationByUserId(@RequestParam("userId") String userId,
+                                   @RequestParam("receiveMessage") String receiveMessage) throws Exception {
+        return userServices.saveAuthorizationByUserId(userId, receiveMessage);
+
+    }
+    @RequestMapping(value = "/getAverageRateForMaterial" ,method = RequestMethod.GET)
+    public String getAverageRateForMaterial(@RequestParam("materialId") String materialId){
+        return userRatedMaterialsService.getAverageRateByMaterialId(materialId);
+    }
 
 
 }

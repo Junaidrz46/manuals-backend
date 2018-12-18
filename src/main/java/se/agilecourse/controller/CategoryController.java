@@ -71,7 +71,7 @@ public class CategoryController {
     }
 
     @RequestMapping(value="/findMaterialById",method=RequestMethod.GET)
-    public Optional<Material> getMaterialById(@RequestParam("materialId") String materialId){
+    public Material getMaterialById(@RequestParam("materialId") String materialId){
         return categoryServices.getMaterialById(materialId);
     }
 

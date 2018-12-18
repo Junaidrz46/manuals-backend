@@ -19,4 +19,6 @@ public interface UserServices {
      LoginModel loginUser(String username,String password);
      User saveConsumer(User user);
      Optional<User> getUserById(String id);
+     User saveAuthorizationByUserId(String userId, String receiveMessage) throws Exception;
+
 }

@@ -1,9 +1,11 @@
 package se.agilecourse.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.stereotype.Service;
 import se.agilecourse.exceptions.ConsumerNotFound;
 import se.agilecourse.exceptions.MaterialNotFoundException;
+import se.agilecourse.model.AverageRatedMaterial;
 import se.agilecourse.model.Material;
 import se.agilecourse.model.User;
 import se.agilecourse.model.UserRatedMaterials;
@@ -60,12 +62,11 @@ public class UserRatedMaterialsServiceImpl implements UserRatedMaterialsService 
         userRatedMaterialsRepository.save(new UserRatedMaterials(userId,materialId,materialRate));
         return user.get();
     }
-    public Integer getAverageRateByMaterialId(String materialId){
-        int averageRate=0;
+    public String getAverageRateByMaterialId(String materialId){
+        return userRatedMaterialsRepository.getAverageRateForMaterial(materialId);
 
-
-        return averageRate;
     }
+
 
 
 }

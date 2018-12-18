@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.agilecourse.exceptions.CategoryNotFoundException;
 import se.agilecourse.exceptions.CompanyIdMismatchException;
+import se.agilecourse.exceptions.LikedProductNotFound;
 import se.agilecourse.exceptions.MaterialNotFoundException;
 import se.agilecourse.model.*;
 import se.agilecourse.repository.*;
@@ -35,6 +36,9 @@ public class CategoryServicesImpl implements CategoryServices {
 
     @Autowired
     MaterialRepository materialRepository;
+
+    @Autowired
+    UserRatedMaterialsRepository userRatedMaterialsRepository;
 
 
 
@@ -109,12 +113,20 @@ public class CategoryServicesImpl implements CategoryServices {
     }
 
     @Override
-    public Optional<Material> getMaterialById(String id) {
-        return materialRepository.findById(id);
+    public Material getMaterialById(String id) {
+        Optional<Material> material=materialRepository.findById(id);
+        if(!material.isPresent())
+            throw new MaterialNotFoundException("there is no such material!");
+        String materialId=material.get().getId();
+        String averageRate= userRatedMaterialsRepository.getAverageRateForMaterial(materialId);
+        material.get().setAverageRate(averageRate);
+        Material saveMaterial=materialRepository.save(material.get());
+        return saveMaterial;
     }
 
     @Override
     public List<Material> getMaterialByProductId(String prouductId) {
+
         return materialRepository.findMaterialsByProductId(prouductId);
     }
 

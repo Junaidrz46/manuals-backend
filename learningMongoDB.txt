@@ -1,0 +1,31 @@
+
+    "mappedResults": [
+        {
+            "id": null,
+            "userId": null,
+            "materialId": null,
+            "materiaRate": null
+        }
+    ],
+    "rawResults": {
+        "serverUsed": null,
+        "ok": 1,
+        "result": [
+            {
+                "_id": null,
+                "averageRate": 4
+            }
+        ]
+    },
+    "serverUsed": null,
+    "uniqueMappedResult": {
+        "id": null,
+        "userId": null,
+        "materialId": null,
+        "materiaRate": null
+    }
+}--------for AggregationResults<UserRatedMaterials> type , 
+
+
+
+[Document{{_id=null, averageRate=4.0}}]---------for result.getRawResults().get("result").toString()
