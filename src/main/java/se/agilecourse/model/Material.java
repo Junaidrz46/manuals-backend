@@ -15,6 +15,16 @@ public class Material {
     private String fileIcon;
     private String fileType;
     private long size;
+    private String averageRate;
+    public String getAverageRate() {
+        return averageRate;
+    }
+
+    public void setAverageRate(String averageRate) {
+        this.averageRate = averageRate;
+    }
+
+
 
 
     public String getId() {

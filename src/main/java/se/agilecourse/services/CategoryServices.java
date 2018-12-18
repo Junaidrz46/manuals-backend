@@ -22,7 +22,7 @@ public interface CategoryServices {
 
     Material saveMaterial(Material material);
     Material saveMaterialByProduct(Material material , String ProductId);
-    Optional<Material> getMaterialById(String id);
+    Material getMaterialById(String id);
     List<Material> getMaterialByProductId(String prouductId);
     List<Material> getAllMaterials();
     List<Product> getProductsByProductNo(String productNo);
