@@ -14,5 +14,5 @@ public interface UserLikedProudctsService {
 
     List<UserlikedProducts> findProductsByUserId(String userId);
     User saveLikedProductByUserId(String productId, String userId) throws ConsumerNotFound, LikedProductNotFound;
-
+    UserlikedProducts unlikeProductByUser(String productId,String userId);
 }
