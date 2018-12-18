@@ -39,9 +39,16 @@ public class User {
     private String emailaddress;
     private String companyId;
     private String role;
+    private String receiveMessage = "userUnReceiveMessage"; //0:unReceive, 1:receive
     private List<String> likedProducts;
     private List<String> ratedMaterials;
+    public String getReceiveMessage() {
+        return receiveMessage;
+    }
 
+    public void setReceiveMessage(String receiveMessage) {
+        this.receiveMessage = receiveMessage;
+    }
     public String getFirstname() {
         return firstname;
     }
