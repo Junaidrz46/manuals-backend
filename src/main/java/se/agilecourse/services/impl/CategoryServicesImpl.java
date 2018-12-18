@@ -126,19 +126,8 @@ public class CategoryServicesImpl implements CategoryServices {
 
     @Override
     public List<Material> getMaterialByProductId(String prouductId) {
-        Optional<Product> product= productRepository.findById(prouductId);
-        if(!product.isPresent())
-            throw new LikedProductNotFound("The product can not be found");
 
-        List<Material> list= product.get().getMaterials();
-        for(Material material :list){
-            String averageRate= userRatedMaterialsRepository.getAverageRateForMaterial(material.getId());
-            material.setAverageRate(averageRate);
-        }
-        product.get().setMaterials(list);
-        productRepository.save(product.get());
-
-        return list;
+        return materialRepository.findMaterialsByProductId(prouductId);
     }
 
     @Override

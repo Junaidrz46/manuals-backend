@@ -50,7 +50,7 @@ public class UserServicesImpl implements UserServices {
         if(user.getCompanyId() == null || user.getCompanyId().equalsIgnoreCase("")){
             throw new CompanyIdNotFoundException("Company Id not found while creating Admin");
         }
-        user.setRole("companyAdmin");
+        user.setRole(stringConstants.ROLE_ADMIN);
         return userRepository.save(user);
     }
 
@@ -59,13 +59,13 @@ public class UserServicesImpl implements UserServices {
         if(user.getCompanyId() == null || user.getCompanyId().equalsIgnoreCase("")){
             throw new CompanyIdNotFoundException("Company Id not found while creating Representative");
         }
-        user.setRole("companyRepresentative");
+        user.setRole(stringConstants.ROLE_REPRESANTATIVE);
         return userRepository.save(user);
     }
 
     @Override
     public User saveConsumer(User user) {
-        user.setRole("customer");
+        user.setRole(stringConstants.ROLE_CONSUMER);
         return userRepository.save(user);
     }
 

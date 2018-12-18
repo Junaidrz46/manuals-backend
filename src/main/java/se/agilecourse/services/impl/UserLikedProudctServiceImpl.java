@@ -14,6 +14,7 @@ import se.agilecourse.repository.ProductRepository;
 import se.agilecourse.repository.UserLikedProudctsRepository;
 import se.agilecourse.repository.UserRepository;
 import se.agilecourse.services.UserLikedProudctsService;
+import se.agilecourse.util.StringConstants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,9 @@ public class UserLikedProudctServiceImpl implements UserLikedProudctsService{
     UserLikedProudctsRepository userLikedProudctsRepository;
     @Autowired
     ProductRepository productRepository;
+
+    @Autowired
+    StringConstants stringConstants;
 
     @Override
     public List<UserlikedProducts> findProductsByUserId(String userId) {
@@ -54,7 +58,7 @@ public class UserLikedProudctServiceImpl implements UserLikedProudctsService{
         if(!product.isPresent()) {
             throw new LikedProductNotFound("The specific product can not be found!");
         }
-        if(!userRole.equalsIgnoreCase("consumer")) {
+        if(!userRole.equalsIgnoreCase(stringConstants.ROLE_CONSUMER)) {
             logger.info("User Role Not appropriate to like product  :"+userRole);
             throw new ConsumerNotFound("User is not a consumer or customer !");
         }
