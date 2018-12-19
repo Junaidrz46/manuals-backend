@@ -739,7 +739,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8888/rest/categories/findMaterialById?materialId=5c0e3d756fb60125a2a0569a",
+					"raw": "http://localhost:8888/rest/categories/findMaterialById?materialId=5bf9b6e2b5a1b0030083cf45",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -753,7 +753,7 @@
 					"query": [
 						{
 							"key": "materialId",
-							"value": "5c0e3d756fb60125a2a0569a"
+							"value": "5bf9b6e2b5a1b0030083cf45"
 						}
 					]
 				}
@@ -929,6 +929,74 @@
 						{
 							"key": "receiveMessage",
 							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rest/categories/findMaterialByProductId?ProductId=5c056f36143aa86acd084a00",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8888/rest/categories/findMaterialByProductId?ProductId=5c056f36143aa86acd084a00",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"categories",
+						"findMaterialByProductId"
+					],
+					"query": [
+						{
+							"key": "ProductId",
+							"value": "5c056f36143aa86acd084a00"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rest/users/unlikedProductsByUserId",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userId\" : \"5bfd26012b18d73e904c19ae\",\n\t\"productId\" : \"5c056f36143aa86acd084a00\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/users/unlikedProductsByUserId?",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"users",
+						"unlikedProductsByUserId"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null
 						}
 					]
 				}

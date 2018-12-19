@@ -92,7 +92,7 @@ public class UserController {
         return userLikedProudctsService.saveLikedProductByUserId(userlikedProducts.getProductId(),userlikedProducts.getUserId());
     }
 
-    @PostMapping("/unLikedProductsByUserId")
+    @PostMapping("/unlikedProductsByUserId")
     UserlikedProducts deleteUserLikeProduuctByUserId(@RequestBody UserlikedProducts userlikedProduct){
         return userLikedProudctsService.unlikeProductByUser(userlikedProduct.getProductId(),userlikedProduct.getUserId());
 
