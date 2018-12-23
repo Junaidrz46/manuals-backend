@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.web.bind.annotation.*;
 import se.agilecourse.model.*;
+import se.agilecourse.services.EmailService;
 import se.agilecourse.services.UserLikedProudctsService;
 import se.agilecourse.services.UserRatedMaterialsService;
 import se.agilecourse.services.UserServices;
@@ -27,6 +28,9 @@ public class UserController {
 
     @Autowired
     UserLikedProudctsService userLikedProudctsService;
+
+    @Autowired
+    EmailService emailService;
 
 
     @RequestMapping("/hello")
@@ -118,6 +122,12 @@ public class UserController {
     public String getAverageRateForMaterial(@RequestParam("materialId") String materialId){
         return userRatedMaterialsService.getAverageRateByMaterialId(materialId);
     }
+
+    @PostMapping("/SendEmailtoManyRecipents")
+    String saveRatedMaterialByUserId(@RequestBody EmailWrapper emailWrapper) {
+        return emailService.sendEmail(emailWrapper.getRecipents(),emailWrapper.getSubject(),emailWrapper.getEmailBody());
+    }
+
 
 
 }

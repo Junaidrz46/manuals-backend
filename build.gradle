@@ -36,6 +36,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-devtools")
     compile("org.springframework.boot:spring-boot-starter-actuator")
     compile("com.google.code.gson:gson")
+    compile("com.sendgrid:sendgrid-java:4.0.1")
     testCompile("org.springframework.boot:spring-boot-starter-test")
     
 }

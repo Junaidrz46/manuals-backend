@@ -9,11 +9,21 @@ public class FileStorageProperties {
 
     private String uploadDir;
 
+    private String emailApikey;
+
     public String getUploadDir() {
         return uploadDir;
     }
 
     public void setUploadDir(String uploadDir) {
         this.uploadDir = uploadDir;
+    }
+
+    public String getEmailApikey() {
+        return emailApikey;
+    }
+
+    public void setEmailApikey(String emailApikey) {
+        this.emailApikey = emailApikey;
     }
 }
