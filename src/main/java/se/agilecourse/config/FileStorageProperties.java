@@ -11,6 +11,8 @@ public class FileStorageProperties {
 
     private String emailApikey;
 
+    private String senderAddress;
+
     public String getUploadDir() {
         return uploadDir;
     }
@@ -25,5 +27,13 @@ public class FileStorageProperties {
 
     public void setEmailApikey(String emailApikey) {
         this.emailApikey = emailApikey;
+    }
+
+    public String getSenderAddress() {
+        return senderAddress;
+    }
+
+    public void setSenderAddress(String senderAddress) {
+        this.senderAddress = senderAddress;
     }
 }

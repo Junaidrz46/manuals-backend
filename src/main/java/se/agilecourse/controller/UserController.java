@@ -1,5 +1,8 @@
 package se.agilecourse.controller;
 
+
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +16,7 @@ import se.agilecourse.services.UserServices;
 
 import java.util.List;
 
-//@CrossOrigin(origins = "http://localhost:8888/", maxAge = 3600)
+
 @RestController()
 @RequestMapping("/rest/users")
 public class UserController {
@@ -123,9 +126,11 @@ public class UserController {
         return userRatedMaterialsService.getAverageRateByMaterialId(materialId);
     }
 
-    @PostMapping("/SendEmailtoManyRecipents")
-    String saveRatedMaterialByUserId(@RequestBody EmailWrapper emailWrapper) {
-        return emailService.sendEmail(emailWrapper.getRecipents(),emailWrapper.getSubject(),emailWrapper.getEmailBody());
+
+    @PostMapping("/sendEmailMessage")
+    public String sendEmailMessae(@RequestBody WrapperEmailMessage emailMessage){
+        logger.info(emailMessage.getSubject()+" : "+emailMessage.getEmailBody());
+        return emailService.sendEmail(emailMessage.getRecipients(),emailMessage.getSubject(),emailMessage.getEmailBody());
     }
 
 
