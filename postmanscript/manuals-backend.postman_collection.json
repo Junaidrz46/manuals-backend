@@ -1,759 +1,988 @@
 {
-	"id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-	"name": "manuals-backend",
-	"description": "",
-	"order": [
-		"0d8a69c3-725c-aabf-ae7e-97e1d22f7f3c",
-		"153c649d-92c3-b81e-9fa5-b6bdf2bfe5ab",
-		"7c3ec833-de4a-edb7-a0e3-87496088a825",
-		"2b23dfbd-24f4-3b63-88f0-5402777b034c",
-		"8882c1af-c01f-0c6a-8da8-04a932236537",
-		"cb1a13b1-1ff4-6e48-d65d-ef81c6fedd6d",
-		"38465c76-bcce-0eb7-e0ea-cec4d05b275d",
-		"8bb361b6-fe8a-b024-8fe8-42cf18b5c2c7",
-		"7379e315-97b2-9bc5-2434-bacdf06b4ef1",
-		"606afbee-f37f-fdf9-4aba-20157019b659",
-		"4866e7de-2a06-027c-3109-107d141e979e",
-		"3db65f2f-6c69-d712-0c7e-8de5eea297de",
-		"34c77d8f-8726-b11f-c215-1327b26d51a7",
-		"5f72d31b-148f-2d85-3579-8a1062c40a1a",
-		"a1f92523-b614-3ba5-f659-b16814c4f7d4",
-		"5d6f9113-cfe6-f5aa-8ebf-640d7e6cc421",
-		"61276f38-69da-16a9-c38b-918d08147801",
-		"c1cdd781-e546-cce7-f8fb-bd667a565db1",
-		"aa3bf72e-ce60-b6f7-aac8-3b8ac059a8fb",
-		"25113666-688e-beb8-9327-16e1c4b4f97d",
-		"e6a55c25-6126-2efb-aba1-2e30567bc744",
-		"c5bc1370-0e24-e963-7256-95f9f6881ffb",
-		"0f45d7c0-238a-98d5-5fb6-a9c3fd31bec2",
-		"cec17c7a-092a-5518-63ab-d90e2560beaf",
-		"5e1b71f9-766d-8653-dcbe-f8baf64bc620",
-		"a285ab2e-e89e-246b-2590-7b9247596d2e",
-		"982da1dc-aa86-f830-d18a-289e676aed28",
-		"52a51878-55d0-acf3-ad9b-a0c54653fc2c",
-		"bed2bec1-5539-8db7-3c90-2a272f409ad0"
-	],
-	"folders": [],
-	"folders_order": [],
-	"timestamp": 0,
-	"owner": "3180360",
-	"public": false,
-	"requests": [
+	"info": {
+		"_postman_id": "195d3ac7-62ea-4dfd-b072-e5121d0ee990",
+		"name": "manuals-backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
 		{
-			"id": "0d8a69c3-725c-aabf-ae7e-97e1d22f7f3c",
 			"name": "Login",
-			"description": "Login",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"method": "POST",
-			"headers": "Content-Type: application/json",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "{\"username\":\"testRepresentative\",\"password\":\"2testPassword\"}",
-			"url": "http://localhost:8080/rest/users/login",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [],
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"name": "Content-Type",
-					"value": "application/json",
-					"type": "text"
-				}
-			],
-			"collection_id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2"
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"testRepresentative\",\"password\":\"2testPassword\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"users",
+						"login"
+					]
+				},
+				"description": "Login"
+			},
+			"response": []
 		},
 		{
-			"id": "0f45d7c0-238a-98d5-5fb6-a9c3fd31bec2",
-			"name": "findMaterialById",
-			"description": "",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"method": "GET",
-			"headers": "",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "",
-			"url": "http://localhost:8888/rest/categories/findMaterialById?materialId=5c0e3d756fb60125a2a0569a",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [
-				{
-					"key": "materialId",
-					"value": "5c0e3d756fb60125a2a0569a"
-				}
-			],
-			"headerData": [],
-			"collection_id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2"
-		},
-		{
-			"id": "153c649d-92c3-b81e-9fa5-b6bdf2bfe5ab",
 			"name": "saveCompanyRepresentative",
-			"description": "Save companyRepresentative",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"method": "POST",
-			"headers": "Content-Type: application/json",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "{\n    \"firstname\": \"3tfname\",\n    \"lastName\": \"3tlname\",\n    \"username\": \"3testRepresentative\",\n    \"password\": \"3testPassword\",\n    \"emailaddress\": \"3testMail@testdomain.com\",\n    \"companyId\": \"5c05b6fc6fb6010a5b532d57\"\n    \n}",
-			"url": "http://localhost:8888/rest/users/saveCompanyRepresentative",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [],
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"name": "Content-Type",
-					"value": "application/json",
-					"type": "text"
-				}
-			],
-			"collection_id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2"
-		},
-		{
-			"id": "25113666-688e-beb8-9327-16e1c4b4f97d",
-			"name": "http://localhost:8888/rest/file/uploadProfileImage",
-			"description": "",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"method": "POST",
-			"headers": "",
-			"dataMode": "params",
-			"data": [
-				{
-					"key": "ProductId",
-					"value": "5c07c9015dea70acb0676830",
-					"type": "text"
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\": \"3tfname\",\n    \"lastName\": \"3tlname\",\n    \"username\": \"3testRepresentative\",\n    \"password\": \"3testPassword\",\n    \"emailaddress\": \"3testMail@testdomain.com\",\n    \"companyId\": \"5c05b6fc6fb6010a5b532d57\"\n    \n}"
 				},
-				{
-					"key": "file",
-					"type": "file",
-					"src": "",
-					"value": ""
-				}
-			],
-			"rawModeData": "",
-			"url": "http://localhost:8888/rest/file/uploadProfileImage",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [],
-			"headerData": [],
-			"collection_id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2"
-		},
-		{
-			"id": "2b23dfbd-24f4-3b63-88f0-5402777b034c",
-			"name": "findUserByUserName",
-			"description": "Find User by UserName",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"method": "GET",
-			"headers": "",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "",
-			"url": "http://localhost:8080/rest/users/findUserByUserName?userName=testRepresentative",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [
-				{
-					"key": "userName",
-					"value": "testRepresentative"
-				}
-			],
-			"headerData": [],
-			"collection_id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2"
-		},
-		{
-			"id": "34c77d8f-8726-b11f-c215-1327b26d51a7",
-			"name": "categories/findProductById",
-			"description": "",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"method": "GET",
-			"headers": "",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "",
-			"url": "http://localhost:8888/rest/categories/findProductById?ProductId=5c07c9015dea70acb0676830",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [
-				{
-					"key": "ProductId",
-					"value": "5c07c9015dea70acb0676830"
-				}
-			],
-			"headerData": [],
-			"collection_id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2"
-		},
-		{
-			"id": "38465c76-bcce-0eb7-e0ea-cec4d05b275d",
-			"name": "findUserByEmailAddress",
-			"description": "Find User By Email address",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"method": "GET",
-			"headers": "",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "",
-			"url": "http://localhost:8080/rest/users/findUserByEmailAddress?emailAddress=testMail@testdomain.com",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [
-				{
-					"key": "emailAddress",
-					"value": "testMail@testdomain.com"
-				}
-			],
-			"headerData": [],
-			"collection_id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2"
-		},
-		{
-			"id": "3db65f2f-6c69-d712-0c7e-8de5eea297de",
-			"name": "categories/findAllProducts",
-			"description": "",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"method": "GET",
-			"headers": "",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "",
-			"url": "http://localhost:8888/rest/categories/findAllProducts",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [],
-			"headerData": [],
-			"collection_id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2"
-		},
-		{
-			"id": "4866e7de-2a06-027c-3109-107d141e979e",
-			"name": "saveMaterialByProductId",
-			"description": "",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"method": "POST",
-			"headers": "Content-Type: application/json",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "{\n\t\"productId\":\"5bf9bf07b5a1b0030083d2ad\",\n\t\"material\":{\n    \t\"name\" : \"material2\",\n    \t\"description\" : \"material2 description\",\n    \t\"location\" : \"location2\"\n\t}\n}",
-			"url": "http://localhost:8888/rest/categories/saveMaterialByProductId",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [],
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"name": "Content-Type",
-					"value": "application/json",
-					"type": "text"
-				}
-			],
-			"collection_id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2"
-		},
-		{
-			"id": "52a51878-55d0-acf3-ad9b-a0c54653fc2c",
-			"name": "rest/users/saveAuthorizationByUserId?userId=5bfd26012b18d73e904c19ae&receiveMessage=1",
-			"description": "",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"method": "POST",
-			"headers": "Content-Type: application/json",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "{\n\t\"name\": \"company 1\",\n    \"description\": \"First Company or Company 1\"\t\n}",
-			"url": "http://localhost:8888/rest/users/saveAuthorizationByUserId?userId=5bfd26012b18d73e904c19ae&receiveMessage=1",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [
-				{
-					"key": "userId",
-					"value": "5bfd26012b18d73e904c19ae"
+				"url": {
+					"raw": "http://localhost:8888/rest/users/saveCompanyRepresentative",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"users",
+						"saveCompanyRepresentative"
+					]
 				},
-				{
-					"key": "receiveMessage",
-					"value": "1"
-				}
-			],
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"name": "Content-Type",
-					"value": "application/json",
-					"type": "text"
-				}
-			],
-			"collection_id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2"
+				"description": "Save companyRepresentative"
+			},
+			"response": []
 		},
 		{
-			"id": "5d6f9113-cfe6-f5aa-8ebf-640d7e6cc421",
-			"name": "findAllMaterials",
-			"description": "",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"method": "GET",
-			"headers": "",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "",
-			"url": "http://localhost:8888/rest/categories/findAllMaterials",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [],
-			"headerData": [],
-			"collection_id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2"
-		},
-		{
-			"id": "5e1b71f9-766d-8653-dcbe-f8baf64bc620",
-			"name": "rest/users/saveLikedProductsByUserId",
-			"description": "",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"method": "POST",
-			"headers": "Content-Type: application/json",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "{\n\t\"userId\":\"5bfd26012b18d73e904c19ae\",\n\t\"productId\" :\"5c054d892b18d70de06daf2f\"\n}",
-			"url": "localhost:8888/rest/users/saveLikedProductsByUserId",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [],
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"name": "Content-Type",
-					"value": "application/json",
-					"type": "text"
-				}
-			],
-			"collection_id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2"
-		},
-		{
-			"id": "5f72d31b-148f-2d85-3579-8a1062c40a1a",
-			"name": "saveProductByCategroyAndCompany",
-			"description": "",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"method": "POST",
-			"headers": "Content-Type: application/json",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "{\n\t\"categoryId\":\"5c05b6576fb6010a5b532d56\",\n\t\"companyId\":\"5c05b6576fb6010a5b532d57\",\n\t\"product\":{\n    \t\"name\": \"product1\",\n    \t\"description\": \"product1 description\",\n    \t\"productNumber\":\"1234abc\",\n    \t\"companyId\":\"5c05b6576fb6010a5b532d57\"\n    }\n}",
-			"url": "http://localhost:8888/rest/categories//saveProductByCategroyAndCompany",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [],
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"name": "Content-Type",
-					"value": "application/json",
-					"type": "text"
-				}
-			],
-			"collection_id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2"
-		},
-		{
-			"id": "606afbee-f37f-fdf9-4aba-20157019b659",
-			"name": "uploadFile",
-			"description": "",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"method": "POST",
-			"headers": "Content-Type: multipart/form-data",
-			"dataMode": "params",
-			"data": [
-				{
-					"key": "ProductId",
-					"value": "5c054d892b18d70de06daf2f",
-					"type": "text"
-				},
-				{
-					"key": "Description",
-					"value": "Test Description to be added into ",
-					"type": "text"
-				},
-				{
-					"key": "file",
-					"type": "file",
-					"src": "",
-					"value": ""
-				}
-			],
-			"rawModeData": "",
-			"url": "http://localhost:8888/rest/file/uploadFile",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [],
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "multipart/form-data",
-					"type": "text"
-				}
-			],
-			"collection_id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2"
-		},
-		{
-			"id": "61276f38-69da-16a9-c38b-918d08147801",
-			"name": "saveCompany",
-			"description": "",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"method": "POST",
-			"headers": "Content-Type: application/json",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "{\n\t\"name\": \"company 1\",\n    \"description\": \"First Company or Company 1\"\t\n}",
-			"url": "http://localhost:8888/rest/categories/saveCompany",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [],
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"name": "Content-Type",
-					"value": "application/json",
-					"type": "text"
-				}
-			],
-			"collection_id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2"
-		},
-		{
-			"id": "7379e315-97b2-9bc5-2434-bacdf06b4ef1",
-			"name": "saveCategory",
-			"description": "",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"method": "POST",
-			"headers": "Content-Type: application/json",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "{  \n\t\"name\" : \"cate1\",\n    \"description\" : \"cate1 description\"\n}",
-			"url": "http://localhost:8888/rest/categories/saveCategory",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [],
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"name": "Content-Type",
-					"value": "application/json",
-					"type": "text"
-				}
-			],
-			"collection_id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2"
-		},
-		{
-			"id": "7c3ec833-de4a-edb7-a0e3-87496088a825",
 			"name": "saveAdminUser",
-			"description": "",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"method": "POST",
-			"headers": "Content-Type: application/json",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "{\"username\":\"2testAdmin\",\"password\":\"2testPassword\",\"emailaddress\":\"2testMail@testdomain.com\"}",
-			"url": "http://localhost:8080/rest/users/saveAdminUser",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [],
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"name": "Content-Type",
-					"value": "application/json",
-					"type": "text"
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"2testAdmin\",\"password\":\"2testPassword\",\"emailaddress\":\"2testMail@testdomain.com\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/users/saveAdminUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"users",
+						"saveAdminUser"
+					]
 				}
-			],
-			"collection_id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2"
+			},
+			"response": []
 		},
 		{
-			"id": "8882c1af-c01f-0c6a-8da8-04a932236537",
+			"name": "findUserByUserName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/users/findUserByUserName?userName=testRepresentative",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"users",
+						"findUserByUserName"
+					],
+					"query": [
+						{
+							"key": "userName",
+							"value": "testRepresentative"
+						}
+					]
+				},
+				"description": "Find User by UserName"
+			},
+			"response": []
+		},
+		{
 			"name": "findUsersByRole",
-			"description": "",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"method": "GET",
-			"headers": "Content-Type: application/json",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "",
-			"url": "http://localhost:8888/rest/users/findUsersByRole?role=representative",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [
-				{
-					"key": "role",
-					"value": "representative"
-				}
-			],
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"name": "Content-Type",
-					"value": "application/json",
-					"type": "text"
-				}
-			],
-			"collection_id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2"
-		},
-		{
-			"id": "8bb361b6-fe8a-b024-8fe8-42cf18b5c2c7",
-			"name": "saveConsumer",
-			"description": "",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"method": "POST",
-			"headers": "Content-Type: application/json",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "{\"username\":\"testUser\",\"password\":\"userpassword\",\"companyname\":\"\",\"emailaddress\":\"testUser@testdomain.com\"}",
-			"url": "http://localhost:8888/rest/users/saveConsumer",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [],
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"name": "Content-Type",
-					"value": "application/json",
-					"type": "text"
-				}
-			],
-			"collection_id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2"
-		},
-		{
-			"id": "982da1dc-aa86-f830-d18a-289e676aed28",
-			"name": "/rest/users/saveRatedMaterialByUserId",
-			"description": "",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"method": "POST",
-			"headers": "Content-Type: application/json",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "{\n\t \"userId\":\"5bfd26012b18d73e904c19ae\",\n     \"materialId\": \"5bf9b3d0b5a1b0030083cd3\",\n     \"materiaRate\":3 \n}",
-			"url": "localhost:8888/rest/users/saveRatedMaterialByUserId",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [],
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"name": "Content-Type",
-					"value": "application/json",
-					"type": "text"
-				}
-			],
-			"collection_id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2"
-		},
-		{
-			"id": "a1f92523-b614-3ba5-f659-b16814c4f7d4",
-			"name": "findAllCategories",
-			"description": "",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"method": "GET",
-			"headers": "",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "",
-			"url": "http://localhost:8888/rest/categories/findAllCategories",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [],
-			"headerData": [],
-			"collection_id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2"
-		},
-		{
-			"id": "a285ab2e-e89e-246b-2590-7b9247596d2e",
-			"name": "findUsersById",
-			"description": "",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"method": "GET",
-			"headers": "Content-Type: application/json",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "",
-			"url": "http://localhost:8888/rest/users/findUsersById?userId=5bfd26012b18d73e904c19ae",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [
-				{
-					"key": "userId",
-					"value": "5bfd26012b18d73e904c19ae"
-				}
-			],
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"name": "Content-Type",
-					"value": "application/json",
-					"type": "text"
-				}
-			],
-			"collection_id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2"
-		},
-		{
-			"id": "aa3bf72e-ce60-b6f7-aac8-3b8ac059a8fb",
-			"name": "findCategoryById",
-			"description": "",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"method": "GET",
-			"headers": "",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "",
-			"url": "http://localhost:8888/rest/categories/findCategoryById?CategoryId=5c05b6576fb6010a5b532d56",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [
-				{
-					"key": "CategoryId",
-					"value": "5c05b6576fb6010a5b532d56"
-				}
-			],
-			"headerData": [],
-			"collection_id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2"
-		},
-		{
-			"id": "bed2bec1-5539-8db7-3c90-2a272f409ad0",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:8888/rest/users/sendEmailMessage",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1545829879219,
-			"name": "rest/users/sendEmailMessage",
-			"description": "",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"responses": [],
-			"rawModeData": "{\n  \"subject\": \"New Email Message to Be send and Tested by Users\",\n  \"emailBody\": \"This is test email being send from manual server backend as bein duplicationed by other the purpose of this email was to test the send email feature\",\n  \"recipients\": [\"email Address 1\",\"email Address 2 \",\"email Address 3\"]\n}"
-		},
-		{
-			"id": "c1cdd781-e546-cce7-f8fb-bd667a565db1",
-			"name": "findCompanyById",
-			"description": "",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"method": "GET",
-			"headers": "",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "",
-			"url": "http://localhost:8888/rest/categories/findCompanyById?CompanyId=5c05b6fc6fb6010a5b532d57",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [
-				{
-					"key": "CompanyId",
-					"value": "5c05b6fc6fb6010a5b532d57"
-				}
-			],
-			"headerData": [],
-			"collection_id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2"
-		},
-		{
-			"id": "c5bc1370-0e24-e963-7256-95f9f6881ffb",
-			"name": "updateMaterialDescription?materialId=5c07cee76fb60113db99ab0b&description=Test Description or new description ",
-			"description": "",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"method": "GET",
-			"headers": "",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "",
-			"url": "http://localhost:8888/rest/categories/updateMaterialDescription?materialId=5c07cee76fb60113db99ab0b&description=Test Description or new description ",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [
-				{
-					"key": "materialId",
-					"value": "5c07cee76fb60113db99ab0b"
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
 				},
-				{
-					"key": "description",
-					"value": "Test Description or new description "
+				"url": {
+					"raw": "http://localhost:8888/rest/users/findUsersByRole?role=representative",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"users",
+						"findUsersByRole"
+					],
+					"query": [
+						{
+							"key": "role",
+							"value": "representative"
+						}
+					]
 				}
-			],
-			"headerData": [],
-			"collection_id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2"
+			},
+			"response": []
 		},
 		{
-			"id": "cb1a13b1-1ff4-6e48-d65d-ef81c6fedd6d",
 			"name": "findAllUsers",
-			"description": "Find all users in database",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"method": "GET",
-			"headers": "Content-Type: application/json\nOrigin: http://localhost:8888/\nAccess-Control-Request-Headersaccess-control-allow-originAccess-Control-Request-Method: GET",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "",
-			"url": "http://localhost:8888/rest/users/findAllUsers",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [],
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"name": "Content-Type",
-					"value": "application/json",
-					"type": "text"
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Origin",
+						"value": "http://localhost:8888/",
+						"type": "text"
+					},
+					{
+						"key": "Access-Control-Request-Headersaccess-control-allow-originAccess-Control-Request-Method",
+						"value": "GET",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
 				},
-				{
-					"key": "Origin",
-					"value": "http://localhost:8888/",
-					"type": "text"
+				"url": {
+					"raw": "http://localhost:8888/rest/users/findAllUsers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"users",
+						"findAllUsers"
+					]
 				},
-				{
-					"key": "Access-Control-Request-Headersaccess-control-allow-originAccess-Control-Request-Method",
-					"value": "GET",
-					"type": "text"
-				}
-			],
-			"collection_id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2"
+				"description": "Find all users in database"
+			},
+			"response": []
 		},
 		{
-			"id": "cec17c7a-092a-5518-63ab-d90e2560beaf",
-			"name": "findProductsByCombinedCondition?condition=5c0547aef969acaeeef25988",
-			"description": "",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"method": "GET",
-			"headers": "",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "",
-			"url": "localhost:8888/rest/categories/findProductsByCombinedCondition?condition=5c0547aef969acaeeef25988",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [
-				{
-					"key": "condition",
-					"value": "5c0547aef969acaeeef25988"
-				}
-			],
-			"headerData": [],
-			"collection_id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2"
+			"name": "findUserByEmailAddress",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/users/findUserByEmailAddress?emailAddress=testMail@testdomain.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"users",
+						"findUserByEmailAddress"
+					],
+					"query": [
+						{
+							"key": "emailAddress",
+							"value": "testMail@testdomain.com"
+						}
+					]
+				},
+				"description": "Find User By Email address"
+			},
+			"response": []
 		},
 		{
-			"id": "e6a55c25-6126-2efb-aba1-2e30567bc744",
+			"name": "saveConsumer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"testUser\",\"password\":\"userpassword\",\"companyname\":\"\",\"emailaddress\":\"testUser@testdomain.com\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/users/saveConsumer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"users",
+						"saveConsumer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "saveCategory",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \n\t\"name\" : \"cate1\",\n    \"description\" : \"cate1 description\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/categories/saveCategory",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"categories",
+						"saveCategory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "uploadFile",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "ProductId",
+							"value": "5c054d892b18d70de06daf2f",
+							"type": "text"
+						},
+						{
+							"key": "Description",
+							"value": "Test Description to be added into ",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/file/uploadFile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"file",
+						"uploadFile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "saveMaterialByProductId",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"productId\":\"5bf9bf07b5a1b0030083d2ad\",\n\t\"material\":{\n    \t\"name\" : \"material2\",\n    \t\"description\" : \"material2 description\",\n    \t\"location\" : \"location2\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/categories/saveMaterialByProductId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"categories",
+						"saveMaterialByProductId"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "categories/findAllProducts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/categories/findAllProducts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"categories",
+						"findAllProducts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "categories/findProductById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/categories/findProductById?ProductId=5c07c9015dea70acb0676830",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"categories",
+						"findProductById"
+					],
+					"query": [
+						{
+							"key": "ProductId",
+							"value": "5c07c9015dea70acb0676830"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "saveProductByCategroyAndCompany",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"categoryId\":\"5c05b6576fb6010a5b532d56\",\n\t\"companyId\":\"5c05b6576fb6010a5b532d57\",\n\t\"product\":{\n    \t\"name\": \"product1\",\n    \t\"description\": \"product1 description\",\n    \t\"productNumber\":\"1234abc\",\n    \t\"companyId\":\"5c05b6576fb6010a5b532d57\"\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/categories//saveProductByCategroyAndCompany",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"categories",
+						"",
+						"saveProductByCategroyAndCompany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findAllCategories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/categories/findAllCategories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"categories",
+						"findAllCategories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findAllMaterials",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/categories/findAllMaterials",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"categories",
+						"findAllMaterials"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "saveCompany",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"company 1\",\n    \"description\": \"First Company or Company 1\"\t\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/categories/saveCompany",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"categories",
+						"saveCompany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findCompanyById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/categories/findCompanyById?CompanyId=5c05b6fc6fb6010a5b532d57",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"categories",
+						"findCompanyById"
+					],
+					"query": [
+						{
+							"key": "CompanyId",
+							"value": "5c05b6fc6fb6010a5b532d57"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findCategoryById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/categories/findCategoryById?CategoryId=5c05b6576fb6010a5b532d56",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"categories",
+						"findCategoryById"
+					],
+					"query": [
+						{
+							"key": "CategoryId",
+							"value": "5c05b6576fb6010a5b532d56"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8888/rest/file/uploadProfileImage",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "ProductId",
+							"value": "5c07c9015dea70acb0676830",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/file/uploadProfileImage",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"file",
+						"uploadProfileImage"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "deleteMaterialById?MaterialId=5c0e3aac6fb6012574f48add",
-			"description": "",
-			"collectionId": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2",
-			"method": "DELETE",
-			"headers": "",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "",
-			"url": "http://localhost:8888/rest/file/deleteMaterialById?MaterialId=5c0e3aac6fb6012574f48add",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [
-				{
-					"key": "MaterialId",
-					"value": "5c0e3aac6fb6012574f48add"
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/file/deleteMaterialById?MaterialId=5c0e3aac6fb6012574f48add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"file",
+						"deleteMaterialById"
+					],
+					"query": [
+						{
+							"key": "MaterialId",
+							"value": "5c0e3aac6fb6012574f48add"
+						}
+					]
 				}
-			],
-			"headerData": [],
-			"collection_id": "7c0bc0c9-1ab8-16a4-da84-5e8c4e310de2"
+			},
+			"response": []
+		},
+		{
+			"name": "updateMaterialDescription?materialId=5c07cee76fb60113db99ab0b&description=Test Description or new description ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/categories/updateMaterialDescription?materialId=5c07cee76fb60113db99ab0b&description=Test Description or new description",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"categories",
+						"updateMaterialDescription"
+					],
+					"query": [
+						{
+							"key": "materialId",
+							"value": "5c07cee76fb60113db99ab0b"
+						},
+						{
+							"key": "description",
+							"value": "Test Description or new description "
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findMaterialById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/categories/findMaterialById?materialId=5c0e3d756fb60125a2a0569a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"categories",
+						"findMaterialById"
+					],
+					"query": [
+						{
+							"key": "materialId",
+							"value": "5c0e3d756fb60125a2a0569a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findProductsByCombinedCondition?condition=5c0547aef969acaeeef25988",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8888/rest/categories/findProductsByCombinedCondition?condition=5c0547aef969acaeeef25988",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"categories",
+						"findProductsByCombinedCondition"
+					],
+					"query": [
+						{
+							"key": "condition",
+							"value": "5c0547aef969acaeeef25988"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rest/users/saveLikedProductsByUserId",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userId\":\"5bfd26012b18d73e904c19ae\",\n\t\"productId\" :\"5c054d892b18d70de06daf2f\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8888/rest/users/saveLikedProductsByUserId",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"users",
+						"saveLikedProductsByUserId"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findUsersById",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/users/findUsersById?userId=5bfd26012b18d73e904c19ae",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"users",
+						"findUsersById"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "5bfd26012b18d73e904c19ae"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/rest/users/saveRatedMaterialByUserId",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t \"userId\":\"5bfd26012b18d73e904c19ae\",\n     \"materialId\": \"5bf9b3d0b5a1b0030083cd3\",\n     \"materiaRate\":3 \n}"
+				},
+				"url": {
+					"raw": "localhost:8888/rest/users/saveRatedMaterialByUserId",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"users",
+						"saveRatedMaterialByUserId"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rest/users/saveAuthorizationByUserId?userId=5bfd26012b18d73e904c19ae&receiveMessage=1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"company 1\",\n    \"description\": \"First Company or Company 1\"\t\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/users/saveAuthorizationByUserId?userId=5bfd26012b18d73e904c19ae&receiveMessage=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"users",
+						"saveAuthorizationByUserId"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "5bfd26012b18d73e904c19ae"
+						},
+						{
+							"key": "receiveMessage",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rest/users/sendEmailMessage",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"subject\": \"New Email Message to Be send and Tested by Users\",\n  \"emailBody\": \"This is test email being send from manual server backend as bein duplicationed by other the purpose of this email was to test the send email feature\",\n  \"recipients\": [\"email Address 1\",\"email Address 2 \",\"email Address 3\"]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/users/sendEmailMessage",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"users",
+						"sendEmailMessage"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rest/categories/getMostRecentlyProducts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/categories/getMostRecentlyProducts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"categories",
+						"getMostRecentlyProducts"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
