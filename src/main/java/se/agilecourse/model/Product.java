@@ -1,14 +1,17 @@
 package se.agilecourse.model;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.domain.Persistable;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import se.agilecourse.annotation.CascadeSave;
-
+import java.util.Date;
 import java.util.List;
 
 @Document(collection="products")
-public class Product {
-
+public class Product implements Persistable<String> {
+    @Id
     private String id;
     private String productNumber;
     private String name;
@@ -16,7 +19,18 @@ public class Product {
     private String companyId;
     private String categoryId;
     private String profileImage;
-
+    private boolean persisted;
+    @CreatedDate
+    private Date createDate;
+    public Product(){}
+    public Product(String productNumber, String name, String description, String companyId, String categoryId, String profileImage) {
+        this.productNumber = productNumber;
+        this.name = name;
+        this.description = description;
+        this.companyId = companyId;
+        this.categoryId = categoryId;
+        this.profileImage = profileImage;
+    }
 
     @DBRef
     @CascadeSave
@@ -25,13 +39,30 @@ public class Product {
     public String getCompanyId() {
         return companyId;
     }
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
 
     public void setCompanyId(String companyId) {
         this.companyId = companyId;
     }
-
+    @Override
     public String getId() {
         return id;
+    }
+
+    @Override
+    public boolean isNew() {
+        return !persisted;
+    }
+
+
+    public void setPersisted(boolean persisted) {
+        this.persisted = persisted;
     }
 
     public void setId(String id) {

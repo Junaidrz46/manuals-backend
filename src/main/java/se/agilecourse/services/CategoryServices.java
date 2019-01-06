@@ -35,6 +35,7 @@ public interface CategoryServices {
     Material deleteMaterialById(String Id);
     Material saveMaterialAsProfileImage(String productId, Material material);
     Material updateMaterialDescrption(String materialId , String Descritpion);
+    List<Product> getMostRecentlyProducts();
 
 
 }

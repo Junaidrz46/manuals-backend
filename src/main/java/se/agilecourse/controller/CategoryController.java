@@ -108,6 +108,10 @@ public class CategoryController {
                                               @RequestParam("description") String description){
         return categoryServices.updateMaterialDescrption(materialId,description);
     }
+    @RequestMapping(value="/getMostRecentlyProducts",method = RequestMethod.GET)
+    public List<Product> getMostRecentlyProducts(){
+        return categoryServices.getMostRecentlyProducts();
+    }
 
 
 }

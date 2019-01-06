@@ -134,21 +134,23 @@ public class CategoryServicesImpl implements CategoryServices {
     public List<Material> getAllMaterials() {
         return materialRepository.findAll();
     }
+    @Override
     public Product saveProductByCategoryAndCompany(String categoryId,String companyId,Product product)
             throws CompanyIdMismatchException {
 
         Product saveProduct=null;
-        product.setCategoryId(categoryId);
+        saveProduct=new Product(product.getProductNumber(),product.getName(),product.getDescription(),product.getCompanyId(),product.getCategoryId(),product.getProfileImage());
+
         if(product.getCompanyId() != null && !product.getCompanyId().equalsIgnoreCase("")){
             if(!product.getCompanyId().equalsIgnoreCase(companyId)){
                 throw new CompanyIdMismatchException("CompanyId Mismatched");
             }else{
                 logger.debug("company ID matched "+companyId+" : "+product.getCompanyId());
-                saveProduct = productRepository.save(product);
+                saveProduct = productRepository.save(saveProduct);
             }
         }else{
             product.setCompanyId(companyId);
-            saveProduct = productRepository.save(product);
+            saveProduct = productRepository.save(saveProduct);
         }
 
         Optional<Category> categoryFound = categoryRepository.findById(categoryId);
@@ -214,13 +216,20 @@ public class CategoryServicesImpl implements CategoryServices {
         materialRepository.save(material.get());
         return  material.get();
     }
+
+    @Override
+    public List<Product> getMostRecentlyProducts() {
+
+        return productRepository.getMostRecentlyAddedProducts();
+    }
+
     @Override
     public List<Product> getProductsByThree(String condition) {//combined productNumber,
         //companyId
         //name
-
         return productRepository.findAll(condition);
     }
+
 
 
 
