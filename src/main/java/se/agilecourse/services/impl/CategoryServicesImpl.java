@@ -223,6 +223,11 @@ public class CategoryServicesImpl implements CategoryServices {
     }
 
 
+    // @Override
+    // public List<String> getCounterWithProductsByBrand(String CompanyId) {
+        
+    //     return categoryRepository.getCounterWithProductsByBrand(CompanyId);
+    // }
 
 
 }

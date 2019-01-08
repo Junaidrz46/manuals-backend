@@ -16,6 +16,7 @@ public class Product {
     private String companyId;
     private String categoryId;
     private String profileImage;
+    private Integer likedCounter;
 
 
     @DBRef
@@ -24,6 +25,20 @@ public class Product {
 
     public String getCompanyId() {
         return companyId;
+    }
+
+    /**
+     * @return the likedCounter
+     */
+    public Integer getLikedCounter() {
+        return likedCounter;
+    }
+
+    /**
+     * @param likedCounter the likedCounter to set
+     */
+    public void setLikedCounter(Integer likedCounter) {
+        this.likedCounter = likedCounter;
     }
 
     public void setCompanyId(String companyId) {

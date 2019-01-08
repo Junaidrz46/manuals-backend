@@ -30,6 +30,8 @@ public interface CategoryServices {
     List<Product> getProductsByName(String productName);
     List<Product> getProductsByThree(String condition);
 
+    // List<String> getCounterWithProductsByBrand(String CompanyId); 
+
     Optional<Company> getCompanyById(String CompanyId);
     Optional<Category> getCategoryById(String categoryId);
     Material deleteMaterialById(String Id);

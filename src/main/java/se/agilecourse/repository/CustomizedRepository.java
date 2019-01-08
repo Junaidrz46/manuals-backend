@@ -11,4 +11,5 @@ public interface CustomizedRepository {
     List<Product> findProductsByCategoryId(String categoryId);
     List<Material> findMaterialsByProductId(String productId);
 
+    // List<String> getCounterWithProductsByBrand(String CompanyId);
 }
