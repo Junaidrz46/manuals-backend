@@ -5,6 +5,8 @@ import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
@@ -24,6 +26,8 @@ public class CustomizedRepositoryImpl implements CustomizedRepository {
     private final Logger logger = LoggerFactory.getLogger(CustomizedRepositoryImpl.class);
     @Autowired
     MongoTemplate mongoTemplate;
+    @Autowired
+    MongoOperations mongoOperations;
 
     @Override
     public List<Product> findProductsByCategoryId(String categoryid) {
@@ -58,6 +62,15 @@ public class CustomizedRepositoryImpl implements CustomizedRepository {
         return "0";
 
     }
+    @Override
+    public List<Product> getMostRecentlyAddedProducts(){
+        Query query=new Query();
+        query.limit(10);
+        query.with(new Sort(Sort.Direction.DESC, "createDate"));
+        return  mongoOperations.find(query, Product.class);
+
+    }
+
 
 
 

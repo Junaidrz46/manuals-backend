@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "49aed4f2-7a76-44d5-81d9-74b727c04d3a",
+		"_postman_id": "195d3ac7-62ea-4dfd-b072-e5121d0ee990",
 		"name": "manuals-backend",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -175,9 +175,6 @@
 		},
 		{
 			"name": "findAllUsers",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"method": "GET",
 				"header": [
@@ -823,9 +820,6 @@
 		},
 		{
 			"name": "findUsersById",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"method": "GET",
 				"header": [
@@ -934,28 +928,176 @@
 				}
 			},
 			"response": []
-		}
-	],
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"id": "1375f271-5e76-433e-85cb-ef86dba46924",
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
 		},
 		{
-			"listen": "test",
-			"script": {
-				"id": "1d63a8b2-9c19-42ad-855a-9f59fb18e1f7",
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
+			"name": "rest/users/sendEmailMessage",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"subject\": \"New Email Message to Be send and Tested by Users\",\n  \"emailBody\": \"This is test email being send from manual server backend as bein duplicationed by other the purpose of this email was to test the send email feature\",\n  \"recipients\": [\"email Address 1\",\"email Address 2 \",\"email Address 3\"]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/users/sendEmailMessage",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"users",
+						"sendEmailMessage"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rest/categories/getMostRecentlyProducts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/categories/getMostRecentlyProducts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"categories",
+						"getMostRecentlyProducts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rest/categories/increaseAccessCounterForMaterial?materialId=5bf9b3d0b5a1b0030083cdb3",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "rest/categories/increaseAccessCounterForMaterial?materialId=5bf9b3d0b5a1b0030083cdb3",
+					"host": [
+						"rest"
+					],
+					"path": [
+						"categories",
+						"increaseAccessCounterForMaterial"
+					],
+					"query": [
+						{
+							"key": "materialId",
+							"value": "5bf9b3d0b5a1b0030083cdb3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rest/categories/increaseLikedCounterForProduct?productId=5c325bee2b18d70a54d8c8f6",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "rest/categories/increaseLikedCounterForProduct?productId=5c325bee2b18d70a54d8c8f6",
+					"host": [
+						"rest"
+					],
+					"path": [
+						"categories",
+						"increaseLikedCounterForProduct"
+					],
+					"query": [
+						{
+							"key": "productId",
+							"value": "5c325bee2b18d70a54d8c8f6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8888/rest/categories/increaseLikedCounterForProduct?productId=5c3239d02b18d7185c80d1f2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/categories/increaseLikedCounterForProduct?productId=5c3239d02b18d7185c80d1f2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"categories",
+						"increaseLikedCounterForProduct"
+					],
+					"query": [
+						{
+							"key": "productId",
+							"value": "5c3239d02b18d7185c80d1f2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rest/categories/decreaseLikedCounterForProduct?productId=5c325bee2b18d70a54d8c8f6",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "rest/categories/decreaseLikedCounterForProduct?productId=5c325bee2b18d70a54d8c8f6",
+					"host": [
+						"rest"
+					],
+					"path": [
+						"categories",
+						"decreaseLikedCounterForProduct"
+					],
+					"query": [
+						{
+							"key": "productId",
+							"value": "5c325bee2b18d70a54d8c8f6"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

@@ -51,9 +51,6 @@ public class UserLikedProudctServiceImpl implements UserLikedProudctsService{
         }
         String userRole= user.get().getRole();
 
-      /*  if(!userRole.equals("customer"))
-            throw new ConsumerNotFound("There is no such consumer!");*/
-
         Optional<Product> product= productRepository.findById(productId);
         if(!product.isPresent()) {
             throw new LikedProductNotFound("The specific product can not be found!");
@@ -75,8 +72,8 @@ public class UserLikedProudctServiceImpl implements UserLikedProudctsService{
         }
         productslList.add(productId);
         user.get().setLikedProducts(productslList);
-        userRepository.save(user.get());
 
+        userRepository.save(user.get());
         userLikedProudctsRepository.save(new UserlikedProducts(userId,productId));
         return user.get();
 
@@ -85,11 +82,25 @@ public class UserLikedProudctServiceImpl implements UserLikedProudctsService{
     @Override
     public UserlikedProducts unlikeProductByUser(String productId, String userId) {
         Optional<UserlikedProducts> userlikedProducts;
+        Optional<User> user=userRepository.findById(userId);
+        if(!user.isPresent())
+            throw new ConsumerNotFound("There is no such consumer!");
+        if(!stringConstants.ROLE_CONSUMER.equals(user.get().getRole()))
+            throw new ConsumerNotFound("There is no such consumer!");
+
 
         userlikedProducts = userLikedProudctsRepository.findByUserIdAndAndProductId(userId,productId);
         if(userlikedProducts.isPresent()){
             userLikedProudctsRepository.delete(userlikedProducts.get());
+            List<String> list= user.get().getLikedProducts();
+            for(int i=0;i<list.size();i++){
+                if(userlikedProducts.get().getProductId().equals(list.get(i))){
+                    String removedProductId =list.remove(i);
+                    logger.info(removedProductId+" had been removed");
 
+                }
+            }
+            userRepository.save(user.get());
             return userlikedProducts.get();
         }
         throw new GeneratRunTimeException("User Didn't liked this Product");
