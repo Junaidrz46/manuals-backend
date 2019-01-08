@@ -4,10 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import se.agilecourse.exceptions.CategoryNotFoundException;
-import se.agilecourse.exceptions.CompanyIdMismatchException;
-import se.agilecourse.exceptions.LikedProductNotFound;
-import se.agilecourse.exceptions.MaterialNotFoundException;
+import se.agilecourse.exceptions.*;
 import se.agilecourse.model.*;
 import se.agilecourse.repository.*;
 import se.agilecourse.repository.CategoryRepository;
@@ -221,6 +218,64 @@ public class CategoryServicesImpl implements CategoryServices {
     public List<Product> getMostRecentlyProducts() {
 
         return productRepository.getMostRecentlyAddedProducts();
+    }
+
+    @Override
+    public Optional<Material> increaseAccessCounterForMaterial(String materialId) {
+        Optional<Material> material=materialRepository.findById(materialId);
+
+        if(!material.isPresent())
+            throw new GeneratRunTimeException("material id is invalid!");
+        Integer counter=0;
+        if(material.get().getAccessCounter() == null || material.get().getAccessCounter() == 0 ){
+            counter=0;
+        }else{
+           counter=material.get().getAccessCounter();
+        }
+        material.get().setAccessCounter(++counter);
+        materialRepository.save(material.get());
+        return material;
+    }
+
+    @Override
+    public Optional<Product> increaseLikedCounterForProduct(String productId) {
+        logger.info("ProdouctID::"+productId);
+        Optional<Product> product=productRepository.findById(productId);
+        if(!product.isPresent())
+            throw new GeneratRunTimeException("product id is invalid!");
+        Integer counter=0;
+        if(product.get().getLikedCounter() == null || product.get().getLikedCounter() == 0 ){
+            counter=0;
+        }else{
+            counter=product.get().getLikedCounter();
+        }
+
+        product.get().setLikedCounter(++counter);
+        product.get().setPersisted(true);
+        productRepository.save(product.get());
+        return product;
+    }
+
+    @Override
+    public Optional<Product> decreaseLikedCounterForProduct(String productId) {
+        Optional<Product> product=productRepository.findById(productId);
+        if(!product.isPresent())
+            throw new GeneratRunTimeException("product id is invalid!");
+        Integer counter=0;
+        if(product.get().getLikedCounter() == null || product.get().getLikedCounter() <= 0 ){
+            counter=0;
+        }else{
+            counter=product.get().getLikedCounter();
+        }
+        if(counter<=0){
+            product.get().setLikedCounter(counter);
+        }
+
+        else{
+            product.get().setLikedCounter(--counter);
+        }
+        productRepository.save(product.get());
+        return product;
     }
 
     @Override

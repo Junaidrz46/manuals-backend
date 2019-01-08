@@ -983,6 +983,121 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "rest/categories/increaseAccessCounterForMaterial?materialId=5bf9b3d0b5a1b0030083cdb3",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "rest/categories/increaseAccessCounterForMaterial?materialId=5bf9b3d0b5a1b0030083cdb3",
+					"host": [
+						"rest"
+					],
+					"path": [
+						"categories",
+						"increaseAccessCounterForMaterial"
+					],
+					"query": [
+						{
+							"key": "materialId",
+							"value": "5bf9b3d0b5a1b0030083cdb3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rest/categories/increaseLikedCounterForProduct?productId=5c325bee2b18d70a54d8c8f6",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "rest/categories/increaseLikedCounterForProduct?productId=5c325bee2b18d70a54d8c8f6",
+					"host": [
+						"rest"
+					],
+					"path": [
+						"categories",
+						"increaseLikedCounterForProduct"
+					],
+					"query": [
+						{
+							"key": "productId",
+							"value": "5c325bee2b18d70a54d8c8f6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8888/rest/categories/increaseLikedCounterForProduct?productId=5c3239d02b18d7185c80d1f2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/categories/increaseLikedCounterForProduct?productId=5c3239d02b18d7185c80d1f2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"categories",
+						"increaseLikedCounterForProduct"
+					],
+					"query": [
+						{
+							"key": "productId",
+							"value": "5c3239d02b18d7185c80d1f2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rest/categories/decreaseLikedCounterForProduct?productId=5c325bee2b18d70a54d8c8f6",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "rest/categories/decreaseLikedCounterForProduct?productId=5c325bee2b18d70a54d8c8f6",
+					"host": [
+						"rest"
+					],
+					"path": [
+						"categories",
+						"decreaseLikedCounterForProduct"
+					],
+					"query": [
+						{
+							"key": "productId",
+							"value": "5c325bee2b18d70a54d8c8f6"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

@@ -20,8 +20,18 @@ public class Product implements Persistable<String> {
     private String categoryId;
     private String profileImage;
     private boolean persisted;
+    private Integer likedCounter;
     @CreatedDate
     private Date createDate;
+    public Integer getLikedCounter() {
+        return likedCounter;
+    }
+
+    public void setLikedCounter(Integer likedCounter) {
+        this.likedCounter = likedCounter;
+    }
+
+
     public Product(){}
     public Product(String productNumber, String name, String description, String companyId, String categoryId, String profileImage) {
         this.productNumber = productNumber;

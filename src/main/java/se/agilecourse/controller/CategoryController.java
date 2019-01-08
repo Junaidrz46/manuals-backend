@@ -112,6 +112,20 @@ public class CategoryController {
     public List<Product> getMostRecentlyProducts(){
         return categoryServices.getMostRecentlyProducts();
     }
+    @RequestMapping(value="/increaseAccessCounterForMaterial",method = RequestMethod.GET)
+    public Optional<Material> increaseAccessCounterForMaterial(@RequestParam("materialId") String materialId) {
+        return categoryServices.increaseAccessCounterForMaterial(materialId);
 
+    }
+    @RequestMapping(value="/increaseLikedCounterForProduct",method = RequestMethod.GET)
+    public Optional<Product> increaseLikedCounterForProduct(@RequestParam("productId") String productId) {
+        return categoryServices.increaseLikedCounterForProduct(productId);
+
+    }
+    @RequestMapping(value="/decreaseLikedCounterForProduct",method = RequestMethod.GET)
+    public Optional<Product> decreaseLikedCounterForProduct(@RequestParam("productId") String productId) {
+        return categoryServices.decreaseLikedCounterForProduct(productId);
+
+    }
 
 }

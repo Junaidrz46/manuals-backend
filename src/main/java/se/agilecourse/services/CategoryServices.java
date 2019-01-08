@@ -36,6 +36,9 @@ public interface CategoryServices {
     Material saveMaterialAsProfileImage(String productId, Material material);
     Material updateMaterialDescrption(String materialId , String Descritpion);
     List<Product> getMostRecentlyProducts();
+    Optional<Material> increaseAccessCounterForMaterial(String materialId);
+    Optional<Product> increaseLikedCounterForProduct(String productId);
+    Optional<Product> decreaseLikedCounterForProduct(String productId);
 
 
 }
