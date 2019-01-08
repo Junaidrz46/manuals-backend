@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "195d3ac7-62ea-4dfd-b072-e5121d0ee990",
+		"_postman_id": "5485f727-5dd5-4994-a913-fe71a7903b67",
 		"name": "manuals-backend",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -1094,6 +1094,31 @@
 							"key": "productId",
 							"value": "5c325bee2b18d70a54d8c8f6"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rest/users/findEmailofSubscribedUsers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/users/findEmailofSubscribedUsers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"users",
+						"findEmailofSubscribedUsers"
 					]
 				}
 			},

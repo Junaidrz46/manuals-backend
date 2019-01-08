@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.agilecourse.exceptions.CompanyIdNotFoundException;
@@ -17,6 +19,8 @@ import se.agilecourse.util.StringConstants;
 
 @Service
 public class UserServicesImpl implements UserServices {
+
+    private final Logger logger = LoggerFactory.getLogger(UserServicesImpl.class);
 
     @Autowired
     UserRepository userRepository;
@@ -43,6 +47,7 @@ public class UserServicesImpl implements UserServices {
     public List<User> findAllUsers() {
         return userRepository.findAll();
     }
+
 
 
     @Override
@@ -106,5 +111,21 @@ public class UserServicesImpl implements UserServices {
         return user.get();
     }
 
+    @Override
+    public List<String> findEmailIdOfSubscribedUsers() {
+        List<User> userList =  userRepository.findByReceiveMessage("0");
+        List<String> emailAddresses = new ArrayList<String>();
+        if(userList != null && userList.size() > 0){
+            for (User user: userList) {
+                if(user.getEmailaddress() != null && !user.getEmailaddress().equalsIgnoreCase("")) {
+                    emailAddresses.add(user.getEmailaddress());
+                }else{
+                    logger.info("Null or empty email address values of user : "+user.getId());
+                }
+            }
+        }
+        logger.info("Returning List Size : "+emailAddresses.size());
+        return emailAddresses;
+    }
 
 }

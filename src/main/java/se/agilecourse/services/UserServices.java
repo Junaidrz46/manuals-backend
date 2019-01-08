@@ -14,6 +14,7 @@ public interface UserServices {
      User findByEmailAddress(String emailAddress);
      List<User> findByRole(String role);
      List<User> findAllUsers();
+     List<String> findEmailIdOfSubscribedUsers();
      User saveAdminUser(User user);
      User saveCompanyRepresentative(User user);
      LoginModel loginUser(String username,String password);
