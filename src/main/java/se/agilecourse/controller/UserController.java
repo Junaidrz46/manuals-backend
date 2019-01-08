@@ -133,6 +133,9 @@ public class UserController {
         return emailService.sendEmail(emailMessage.getRecipients(),emailMessage.getSubject(),emailMessage.getEmailBody());
     }
 
-
+    @RequestMapping(value = "/findEmailofSubscribedUsers", method = RequestMethod.GET)
+    public List<String> getListOfEmailSubscribed(){
+        return userServices.findEmailIdOfSubscribedUsers();
+    }
 
 }
