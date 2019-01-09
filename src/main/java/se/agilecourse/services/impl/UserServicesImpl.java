@@ -102,10 +102,10 @@ public class UserServicesImpl implements UserServices {
     public User saveAuthorizationByUserId(String userId, String receiveMessage) {
         Optional<User> user = userRepository.findById(userId);
         if (receiveMessage.equals("0")) {
-            user.get().setReceiveMessage("userUnReceiveMessage");
+            user.get().setReceiveMessage("0");
         }
         else if (receiveMessage.equals("1")) {
-            user.get().setReceiveMessage("userReceiveMessage");
+            user.get().setReceiveMessage("1");
         }
         userRepository.save(user.get());
         return user.get();

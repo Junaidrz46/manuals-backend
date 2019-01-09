@@ -1,9 +1,10 @@
 db.materials.insertMany([
   {
-    _id: ObjectId("5bf9bc9db5a1b0030083d1b8"),
+    "_id": ObjectId("5bf9bc9db5a1b0030083d1b8"),
     name: "iphone8PDF",
     description: "iphone8 PDF file",
     fileName: "tenta.pdf",
+      "averageRate
     fileDownloadUri: "http://localhost:8888/rest/file/downloadFile/tenta.pdf",
     fileType: "application/pdf",
     size: 261456
