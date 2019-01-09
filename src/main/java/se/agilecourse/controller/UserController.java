@@ -130,7 +130,7 @@ public class UserController {
     @PostMapping("/sendEmailMessage")
     public String sendEmailMessae(@RequestBody WrapperEmailMessage emailMessage){
         logger.info(emailMessage.getSubject()+" : "+emailMessage.getEmailBody());
-        return emailService.sendEmail(emailMessage.getRecipients(),emailMessage.getSubject(),emailMessage.getEmailBody());
+       return emailService.sendEmail(emailMessage.getRecipients(),emailMessage.getSubject(),emailMessage.getEmailBody());
     }
 
     @RequestMapping(value = "/findEmailofSubscribedUsers", method = RequestMethod.GET)
