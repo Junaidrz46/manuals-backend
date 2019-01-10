@@ -38,22 +38,20 @@ public class EmailServiceImpl implements EmailService {
             if(emailvalidator.isValid(emailAddress)){
                 logger.info("Email Address : "+emailAddress+" : Subject : "+subject+" : Body : "+ body );
                 mail = new Mail(FROM, subject, new Email(emailAddress), new Content("text/plain", body));
+                SendGrid sendGrid = new SendGrid(fileStProp.getEmailApikey());
+                Request request = new Request();
+                request.setMethod(Method.POST);
+                request.setEndpoint("mail/send");
+                try {
+                    request.setBody(mail.build());
+                    Response response = sendGrid.api(request);
+                } catch (IOException e) {
+                    throw new GeneratRunTimeException(e.getMessage());
+                }
                 countMessages++;
             }else{
                 throw new GeneratRunTimeException("Email Addres not Valid  : "+emailAddress);
             }
-        }
-
-
-        SendGrid sendGrid = new SendGrid("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");
-        Request request = new Request();
-        request.setMethod(Method.POST);
-        request.setEndpoint("mail/send");
-        try {
-            request.setBody(mail.build());
-            Response response = sendGrid.api(request);
-        } catch (IOException e) {
-            throw new GeneratRunTimeException(e.getMessage());
         }
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonValue ="";
@@ -73,18 +71,23 @@ public class EmailServiceImpl implements EmailService {
         Mail mail=null;
         if(emailvalidator.isValid(emailAddres)){
             logger.info("Email Address : "+emailAddres+" : Subject : "+subject+" : Body : "+ body );
-             mail = new Mail(FROM, subject, new Email(emailAddres), new Content("text/plain", body));
+             //mail = new Mail(FROM, subject, new Email(emailAddres), new Content("text/plain", body));
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setTo(emailAddres);
+            message.setSubject(subject);
+            message.setText(body);
+//            emailSender.send(message);
         }else{
             throw new GeneratRunTimeException("Email Addres not Valid  : "+emailAddres);
         }
 
-        SendGrid sendGrid = new SendGrid("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");
+        SendGrid sendGrid = new SendGrid(fileStProp.getEmailApikey());
         Request request = new Request();
         request.setMethod(Method.POST);
         request.setEndpoint("mail/send");
         try {
             request.setBody(mail.build());
-            Response response = sendGrid.api(request);
+            //Response response = sendGrid.api(request);
         } catch (IOException e) {
             throw new GeneratRunTimeException(e.getMessage());
         }
