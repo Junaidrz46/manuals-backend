@@ -16,6 +16,16 @@ public class Material {
     private String fileType;
     private long size;
     private String averageRate;
+    private Integer accessCounter;
+
+    public Integer getAccessCounter() {
+        return accessCounter;
+    }
+
+    public void setAccessCounter(Integer accessCounter) {
+        this.accessCounter = accessCounter;
+    }
+
     public String getAverageRate() {
         return averageRate;
     }

@@ -1,18 +1,22 @@
 package se.agilecourse.controller;
 
+
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.web.bind.annotation.*;
 import se.agilecourse.model.*;
+import se.agilecourse.services.EmailService;
 import se.agilecourse.services.UserLikedProudctsService;
 import se.agilecourse.services.UserRatedMaterialsService;
 import se.agilecourse.services.UserServices;
 
 import java.util.List;
 
-//@CrossOrigin(origins = "http://localhost:8888/", maxAge = 3600)
+
 @RestController()
 @RequestMapping("/rest/users")
 public class UserController {
@@ -27,6 +31,9 @@ public class UserController {
 
     @Autowired
     UserLikedProudctsService userLikedProudctsService;
+
+    @Autowired
+    EmailService emailService;
 
 
     @RequestMapping("/hello")
@@ -119,5 +126,16 @@ public class UserController {
         return userRatedMaterialsService.getAverageRateByMaterialId(materialId);
     }
 
+
+    @PostMapping("/sendEmailMessage")
+    public String sendEmailMessae(@RequestBody WrapperEmailMessage emailMessage){
+        logger.info(emailMessage.getSubject()+" : "+emailMessage.getEmailBody());
+       return emailService.sendEmail(emailMessage.getRecipients(),emailMessage.getSubject(),emailMessage.getEmailBody());
+    }
+
+    @RequestMapping(value = "/findEmailofSubscribedUsers", method = RequestMethod.GET)
+    public List<String> getListOfEmailSubscribed(){
+        return userServices.findEmailIdOfSubscribedUsers();
+    }
 
 }

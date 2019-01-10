@@ -10,6 +10,7 @@ public interface CustomizedRepository {
     String getAverageRateForMaterial(String materialId);
     List<Product> findProductsByCategoryId(String categoryId);
     List<Material> findMaterialsByProductId(String productId);
+    List<Product> getMostRecentlyAddedProducts();
 
     // List<String> getCounterWithProductsByBrand(String CompanyId);
 }

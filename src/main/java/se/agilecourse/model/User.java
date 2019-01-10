@@ -39,7 +39,7 @@ public class User {
     private String emailaddress;
     private String companyId;
     private String role;
-    private String receiveMessage = "userUnReceiveMessage"; //0:unReceive, 1:receive
+    private String receiveMessage = "0"; //0:unReceive, 1:receive
     private List<String> likedProducts;
     private List<String> ratedMaterials;
     public String getReceiveMessage() {
