@@ -30,6 +30,7 @@ public class EmailServiceImpl implements EmailService {
     @Override
     public String sendEmail(List<String> emailAddresses, String subject, String body) {
         Email FROM = new Email(fileStProp.getSenderAddress());
+        FROM.setName("Manual Admin");
 
         EmailValidator emailvalidator = EmailValidator.getInstance();
         Mail mail=null;
@@ -38,7 +39,7 @@ public class EmailServiceImpl implements EmailService {
         for (String emailAddress: emailAddresses) {
             if(emailvalidator.isValid(emailAddress)){
                 logger.info("Email Address : "+emailAddress+" : Subject : "+subject+" : Body : "+ body );
-                mail = new Mail(FROM, subject, new Email(emailAddress), new Content("text/plain", body));
+                mail = new Mail(FROM, subject, new Email(emailAddress), new Content("text/html", body));
                 SendGrid sendGrid = new SendGrid(fileStProp.getEmailApikey());
                 Request request = new Request();
                 request.setMethod(Method.POST);
