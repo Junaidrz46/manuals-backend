@@ -102,10 +102,10 @@ public class UserServicesImpl implements UserServices {
     public User saveAuthorizationByUserId(String userId, String receiveMessage) {
         Optional<User> user = userRepository.findById(userId);
         if (receiveMessage.equals("0")) {
-            user.get().setReceiveMessage("userUnReceiveMessage");
+            user.get().setReceiveMessage("0");
         }
         else if (receiveMessage.equals("1")) {
-            user.get().setReceiveMessage("userReceiveMessage");
+            user.get().setReceiveMessage("1");
         }
         userRepository.save(user.get());
         return user.get();
@@ -113,7 +113,7 @@ public class UserServicesImpl implements UserServices {
 
     @Override
     public List<String> findEmailIdOfSubscribedUsers() {
-        List<User> userList =  userRepository.findByReceiveMessage("0");
+        List<User> userList =  userRepository.findByReceiveMessage("1");
         List<String> emailAddresses = new ArrayList<String>();
         if(userList != null && userList.size() > 0){
             for (User user: userList) {
@@ -124,6 +124,7 @@ public class UserServicesImpl implements UserServices {
                 }
             }
         }
+
         logger.info("Returning List Size : "+emailAddresses.size());
         return emailAddresses;
     }
