@@ -36,6 +36,8 @@ public class UserController {
     EmailService emailService;
 
 
+
+
     @RequestMapping("/hello")
     public String helloGradle() {
         return "Hello world!";
@@ -129,8 +131,12 @@ public class UserController {
 
     @PostMapping("/sendEmailMessage")
     public String sendEmailMessae(@RequestBody WrapperEmailMessage emailMessage){
-        logger.info(emailMessage.getSubject()+" : "+emailMessage.getEmailBody());
-       return emailService.sendEmail(emailMessage.getRecipients(),emailMessage.getSubject(),emailMessage.getEmailBody());
+        List<String> emailAdresses= userServices.findEmailIdOfSubscribedUsers();
+        for(String address: emailAdresses)
+            logger.info(emailMessage.getSubject()+" : "+emailMessage.getEmailBody());
+        //logger.info(emailMessage.getSubject()+" : "+emailMessage.getEmailBody());
+       //return emailService.sendEmail(emailMessage.getRecipients(),emailMessage.getSubject(),emailMessage.getEmailBody());
+       return emailService.sendEmail(emailAdresses,emailMessage.getSubject(),emailMessage.getSubject());
     }
 
     @RequestMapping(value = "/findEmailofSubscribedUsers", method = RequestMethod.GET)
