@@ -52,6 +52,8 @@ public class FileController {
         material.setFileDownloadUri(fileDownloadUri);
         material.setFileType(file.getContentType());
         material.setSize(file.getSize());
+        material.setAccessCounter(1);
+        material.setAverageRate("1");
 
         if(file.getContentType().equalsIgnoreCase("application/pdf")){
             material.setFileIcon("http://localhost:8888/rest/file/downloadFile/pdfIcon.jpeg");
