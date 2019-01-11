@@ -39,9 +39,19 @@ public class User {
     private String emailaddress;
     private String companyId;
     private String role;
+    private String authorizedSP="0";
     private String receiveMessage = "0"; //0:unReceive, 1:receive
     private List<String> likedProducts;
     private List<String> ratedMaterials;
+    private String teleNumber;
+
+    public String getAuthorizedSP() {
+        return authorizedSP;
+    }
+
+    public void setAuthorizedSP(String authorizedSP) {
+        this.authorizedSP = authorizedSP;
+    }
     public String getReceiveMessage() {
         return receiveMessage;
     }

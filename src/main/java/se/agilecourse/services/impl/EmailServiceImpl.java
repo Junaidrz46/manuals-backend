@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import se.agilecourse.config.FileStorageProperties;
 import se.agilecourse.exceptions.GeneratRunTimeException;
@@ -14,20 +13,21 @@ import se.agilecourse.services.EmailService;
 import org.apache.commons.validator.routines.EmailValidator;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 
 @Service
+
 public class EmailServiceImpl implements EmailService {
 
     Logger logger = LoggerFactory.getLogger(EmailServiceImpl.class);
 
+
     @Autowired
     private FileStorageProperties fileStProp;
 
-    /*@Autowired
-    public JavaMailSender emailSender;*/
+
+
+
 
 
 
@@ -59,9 +59,6 @@ public class EmailServiceImpl implements EmailService {
                 throw new GeneratRunTimeException("Email Addres not Valid  : "+emailAddress);
             }
         }
-
-
-
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonValue ="";
         try{
@@ -103,33 +100,5 @@ public class EmailServiceImpl implements EmailService {
 
         return "{\" Email send to "+emailAddres+"\" : \"Sent successfully\"}";
     }
-
-   /* @Override
-    public String sendGmailService(List<String> emailAddresses, String subject, String body) {
-        Email FROM = new Email(fileStProp.getSenderAddress());
-
-        EmailValidator emailvalidator = EmailValidator.getInstance();
-        Mail mail=null;
-        Personalization personalization=null;
-        int countMessages =0;
-        for (String emailAddress: emailAddresses) {
-            if(emailvalidator.isValid(emailAddress)){
-                logger.info("Email Address : "+emailAddress+" : Subject : "+subject+" : Body : "+ body );
-                mail = new Mail(FROM, subject, new Email(emailAddress), new Content("text/plain", body));
-                countMessages++;
-            }else{
-                throw new GeneratRunTimeException("Email Addres not Valid  : "+emailAddress);
-            }
-        }
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        String jsonValue ="";
-        try{
-            jsonValue=objectMapper.writeValueAsString(emailAddresses);
-        }catch (Exception e){
-            logger.error(e.getMessage());
-        }
-        return "{\""+countMessages+ " Email(s)\": \"Sent successfully to these email addresses : "+ jsonValue +"\"}";
-    }*/
 
 }

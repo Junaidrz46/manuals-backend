@@ -15,6 +15,7 @@ import se.agilecourse.services.UserRatedMaterialsService;
 import se.agilecourse.services.UserServices;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController()
@@ -34,6 +35,8 @@ public class UserController {
 
     @Autowired
     EmailService emailService;
+
+
 
 
     @RequestMapping("/hello")
@@ -73,6 +76,10 @@ public class UserController {
     @PostMapping("/saveCompanyRepresentative")
     User saveCompanyRepresntative(@RequestBody User user) {
         return userServices.saveCompanyRepresentative(user);
+    }
+    @PostMapping("/saveServiceProvider")
+    User saveServiceProvider(@RequestBody User user) {
+        return userServices.saveServiceProvider(user);
     }
 
     @PostMapping("/login")
@@ -129,13 +136,25 @@ public class UserController {
 
     @PostMapping("/sendEmailMessage")
     public String sendEmailMessae(@RequestBody WrapperEmailMessage emailMessage){
-        logger.info(emailMessage.getSubject()+" : "+emailMessage.getEmailBody());
-       return emailService.sendEmail(emailMessage.getRecipients(),emailMessage.getSubject(),emailMessage.getEmailBody());
+        List<String> emailAdresses= userServices.findEmailIdOfSubscribedUsers();
+        for(String address: emailAdresses)
+            logger.info(emailMessage.getSubject()+" : "+emailMessage.getEmailBody());
+        //logger.info(emailMessage.getSubject()+" : "+emailMessage.getEmailBody());
+       //return emailService.sendEmail(emailMessage.getRecipients(),emailMessage.getSubject(),emailMessage.getEmailBody());
+       return emailService.sendEmail(emailAdresses,emailMessage.getSubject(),emailMessage.getSubject());
     }
 
     @RequestMapping(value = "/findEmailofSubscribedUsers", method = RequestMethod.GET)
     public List<String> getListOfEmailSubscribed(){
         return userServices.findEmailIdOfSubscribedUsers();
     }
+
+    @PostMapping("/updateAuthorizedStatusForSPByUserId")
+    Optional<User> updateAuthorizedStatusForSPByUserId(@RequestParam("userId") String userId,
+                                       @RequestParam("status") String status) {
+        return userServices.updateAuthorizedStatusForSP(userId,status);
+    }
+
+
 
 }
