@@ -15,11 +15,16 @@ public interface UserServices {
      List<User> findByRole(String role);
      List<User> findAllUsers();
      List<String> findEmailIdOfSubscribedUsers();
+
      User saveAdminUser(User user);
      User saveCompanyRepresentative(User user);
+     User saveServiceProvider(User user);
+
      LoginModel loginUser(String username,String password);
      User saveConsumer(User user);
      Optional<User> getUserById(String id);
      User saveAuthorizationByUserId(String userId, String receiveMessage) throws Exception;
+     Optional<User> updateAuthorizedStatusForSP(String userId,String status);//0---unAuthorized, 1 Authorized
+
 
 }
