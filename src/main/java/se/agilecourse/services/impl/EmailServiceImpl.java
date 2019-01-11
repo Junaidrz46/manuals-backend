@@ -11,6 +11,7 @@ import se.agilecourse.config.FileStorageProperties;
 import se.agilecourse.exceptions.GeneratRunTimeException;
 import se.agilecourse.services.EmailService;
 import org.apache.commons.validator.routines.EmailValidator;
+import se.agilecourse.services.UserServices;
 
 import java.io.IOException;
 import java.util.List;
@@ -24,6 +25,9 @@ public class EmailServiceImpl implements EmailService {
 
     @Autowired
     private FileStorageProperties fileStProp;
+
+    @Autowired
+    UserServices userServices;
 
 
     @Override
@@ -65,6 +69,7 @@ public class EmailServiceImpl implements EmailService {
         return "{\""+countMessages+ " Email(s)\": \"Sent successfully to these email addresses : "+ jsonValue +"\"}";
     }
 
+
     @Override
     public String sendEmail(String emailAddres, String subject, String body) {
         Email FROM = new Email(fileStProp.getSenderAddress());
@@ -94,6 +99,13 @@ public class EmailServiceImpl implements EmailService {
         }
 
         return "{\" Email send to "+emailAddres+"\" : \"Sent successfully\"}";
+    }
+
+    @Override
+    public String sendEmailtoOptInUsers(String subject, String body) {
+        List<String> emailAdresses= userServices.findEmailIdOfSubscribedUsers();
+        return sendEmail(emailAdresses,subject,body);
+
     }
 
 }
