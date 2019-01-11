@@ -15,6 +15,7 @@ import se.agilecourse.services.UserRatedMaterialsService;
 import se.agilecourse.services.UserServices;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController()
@@ -75,6 +76,10 @@ public class UserController {
     @PostMapping("/saveCompanyRepresentative")
     User saveCompanyRepresntative(@RequestBody User user) {
         return userServices.saveCompanyRepresentative(user);
+    }
+    @PostMapping("/saveServiceProvider")
+    User saveServiceProvider(@RequestBody User user) {
+        return userServices.saveServiceProvider(user);
     }
 
     @PostMapping("/login")
@@ -143,5 +148,13 @@ public class UserController {
     public List<String> getListOfEmailSubscribed(){
         return userServices.findEmailIdOfSubscribedUsers();
     }
+
+    @PostMapping("/updateAuthorizedStatusForSPByUserId")
+    Optional<User> updateAuthorizedStatusForSPByUserId(@RequestParam("userId") String userId,
+                                       @RequestParam("status") String status) {
+        return userServices.updateAuthorizedStatusForSP(userId,status);
+    }
+
+
 
 }

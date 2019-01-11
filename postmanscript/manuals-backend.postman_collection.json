@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5485f727-5dd5-4994-a913-fe71a7903b67",
+		"_postman_id": "195d3ac7-62ea-4dfd-b072-e5121d0ee990",
 		"name": "manuals-backend",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -461,7 +461,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"categoryId\":\"5c05b6576fb6010a5b532d56\",\n\t\"companyId\":\"5c05b6576fb6010a5b532d57\",\n\t\"product\":{\n    \t\"name\": \"product1\",\n    \t\"description\": \"product1 description\",\n    \t\"productNumber\":\"1234abc\",\n    \t\"companyId\":\"5c05b6576fb6010a5b532d57\"\n    }\n}"
+					"raw": "{\n\t\"categoryId\":\"5c05464ff969acaeeef25986\",\n\t\"companyId\":\"5c05b6576fb6010a5b532d57\",\n\t\"product\":{\n    \t\"name\": \"product1\",\n    \t\"description\": \"product1 description\",\n    \t\"productNumber\":\"1234abc\",\n    \t\"companyId\":\"5c05b6576fb6010a5b532d57\"\n    }\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8888/rest/categories//saveProductByCategroyAndCompany",
@@ -941,7 +941,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"subject\": \"New Email Message to Be send and Tested by Users\",\n  \"emailBody\": \"This is test email being send from manual server backend as bein duplicationed by other the purpose of this email was to test the send email feature\",\n  \"recipients\": [\"email Address 1\",\"email Address 2 \",\"email Address 3\"]\n}"
+					"raw": "{\n  \"subject\": \"New Email Message to Be send and Tested by Users\",\n  \"emailBody\": \"This is test email being send from manual server backend as bein duplicationed by other the purpose of this email was to test the send email feature\",\n  \"recipients\": []\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8888/rest/users/sendEmailMessage",
@@ -1100,7 +1100,7 @@
 			"response": []
 		},
 		{
-			"name": "rest/users/findEmailofSubscribedUsers",
+			"name": "http://localhost:8888/rest/categories/findProductByCategoryId?CategoryId=5c05464ff969acaeeef25986",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -1109,7 +1109,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8888/rest/users/findEmailofSubscribedUsers",
+					"raw": "http://localhost:8888/rest/categories/findProductByCategoryId?CategoryId=5c05464ff969acaeeef25986",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1117,8 +1117,14 @@
 					"port": "8888",
 					"path": [
 						"rest",
-						"users",
-						"findEmailofSubscribedUsers"
+						"categories",
+						"findProductByCategoryId"
+					],
+					"query": [
+						{
+							"key": "CategoryId",
+							"value": "5c05464ff969acaeeef25986"
+						}
 					]
 				}
 			},

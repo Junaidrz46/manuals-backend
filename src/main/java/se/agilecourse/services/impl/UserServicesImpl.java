@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.agilecourse.exceptions.CompanyIdNotFoundException;
+import se.agilecourse.exceptions.GeneratRunTimeException;
 import se.agilecourse.model.LoginModel;
 import se.agilecourse.model.Product;
 import se.agilecourse.model.User;
@@ -51,7 +52,7 @@ public class UserServicesImpl implements UserServices {
 
 
     @Override
-    public User saveAdminUser(User user) {
+    public User saveAdminUser(User user) {//
         if(user.getCompanyId() == null || user.getCompanyId().equalsIgnoreCase("")){
             throw new CompanyIdNotFoundException("Company Id not found while creating Admin");
         }
@@ -65,6 +66,12 @@ public class UserServicesImpl implements UserServices {
             throw new CompanyIdNotFoundException("Company Id not found while creating Representative");
         }
         user.setRole(stringConstants.ROLE_REPRESANTATIVE);
+        return userRepository.save(user);
+    }
+
+    @Override
+    public User saveServiceProvider(User user) {
+        user.setRole(stringConstants.ROLE_SERVICE_PROVIDER);
         return userRepository.save(user);
     }
 
@@ -112,6 +119,19 @@ public class UserServicesImpl implements UserServices {
     }
 
     @Override
+    public Optional<User> updateAuthorizedStatusForSP(String userId, String status) {
+        Optional<User> user = userRepository.findById(userId);
+        if(!user.isPresent())
+            throw new GeneratRunTimeException("user id is invalid!");
+        String userRole=user.get().getRole();
+        if(!stringConstants.ROLE_SERVICE_PROVIDER.equals(userRole))
+            throw new GeneratRunTimeException("the user is not a service provider!");
+        user.get().setAuthorizedSP(status);//0---unAuthorized, 1 Authorized
+        userRepository.save(user.get());
+        return user;
+    }
+
+    @Override
     public List<String> findEmailIdOfSubscribedUsers() {
         List<User> userList =  userRepository.findByReceiveMessage("1");
         List<String> emailAddresses = new ArrayList<String>();
@@ -128,5 +148,6 @@ public class UserServicesImpl implements UserServices {
         logger.info("Returning List Size : "+emailAddresses.size());
         return emailAddresses;
     }
+
 
 }
