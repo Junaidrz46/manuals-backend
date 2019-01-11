@@ -26,11 +26,6 @@ public class EmailServiceImpl implements EmailService {
     private FileStorageProperties fileStProp;
 
 
-
-
-
-
-
     @Override
     public String sendEmail(List<String> emailAddresses, String subject, String body) {
         Email FROM = new Email(fileStProp.getSenderAddress());

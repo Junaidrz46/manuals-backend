@@ -96,7 +96,7 @@ public class CategoryServicesImpl implements CategoryServices {
     @Override
     public Material saveMaterialByProduct(Material material, String ProductId) {
         Material saveMaterial = materialRepository.save(material);
-        logger.info("Save Material "+saveMaterial.getName());
+        //logger.info("Save Material "+saveMaterial.getName());
         logger.info("Product ID : "+ProductId);
         Optional<Product> product = productRepository.findById(ProductId);
         List<Material> materialList = product.get().getMaterials();
@@ -105,6 +105,7 @@ public class CategoryServicesImpl implements CategoryServices {
         }
         materialList.add(saveMaterial);
         product.get().setMaterials(materialList);
+        product.get().setPersisted(true);
         productRepository.save(product.get());
         return saveMaterial;
     }
@@ -143,10 +144,12 @@ public class CategoryServicesImpl implements CategoryServices {
                 throw new CompanyIdMismatchException("CompanyId Mismatched");
             }else{
                 logger.debug("company ID matched "+companyId+" : "+product.getCompanyId());
+                saveProduct.setPersisted(true);
                 saveProduct = productRepository.save(saveProduct);
             }
         }else{
             product.setCompanyId(companyId);
+            saveProduct.setPersisted(true);
             saveProduct = productRepository.save(saveProduct);
         }
 
@@ -204,6 +207,7 @@ public class CategoryServicesImpl implements CategoryServices {
         materialRepository.save(material);
         Optional<Product> savedProduct = productRepository.findById(productId);
         savedProduct.get().setProfileImage(material.getId());
+        savedProduct.get().setPersisted(true);
         productRepository.save(savedProduct.get());
         return material;
     }
@@ -274,6 +278,7 @@ public class CategoryServicesImpl implements CategoryServices {
         else{
             product.get().setLikedCounter(--counter);
         }
+        product.get().setPersisted(true);
         productRepository.save(product.get());
         return product;
     }
