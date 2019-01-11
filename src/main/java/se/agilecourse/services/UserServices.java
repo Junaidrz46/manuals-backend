@@ -22,4 +22,6 @@ public interface UserServices {
      Optional<User> getUserById(String id);
      User saveAuthorizationByUserId(String userId, String receiveMessage) throws Exception;
 
+     User saveServiceProvider(User user);
+
 }

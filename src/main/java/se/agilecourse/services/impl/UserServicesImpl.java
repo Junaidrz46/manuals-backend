@@ -128,4 +128,10 @@ public class UserServicesImpl implements UserServices {
         return emailAddresses;
     }
 
+    @Override
+    public User saveServiceProvider(User user) {
+        user.setRole(stringConstants.ROLE_PROVIDER);
+        return userRepository.save(user);
+    }
+
 }

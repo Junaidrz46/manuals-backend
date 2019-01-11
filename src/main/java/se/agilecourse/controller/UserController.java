@@ -138,4 +138,8 @@ public class UserController {
         return userServices.findEmailIdOfSubscribedUsers();
     }
 
+    @PostMapping("/saveServiceProvider")
+    User saveServiceProvider(@RequestBody User user) {
+        return userServices.saveServiceProvider(user);
+    }
 }

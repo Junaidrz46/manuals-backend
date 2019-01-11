@@ -16,4 +16,6 @@ public class StringConstants {
     public final String ROLE_REPRESANTATIVE="companyRepresentative";
     public final String ROLE_CONSUMER="customer";
 
+    public final String ROLE_PROVIDER="serviceProvider";
+
 }
