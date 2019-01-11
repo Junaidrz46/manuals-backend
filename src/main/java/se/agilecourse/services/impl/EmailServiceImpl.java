@@ -13,17 +13,21 @@ import se.agilecourse.services.EmailService;
 import org.apache.commons.validator.routines.EmailValidator;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 
 @Service
+
 public class EmailServiceImpl implements EmailService {
 
     Logger logger = LoggerFactory.getLogger(EmailServiceImpl.class);
 
+
     @Autowired
     private FileStorageProperties fileStProp;
+
+
+
+
 
 
 

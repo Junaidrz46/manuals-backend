@@ -1129,6 +1129,67 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "rest/users/saveServiceProvider",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"SP1\",\"password\":\"SP1\",\"emailaddress\":\"SP1@testdomain.com\",\"teleNumber\":\"1234567\",\"firstname\":\"SP1\",\"lastname\":\"SP2\"}"
+				},
+				"url": {
+					"raw": "rest/users/saveServiceProvider",
+					"host": [
+						"rest"
+					],
+					"path": [
+						"users",
+						"saveServiceProvider"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rest/users/updateAuthorizedStatusForSPByUserId?userId=5c386ac72b18d71b28e93c9b&status=1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "rest/users/updateAuthorizedStatusForSPByUserId?userId=5c386ac72b18d71b28e93c9b&status=1",
+					"host": [
+						"rest"
+					],
+					"path": [
+						"users",
+						"updateAuthorizedStatusForSPByUserId"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "5c386ac72b18d71b28e93c9b"
+						},
+						{
+							"key": "status",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
