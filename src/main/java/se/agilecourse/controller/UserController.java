@@ -133,15 +133,16 @@ public class UserController {
         return userRatedMaterialsService.getAverageRateByMaterialId(materialId);
     }
 
-
     @PostMapping("/sendEmailMessage")
     public String sendEmailMessae(@RequestBody WrapperEmailMessage emailMessage){
-        List<String> emailAdresses= userServices.findEmailIdOfSubscribedUsers();
-        for(String address: emailAdresses)
-            logger.info(emailMessage.getSubject()+" : "+emailMessage.getEmailBody());
+       //logger.info(emailMessage.getSubject()+" : "+emailMessage.getEmailBody());
+       return emailService.sendEmail(emailMessage.getRecipients(),emailMessage.getSubject(),emailMessage.getEmailBody());
+    }
+
+    @PostMapping("/sendEmailtoOptInUsers")
+    public String sendEmailMessaetoOptInUsers(@RequestBody WrapperEmailMessage emailMessage){
         //logger.info(emailMessage.getSubject()+" : "+emailMessage.getEmailBody());
-       //return emailService.sendEmail(emailMessage.getRecipients(),emailMessage.getSubject(),emailMessage.getEmailBody());
-       return emailService.sendEmail(emailAdresses,emailMessage.getSubject(),emailMessage.getSubject());
+        return emailService.sendEmailtoOptInUsers(emailMessage.getSubject(),emailMessage.getEmailBody()) ;
     }
 
     @RequestMapping(value = "/findEmailofSubscribedUsers", method = RequestMethod.GET)
