@@ -8,13 +8,15 @@ public class UserlikedProducts {
     String id;
     String userId;
     String productId;
+    String companyId;
 
     public UserlikedProducts(){
     }
 
-    public UserlikedProducts(String userid, String productId) {
+    public UserlikedProducts(String userid, String productId,String companyId) {
         this.userId = userid;
         this.productId = productId;
+        this.companyId = companyId;
     }
 
     public String getId() {
@@ -39,5 +41,13 @@ public class UserlikedProducts {
 
     public void setProductId(String productId) {
         this.productId = productId;
+    }
+
+    public String getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(String companyId) {
+        this.companyId = companyId;
     }
 }

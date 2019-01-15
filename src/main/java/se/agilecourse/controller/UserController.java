@@ -156,6 +156,10 @@ public class UserController {
         return userServices.updateAuthorizedStatusForSP(userId,status);
     }
 
+    @RequestMapping(value = "/getSubscribedUsersEmailByCompanyId", method = RequestMethod.GET)
+    List<String> listofSubscribedUsersEmailByCompanyId(@RequestParam("companyId") String companyId) {
+        return userLikedProudctsService.findUsersEmailsSubscribedAndLikedCompany(companyId);
+    }
 
 
 }
