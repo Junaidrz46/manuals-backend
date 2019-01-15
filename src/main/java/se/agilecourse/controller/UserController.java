@@ -167,5 +167,12 @@ public class UserController {
         return userLikedProudctsService.findUsersEmailsSubscribedAndLikedCompany(companyId);
     }
 
+    @RequestMapping(value = "/SendEmailtoSubscribedUsersByCompanyId", method = RequestMethod.GET)
+    String sendSubscribedUsersEmailByCompanyId(@RequestBody WrapperEmailRequest emailRequest) {
+       return emailService.sendEmail(
+                userLikedProudctsService.findUsersEmailsSubscribedAndLikedCompany(emailRequest.getCompanyId()),
+                        emailRequest.getSubject(),emailRequest.getEmailBody());
+    }
+
 
 }
