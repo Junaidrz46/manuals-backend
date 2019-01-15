@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "09914105-19bc-4803-a163-64ce9ddac99d",
+		"_postman_id": "2f8420b1-1204-49fc-9f59-1c04443ac711",
 		"name": "manuals-backend",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -1224,7 +1224,10 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8888/rest/users/findUsersByRole?role=serviceProvider",
+			"name": "SendEmailtoSubscribedUsersByCompanyId",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [
@@ -1237,10 +1240,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": ""
+					"raw": "{\n\t\"companyId\":\"5c07ceb31c1f1ff2ce6e8a72\",\n\t\"subject\":\"test Subject\",\n\t\"emailBody\":\"Test Email body\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8888/rest/users/findUsersByRole?role=serviceProvider",
+					"raw": "http://localhost:8888/rest/users/SendEmailtoSubscribedUsersByCompanyId",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1249,35 +1252,7 @@
 					"path": [
 						"rest",
 						"users",
-						"findUsersByRole"
-					],
-					"query": [
-						{
-							"key": "role",
-							"value": "serviceProvider"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "rest/users/findSPByCompanyId",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "rest/users/findSPByCompanyId",
-					"host": [
-						"rest"
-					],
-					"path": [
-						"users",
-						"findSPByCompanyId"
+						"SendEmailtoSubscribedUsersByCompanyId"
 					]
 				}
 			},
