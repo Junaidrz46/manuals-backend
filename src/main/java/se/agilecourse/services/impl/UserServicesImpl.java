@@ -162,8 +162,7 @@ public class UserServicesImpl implements UserServices {
     public List<User> findSPByCompanyId(String role,String companyId) {
         if(!stringConstants.ROLE_SERVICE_PROVIDER.equals(role))
             throw new GeneratRunTimeException("The role is not a service provider");
-
-        List<User> users=userRepository.findUsersByCompanyIdAndAuthorizedSPEquals(companyId,"1");
+        List<User> users=userRepository.findUsersByRoleAndCompanyId(role,companyId);
         return users;
     }
 
