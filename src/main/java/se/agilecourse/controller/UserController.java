@@ -145,9 +145,8 @@ public class UserController {
        return emailService.sendEmail(emailMessage.getRecipients(),emailMessage.getSubject(),emailMessage.getEmailBody());
     }
 
-    @PostMapping("/sendEmailtoOptInUsers")
+    @RequestMapping(value = "/sendEmailtoOptInUsers", method = RequestMethod.GET)
     public String sendEmailMessaetoOptInUsers(@RequestBody WrapperEmailMessage emailMessage){
-        //logger.info(emailMessage.getSubject()+" : "+emailMessage.getEmailBody());
         return emailService.sendEmailtoOptInUsers(emailMessage.getSubject(),emailMessage.getEmailBody()) ;
     }
 
