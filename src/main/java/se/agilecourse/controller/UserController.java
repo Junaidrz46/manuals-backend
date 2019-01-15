@@ -57,6 +57,12 @@ public class UserController {
         return userServices.findByRole(role);
     }
 
+    @RequestMapping(value = "/findSPByCompanyId", params = "role", method = RequestMethod.GET)
+    public List<User> findSPByCompanyId(@RequestParam("role") String role,@RequestParam("companyId") String companyId) {
+        //System.out.println("Get users By Roll : "+userServices.findByRole(role).size());
+        return userServices.findSPByCompanyId(role,companyId);
+    }
+
     @RequestMapping(value = "/findUserByEmailAddress", params = "emailAddress", method = RequestMethod.GET)
     public User findUserByEmailAddress(@RequestParam("emailAddress") String emailAddress) {
         return userServices.findByEmailAddress(emailAddress);

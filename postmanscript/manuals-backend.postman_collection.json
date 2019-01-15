@@ -1190,6 +1190,38 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "http://localhost:8888/rest/users/sendEmailtoOptInUsers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"subject\": \"New Email Message to Be send and Tested by Users\",\n  \"emailBody\": \"This is test email being send from manual server backend as bein duplicationed by other the purpose of this email was to test the send email feature\",\n  \"recipients\": []\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/users/sendEmailtoOptInUsers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"users",
+						"sendEmailtoOptInUsers"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
