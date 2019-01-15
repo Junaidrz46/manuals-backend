@@ -10,6 +10,7 @@ import se.agilecourse.exceptions.LikedProductNotFound;
 import se.agilecourse.model.Product;
 import se.agilecourse.model.User;
 import se.agilecourse.model.UserlikedProducts;
+import se.agilecourse.repository.CompanyRepository;
 import se.agilecourse.repository.ProductRepository;
 import se.agilecourse.repository.UserLikedProudctsRepository;
 import se.agilecourse.repository.UserRepository;
@@ -29,6 +30,9 @@ public class UserLikedProudctServiceImpl implements UserLikedProudctsService{
     UserRepository userRepository;
 
     @Autowired
+    CompanyRepository companyRepository;
+
+    @Autowired
     UserLikedProudctsRepository userLikedProudctsRepository;
     @Autowired
     ProductRepository productRepository;
@@ -45,6 +49,7 @@ public class UserLikedProudctServiceImpl implements UserLikedProudctsService{
     public User saveLikedProductByUserId(String productId, String userId) throws ConsumerNotFound,LikedProductNotFound{
         Optional<User> user = userRepository.findById(userId);
         Optional<UserlikedProducts> userlikedProducts;
+
         if(!user.isPresent()) {
             throw new ConsumerNotFound("There is no such consumer!");
 
@@ -67,14 +72,23 @@ public class UserLikedProudctServiceImpl implements UserLikedProudctsService{
         }
 
         List<String> productslList = user.get().getLikedProducts();
+        List<String> companiesList = user.get().getLikedCompanies();
+
         if(productslList == null){
-            productslList = new ArrayList<>();
+            productslList = new ArrayList<String>();
         }
+
+        if(companiesList == null){
+            companiesList = new ArrayList<String>();
+        }
+
         productslList.add(productId);
+        companiesList.add(product.get().getCompanyId());
         user.get().setLikedProducts(productslList);
+        user.get().setLikedCompanies(companiesList);
 
         userRepository.save(user.get());
-        userLikedProudctsRepository.save(new UserlikedProducts(userId,productId));
+        userLikedProudctsRepository.save(new UserlikedProducts(userId,productId,product.get().getCompanyId()));
         return user.get();
 
     }
@@ -105,6 +119,40 @@ public class UserLikedProudctServiceImpl implements UserLikedProudctsService{
         }
         throw new GeneratRunTimeException("User Didn't liked this Product");
 
+    }
+
+    /*
+        This method will take the comapney id and return the list of email addresss of
+        All those users who liked any product of this compnay and have subscribed the email addresses
+        so that service provider can send email to all those users who liked the products of this
+        company and subscribed to emails.
+     */
+    @Override
+    public List<String> findUsersEmailsSubscribedAndLikedCompany(String companyId) {
+        // find the userLIkedProducts collection object by companyId.
+        List<UserlikedProducts> userlikedProductsList = userLikedProudctsRepository.findByCompanyId(companyId);
+        //creat list of string of email addres which we will return.
+        List<String> eamilIdOfSubscribedUsers = new ArrayList<String>();
+        //check if return list is not null and it's size is great then 0
+        if(userlikedProductsList!=null && userlikedProductsList.size() > 0){
+            //iterate through return list.
+            for (UserlikedProducts userlikedProducts:userlikedProductsList){
+                // return the user object from Id which was returned from userLikedPRoducts List.
+                Optional<User> user = userRepository.findById(userlikedProducts.getUserId());
+                //check if user is valied.
+                if(user.isPresent()){
+                    //check is user has subscribed to company emails then return it's email id.
+                    if(user.get().getReceiveMessage().equalsIgnoreCase("1")){
+                        eamilIdOfSubscribedUsers.add(user.get().getEmailaddress());
+                    }
+                }
+
+
+            }
+        }
+
+        // return the lsit of subscribed users email address list.
+        return eamilIdOfSubscribedUsers;
     }
 
 

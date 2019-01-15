@@ -111,14 +111,19 @@ public class UserServicesImpl implements UserServices {
     @Override
     public User saveAuthorizationByUserId(String userId, String receiveMessage) {
         Optional<User> user = userRepository.findById(userId);
-        if (receiveMessage.equals("0")) {
-            user.get().setReceiveMessage("0");
+        if(user.isPresent()){
+            if (receiveMessage.equals("0")) {
+                user.get().setReceiveMessage("0");
+            }
+            else if (receiveMessage.equals("1")) {
+                user.get().setReceiveMessage("1");
+            }
+            userRepository.save(user.get());
+            return user.get();
+        }else{
+            throw new GeneratRunTimeException("UserID IS NOT VALID ");
         }
-        else if (receiveMessage.equals("1")) {
-            user.get().setReceiveMessage("1");
-        }
-        userRepository.save(user.get());
-        return user.get();
+
     }
 
     @Override

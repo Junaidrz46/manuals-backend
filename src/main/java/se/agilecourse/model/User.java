@@ -42,6 +42,7 @@ public class User {
     private String authorizedSP="0";
     private String receiveMessage = "0"; //0:unReceive, 1:receive
     private List<String> likedProducts;
+    private List<String> likedCompanies;
     private List<String> ratedMaterials;
     private String teleNumber;
 
@@ -145,6 +146,14 @@ public class User {
 
     public void setRatedMaterials(List<String> ratedMaterials) {
         this.ratedMaterials = ratedMaterials;
+    }
+
+    public List<String> getLikedCompanies() {
+        return likedCompanies;
+    }
+
+    public void setLikedCompanies(List<String> likedCompanies) {
+        this.likedCompanies = likedCompanies;
     }
 
     @Override
