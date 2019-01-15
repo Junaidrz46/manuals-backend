@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "195d3ac7-62ea-4dfd-b072-e5121d0ee990",
+		"_postman_id": "09914105-19bc-4803-a163-64ce9ddac99d",
 		"name": "manuals-backend",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -1218,6 +1218,66 @@
 						"rest",
 						"users",
 						"sendEmailtoOptInUsers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8888/rest/users/findUsersByRole?role=serviceProvider",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/users/findUsersByRole?role=serviceProvider",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"users",
+						"findUsersByRole"
+					],
+					"query": [
+						{
+							"key": "role",
+							"value": "serviceProvider"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rest/users/findSPByCompanyId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "rest/users/findSPByCompanyId",
+					"host": [
+						"rest"
+					],
+					"path": [
+						"users",
+						"findSPByCompanyId"
 					]
 				}
 			},
