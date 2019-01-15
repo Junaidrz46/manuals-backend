@@ -15,5 +15,6 @@ public interface UserRepository extends MongoRepository<User, String>{
     public List<User> findByRole(String role);
     public List<User> findByReceiveMessage(String flag);
     Optional<User> findById(String id);
+    List<User> findUsersByCompanyIdAndAuthorizedSPEquals(String companyId,String value);
 
 }
