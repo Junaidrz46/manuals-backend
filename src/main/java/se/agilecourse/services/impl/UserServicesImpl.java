@@ -44,6 +44,7 @@ public class UserServicesImpl implements UserServices {
         return userRepository.findByRole(role);
     }
 
+
     @Override
     public List<User> findAllUsers() {
         return userRepository.findAll();
@@ -71,6 +72,8 @@ public class UserServicesImpl implements UserServices {
 
     @Override
     public User saveServiceProvider(User user) {
+        if(user.getCompanyId()==null || user.getCompanyId().equals(""))
+            throw new GeneratRunTimeException("the company Id can not be null when you create a service provider");
         user.setRole(stringConstants.ROLE_SERVICE_PROVIDER);
         return userRepository.save(user);
     }
@@ -108,14 +111,19 @@ public class UserServicesImpl implements UserServices {
     @Override
     public User saveAuthorizationByUserId(String userId, String receiveMessage) {
         Optional<User> user = userRepository.findById(userId);
-        if (receiveMessage.equals("0")) {
-            user.get().setReceiveMessage("0");
+        if(user.isPresent()){
+            if (receiveMessage.equals("0")) {
+                user.get().setReceiveMessage("0");
+            }
+            else if (receiveMessage.equals("1")) {
+                user.get().setReceiveMessage("1");
+            }
+            userRepository.save(user.get());
+            return user.get();
+        }else{
+            throw new GeneratRunTimeException("UserID IS NOT VALID ");
         }
-        else if (receiveMessage.equals("1")) {
-            user.get().setReceiveMessage("1");
-        }
-        userRepository.save(user.get());
-        return user.get();
+
     }
 
     @Override
@@ -147,6 +155,16 @@ public class UserServicesImpl implements UserServices {
 
         logger.info("Returning List Size : "+emailAddresses.size());
         return emailAddresses;
+    }
+
+
+    @Override
+    public List<User> findSPByCompanyId(String role,String companyId) {
+        if(!stringConstants.ROLE_SERVICE_PROVIDER.equals(role))
+            throw new GeneratRunTimeException("The role is not a service provider");
+
+        List<User> users=userRepository.findUsersByCompanyIdAndAuthorizedSPEquals(companyId,"1");
+        return users;
     }
 
 

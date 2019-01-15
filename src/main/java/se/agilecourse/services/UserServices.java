@@ -13,6 +13,7 @@ public interface UserServices {
      User findByUserName(String username);
      User findByEmailAddress(String emailAddress);
      List<User> findByRole(String role);
+     List<User> findSPByCompanyId(String role,String companyId);
      List<User> findAllUsers();
      List<String> findEmailIdOfSubscribedUsers();
 
