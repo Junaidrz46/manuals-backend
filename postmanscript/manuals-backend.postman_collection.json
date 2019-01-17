@@ -1284,6 +1284,38 @@
 			"response": []
 		},
 		{
+			"name": "rest/users/saveServiceProvider",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"SP4\",\"password\":\"SP4\",\"emailaddress\":\"sunzeyang0702@gmail.com\",\"teleNumber\": \"1234567\",\"companyId\": \"5c0547aef969acaeeef25988\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/users/saveServiceProvider",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"users",
+						"saveServiceProvider"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "rest/users/deleteUserbyId",
 			"request": {
 				"method": "DELETE",
