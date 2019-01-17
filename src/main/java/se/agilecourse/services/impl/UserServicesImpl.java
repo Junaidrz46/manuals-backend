@@ -50,8 +50,6 @@ public class UserServicesImpl implements UserServices {
         return userRepository.findAll();
     }
 
-
-
     @Override
     public User saveAdminUser(User user) {//
         if(user.getCompanyId() == null || user.getCompanyId().equalsIgnoreCase("")){
@@ -156,14 +154,26 @@ public class UserServicesImpl implements UserServices {
         logger.info("Returning List Size : "+emailAddresses.size());
         return emailAddresses;
     }
-
-
     @Override
     public List<User> findSPByCompanyId(String role,String companyId) {
         if(!stringConstants.ROLE_SERVICE_PROVIDER.equals(role))
             throw new GeneratRunTimeException("The role is not a service provider");
         List<User> users=userRepository.findUsersByRoleAndCompanyId(role,companyId);
         return users;
+    }
+
+    @Override
+    public User deleteUserById(String userId) {
+
+        Optional<User> user = userRepository.findById(userId);
+
+        if(user.isPresent()) {
+            userRepository.delete(user.get());
+            return user.get();
+        }else{
+            throw new GeneratRunTimeException("User With Given Id didn't exists.");
+        }
+
     }
 
 

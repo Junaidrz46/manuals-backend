@@ -36,9 +36,6 @@ public class UserController {
     @Autowired
     EmailService emailService;
 
-
-
-
     @RequestMapping("/hello")
     public String helloGradle() {
         return "Hello world!";
@@ -55,6 +52,11 @@ public class UserController {
     public List<User> findUserByRole(@RequestParam("role") String role) {
         //System.out.println("Get users By Roll : "+userServices.findByRole(role).size());
         return userServices.findByRole(role);
+    }
+
+    @RequestMapping(value = "/deleteUserbyId", params = "userId", method = RequestMethod.DELETE)
+    public User deleteUserById(@RequestParam("userId") String userId) {
+        return userServices.deleteUserById(userId);
     }
 
     @RequestMapping(value = "/findSPByCompanyId", params = "role", method = RequestMethod.GET)
@@ -111,6 +113,8 @@ public class UserController {
     User saveProductsListByUserId(@RequestBody UserlikedProducts userlikedProducts) {
         return userLikedProudctsService.saveLikedProductByUserId(userlikedProducts.getProductId(),userlikedProducts.getUserId());
     }
+
+
 
     @PostMapping("/unlikedProductsByUserId")
     UserlikedProducts deleteUserLikeProduuctByUserId(@RequestBody UserlikedProducts userlikedProduct){

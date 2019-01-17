@@ -16,6 +16,8 @@ public interface UserServices {
      List<User> findSPByCompanyId(String role,String companyId);
      List<User> findAllUsers();
      List<String> findEmailIdOfSubscribedUsers();
+     User deleteUserById(String userId);
+
 
      User saveAdminUser(User user);
      User saveCompanyRepresentative(User user);
