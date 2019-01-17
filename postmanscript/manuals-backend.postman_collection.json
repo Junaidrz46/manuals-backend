@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "09914105-19bc-4803-a163-64ce9ddac99d",
+		"_postman_id": "195d3ac7-62ea-4dfd-b072-e5121d0ee990",
 		"name": "manuals-backend",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -1237,10 +1237,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": ""
+					"raw": "{\n\t\"companyId\":\"5c07ceb31c1f1ff2ce6e8a72\",\n\t\"subject\":\"test Subject\",\n\t\"emailBody\":\"Test Email body\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8888/rest/users/findUsersByRole?role=serviceProvider",
+					"raw": "http://localhost:8888/rest/users/SendEmailtoSubscribedUsersByCompanyId",
 					"protocol": "http",
 					"host": [
 						"localhost"

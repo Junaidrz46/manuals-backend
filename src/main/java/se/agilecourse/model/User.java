@@ -166,6 +166,14 @@ public class User {
         this.likedCompanies = likedCompanies;
     }
 
+    public String getTeleNumber() {
+        return teleNumber;
+    }
+
+    public void setTeleNumber(String teleNumber) {
+        this.teleNumber = teleNumber;
+    }
+
     @Override
     public String toString() {
 
