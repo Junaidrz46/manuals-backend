@@ -44,7 +44,17 @@ public class User {
     private List<String> likedProducts;
     private List<String> likedCompanies;
     private List<String> ratedMaterials;
+
+
+
     private String teleNumber;
+    public String getTeleNumber() {
+        return teleNumber;
+    }
+
+    public void setTeleNumber(String teleNumber) {
+        this.teleNumber = teleNumber;
+    }
 
     public String getAuthorizedSP() {
         return authorizedSP;
