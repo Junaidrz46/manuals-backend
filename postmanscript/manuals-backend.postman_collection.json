@@ -1222,6 +1222,66 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "http://localhost:8888/rest/users/findUsersByRole?role=serviceProvider",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"companyId\":\"5c07ceb31c1f1ff2ce6e8a72\",\n\t\"subject\":\"test Subject\",\n\t\"emailBody\":\"Test Email body\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/users/SendEmailtoSubscribedUsersByCompanyId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"users",
+						"findUsersByRole"
+					],
+					"query": [
+						{
+							"key": "role",
+							"value": "serviceProvider"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rest/users/findSPByCompanyId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "rest/users/findSPByCompanyId",
+					"host": [
+						"rest"
+					],
+					"path": [
+						"users",
+						"findSPByCompanyId"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
