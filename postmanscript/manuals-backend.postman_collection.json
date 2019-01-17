@@ -1282,6 +1282,37 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "rest/users/deleteUserbyId",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8888/rest/users/deleteUserbyId?userId=5c104a3e6fb6012d813e4aaf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"rest",
+						"users",
+						"deleteUserbyId"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "5c104a3e6fb6012d813e4aaf"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
